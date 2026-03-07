@@ -1,14 +1,14 @@
 ---
-title: "インフラ未経験の大学1年生が3ヶ月でAZ-104まで取得した方法｜AIプロンプト×2タブ学習法とAZ-305への道"
+title: インフラ未経験の大学1年生が3ヶ月でAZ-104まで取得した方法｜AIプロンプト×2タブ学習法とAZ-305への道
 tags:
   - Azure
-  - 資格
   - AI
-  - 勉強法
+  - 資格
   - 学生
+  - 勉強法
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-08T04:54:37+09:00'
+id: 71fd8b1915381e695823
 organization_url_name: null
 slide: false
 ignorePublish: false
