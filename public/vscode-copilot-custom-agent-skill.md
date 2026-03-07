@@ -18,7 +18,11 @@ ignorePublish: false
 
 「Qiita記事を書くたびにリサーチ・コード作成・レビューを全部自分でやるのが面倒」
 
-そう思って、GitHub Copilotのカスタムエージェント（`.agent.md`）とSkill（`SKILL.md`）を使って**Qiita記事執筆を半自動化するシステム**を作りました。トピックを伝えるだけで、リサーチ・コード作成・レビューまで4つのエージェントが連携して記事を仕上げてくれます。
+そう思ったきっかけは、Azureコミュニティ **YonaAZ** でのやまぱんさん（[@aktsmm](https://qiita.com/aktsmm)）の発表でした。
+
+▶ [非開発者向けGitHub Copilot入門！ - docswell](https://www.docswell.com/s/aktsmm/K27LN9-2026-03-06-005940)
+
+この発表でCustom AgentとSkillの存在を知り、「これで自分のワークフローを自動化できる」と思って実装しました。トピックを伝えるだけで、リサーチ・コード作成・レビューまで4つのエージェントが連携して記事を仕上げてくれます。
 
 書いた記事はGitHubにpushするだけでQiitaに自動公開される仕組みも整えたので、その全容を紹介します。
 
@@ -337,6 +341,7 @@ Agent/Skillを作っておくと、同じ作業を何度でも再現できるの
 
 ## 参考
 
+- [非開発者向けGitHub Copilot入門！ by やまぱん（YonaAZ登壇資料）](https://www.docswell.com/s/aktsmm/K27LN9-2026-03-06-005940)
 - [VS Code カスタムエージェント 公式ドキュメント](https://code.visualstudio.com/docs/copilot/customization/custom-agents)
 - [VS Code エージェントスキル 公式ドキュメント](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
 - [VS Code Copilotカスタマイズ概要](https://code.visualstudio.com/docs/copilot/customization/overview)
