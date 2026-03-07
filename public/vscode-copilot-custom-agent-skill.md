@@ -7,7 +7,7 @@ tags:
   - 生産性向上
   - GitHubCopilot
 private: false
-updated_at: '2026-03-08T07:15:27+09:00'
+updated_at: '2026-03-08T07:21:56+09:00'
 id: b978e6f5338960b2a9ee
 organization_url_name: null
 slide: false
