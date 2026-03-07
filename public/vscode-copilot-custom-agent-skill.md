@@ -319,11 +319,11 @@ VS Code のチャットでエージェントを選択して話しかけるだけ
 ```
 【Qiita Writerを選択】
 
-「VS Code Copilot Agentの自作について記事を書きたい。
- 対象は中級者エンジニア。サンプルコード多めで。」
+「GitHub ActionsでCI/CDパイプラインを構築する方法について記事を書きたい。
+ 対象は中級者エンジニア。実際のyaml例を中心に。」
 
 → 自動でリサーチ・コード例作成・レビューが実行され、
-  Qiita-github/public/vscode-copilot-agent.md に記事が保存される
+  Qiita-github/public/github-actions-cicd-pipeline.md に記事が保存される
 ```
 
 ---
