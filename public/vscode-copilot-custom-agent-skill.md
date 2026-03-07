@@ -1,14 +1,14 @@
 ---
-title: "GitHub Copilot のカスタムAgentを4つ連携させてQiita記事生成を半自動化した話"
+title: GitHub Copilot のカスタムAgentを4つ連携させてQiita記事生成を半自動化した話
 tags:
-  - VSCode
-  - GitHubCopilot
   - AI
-  - 生産性向上
+  - VSCode
   - 個人開発
+  - 生産性向上
+  - GitHubCopilot
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-08T06:28:31+09:00'
+id: b978e6f5338960b2a9ee
 organization_url_name: null
 slide: false
 ignorePublish: false
