@@ -16,9 +16,9 @@ ignorePublish: false
 
 ## はじめに
 
-「Qiita記事を書くたびにリサーチ・コード作成・レビューを全部自分でやるのが面倒」
+「Qiita記事を書くたびにリサーチ・コード作成・レビューを全部自分でやるのが面倒。自動化できないか？」
 
-そう思ったきっかけは、Azureコミュニティ **YonaAZ** でのやまぱんさん（[@aktsmm](https://qiita.com/aktsmm)）の発表でした。
+そう思い立ったきっかけは、Azureコミュニティ **YonaAZ** でのやまぱんさん（[@aktsmm](https://qiita.com/aktsmm)）の発表でした。
 
 ▶ [非開発者向けGitHub Copilot入門！ - docswell](https://www.docswell.com/s/aktsmm/K27LN9-2026-03-06-005940)
 
