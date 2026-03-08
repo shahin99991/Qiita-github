@@ -1,14 +1,14 @@
 ---
 title: VS Code 1.110 + GitHub Copilot 2026年3月アップデートまとめ：エージェント実用化時代が来た
 tags:
-  - VSCode
-  - GitHubCopilot
   - AI
+  - VSCode
   - 生産性向上
+  - GitHubCopilot
   - アップデート情報
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-08T21:06:48+09:00'
+id: 114635a4d036fd0cb5cf
 organization_url_name: null
 slide: false
 ignorePublish: false
