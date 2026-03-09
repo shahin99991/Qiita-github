@@ -198,85 +198,20 @@ git config --global init.defaultBranch main
 
 ## GitHub Codespaces でどこでも開発
 
-Codespaces はブラウザやVS Codeからすぐに起動できるクラウド開発環境です。学生（GitHub Pro）は月**180時間**の無料枠があります。
+Codespaces はブラウザや VS Code からすぐに起動できる**クラウド開発環境**です。自分の PC に環境構築しなくても、ブラウザだけでコードを書いて実行できます。
 
-> 1日6時間使っても月に約30日分 → 実質使い放題レベルです（デフォルトの2コアマシンの場合。4コア以上を選ぶと消費が早くなります）。
+学生（GitHub Pro）は月**180時間**の無料枠があります。
 
-### プロジェクトに `.devcontainer` を追加
+> 1日6時間使っても月に約30日分 → 実質使い放題レベルです（デフォルトの2コアマシンの場合）
 
-チームで開発するとき、このファイルをリポジトリに含めておくと、**全員が同じ環境を一瞬で立ち上げられます**（「私の環境では動く」問題を解決）。
+### 使い方
 
-**Node.js 環境** (`.devcontainer/devcontainer.json`)
+1. GitHub のリポジトリページを開く
+2. 緑色の「**Code**」ボタン → 「**Codespaces**」タブ
+3. 「Create codespace on main」をクリック
+4. しばらく待つとブラウザ上で VS Code が起動する
 
-```json
-{
-  // Dev Container 設定 (Node.js 20 LTS)
-  "name": "Node.js 20 開発環境",
-
-  // Microsoft 公式イメージを使用
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
-
-  // コンテナ起動後に自動で依存関係をインストール
-  "postCreateCommand": "npm install",
-
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",      // ESLint
-        "esbenp.prettier-vscode",      // Prettier
-        "github.copilot",              // GitHub Copilot（学生無料）
-        "github.copilot-chat"          // Copilot Chat
-      ],
-      "settings": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      }
-    }
-  },
-
-  // 開発サーバーのポートを自動で開く
-  "forwardPorts": [3000],
-  "portsAttributes": {
-    "3000": {
-      "label": "開発サーバー",
-      "onAutoForward": "openBrowser"
-    }
-  }
-}
-```
-
-**Python 環境** (`.devcontainer/devcontainer.json`)
-
-```json
-{
-  // Dev Container 設定 (Python 3.12)
-  "name": "Python 3.12 開発環境",
-  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
-
-  // requirements.txt から自動インストール
-  "postCreateCommand": "pip install -r requirements.txt",
-
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-python.black-formatter",
-        "ms-toolsai.jupyter",          // Jupyter Notebook
-        "github.copilot",
-        "github.copilot-chat"
-      ],
-      "settings": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "ms-python.black-formatter",
-        "[python]": {
-          "editor.defaultFormatter": "ms-python.black-formatter"
-        }
-      }
-    }
-  }
-}
-```
+ローカルに何もインストールせずに開発できるので、**iPad や大学の PC からでも作業できます**。
 
 ---
 
@@ -392,7 +327,7 @@ IntelliJ IDEA、PyCharm、WebStorm など**全製品が在籍中は無料**。
 
 ---
 
-## まとめ
+## まとスレッド版（詳しく届けたい場合め
 
 GitHub Student Developer Pack で受け取れる主要な特典をまとめます：
 
