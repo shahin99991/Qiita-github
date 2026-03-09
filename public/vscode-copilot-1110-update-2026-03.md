@@ -7,7 +7,7 @@ tags:
   - GitHubCopilot
   - アップデート情報
 private: false
-updated_at: '2026-03-08T21:06:48+09:00'
+updated_at: '2026-03-09T10:38:54+09:00'
 id: 114635a4d036fd0cb5cf
 organization_url_name: null
 slide: false
