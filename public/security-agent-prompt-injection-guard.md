@@ -1,14 +1,14 @@
 ---
-title: "VS Code Copilot Agent で間接的プロンプトインジェクション対策を自動化する"
+title: VS Code Copilot Agent で間接的プロンプトインジェクション対策を自動化する
 tags:
-  - GitHubCopilot
-  - VSCode
   - Security
   - AI
+  - VSCode
+  - GitHubCopilot
   - プロンプトインジェクション
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-09T09:35:30+09:00'
+id: cde149e03253978cdfac
 organization_url_name: null
 slide: false
 ignorePublish: false
