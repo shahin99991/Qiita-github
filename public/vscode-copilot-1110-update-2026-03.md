@@ -101,11 +101,78 @@ lifecycle:
 - 注意: 既存の `/api/v1/auth` エンドポイントの後方互換性を維持すること
 ```
 
-### 4. 統合ブラウザツール
+### 4. Agentic Browser Tools（実験的）
 
-エージェントが**ブラウザを直接操作**できるようになりました。
+エージェントが **VS Code 内蔵ブラウザを直接操作**できるようになりました。
 
-「このページの最新ドキュメントを確認してコードを修正してくれ」「このURLのAPIレスポンスを確認してテストを書いてくれ」といった指示がそのまま実行できます。エージェントが途中でブラウザ操作を必要とするタスクの自動化範囲が大幅に広がります。
+設定で `workbench.browser.enableChatTools` を有効にすると、以下のツールがエージェントから使えます：
+
+| ツール | 用途 |
+|--------|------|
+| `openBrowserPage` / `navigatePage` | ページを開く・移動する |
+| `readPage` / `screenshotPage` | ページ内容の取得・スクリーンショット |
+| `clickElement` / `typeInPage` | クリック・テキスト入力 |
+| `runPlaywrightCode` | カスタムブラウザ自動化 |
+
+「フロントエンドを修正しながら、ブラウザで見た目を確認して再修正する」ループをエージェントが自律的に行えるようになります。
+
+### 5. Agent Plugins（実験的）
+
+Skill・MCP・Hook・カスタムAgentを**まとめてパッケージ化したプラグイン**をインストールできるようになりました。
+
+Extensions ビューの検索ボックスに `@agentPlugins` と入力するか、コマンドパレットで `Chat: Plugins` を実行するとプラグイン一覧を確認できます。
+
+デフォルトでは `copilot-plugins` と `awesome-copilot` リポジトリからプラグインを取得します。`chat.plugins.marketplaces` 設定でソースを追加することも可能です。
+
+### 6. チャットからカスタマイズファイルを直接生成
+
+エージェントモードで以下のスラッシュコマンドが使えるようになりました：
+
+| コマンド | 生成されるもの |
+|---------|--------------|
+| `/create-skill` | Skillファイル（`SKILL.md`） |
+| `/create-agent` | カスタムAgentファイル（`.agent.md`） |
+| `/create-prompt` | 再利用可能なプロンプトファイル |
+| `/create-hook` | Hookの設定 |
+| `/create-instruction` | プロジェクト規約のインストラクション |
+
+会話の流れから抽出もできます。例えばデバッグを数ターンこなした後に `/create-skill` と入力すると、その手順をSkillとして保存できます。
+
+### 7. Agent Debug パネル（Preview）
+
+エージェントが何をしているかを**リアルタイムで可視化**するパネルが追加されました。
+
+コマンドパレットで `Developer: Open Agent Debug Panel` を実行するか、Chat ビューの歯車アイコンから `View Agent Logs` を選ぶと開きます。
+
+- ロードされているプロンプトファイル・Skill・Hookの一覧
+- ツールコールの内容と結果
+- システムプロンプトの全文
+- チャートビューでイベント階層を可視化
+
+カスタムAgentやSkillが期待通りに動かない場合のデバッグに非常に有用です。
+
+### 8. セッション分岐（`/fork`）
+
+`/fork` とチャットに入力すると、**現在の会話履歴を引き継いだ独立したセッションを作成**できます。
+
+任意のターンにカーソルを合わせて「Fork Conversation」を選ぶと、そのターンまでの履歴で新しいセッションを分岐できます。「別アプローチを試したい」「サイドクエスチョンだけ別で聞きたい」という場面で便利です。
+
+### 9. コンテキスト圧縮（`/compact`）
+
+会話が長くなってコンテキストウィンドウが埋まってきたとき、`/compact` コマンドで**会話履歴を手動で圧縮**できます。
+
+```
+/compact
+/compact データベーススキーマの決定を中心にまとめて  ← 圧縮の指示も渡せる
+```
+
+Background Agent・Claude Agent でも使用可能です。コンテキスト枯渇を気にせず長時間作業を続けられます。
+
+### 10. `/yolo` コマンド（`/autoApprove` の別名）
+
+`/yolo` をチャットに入力すると、**すべてのツール実行を確認なし**で自動承認するモードになります。`/disableYolo` で解除できます。
+
+> ⚠️ ターミナルコマンドや破壊的操作も承認なしで実行されます。`chat.tools.terminal.sandbox.enabled` でターミナルサンドボックスを有効にしてから使うことを推奨します。
 
 ### VS Code 1.110.1（バグ修正版）
 
@@ -122,7 +189,7 @@ lifecycle:
 OpenAI の最新エージェント特化モデル **GPT-5.4 が一般提供（GA）** になりました。
 
 コーディングエージェント系タスク（複数ファイルにわたるリファクタリング、テスト生成、PR レビューなど）で精度が大幅に向上しているとされています。Copilot Pro・Business・Enterprise の全プランで利用可能です。
-
+ＱA
 > 参考: [GPT-5.4 is generally available in GitHub Copilot](https://github.blog/changelog/2026-03-05-gpt-5-4-is-generally-available-in-github-copilot)
 
 ### Copilot コードレビューがエージェントアーキテクチャに刷新
@@ -211,6 +278,29 @@ xAI の高速モデル **Grok Code Fast 1** が、Copilot Free プランの auto
 
 > 参考: [Grok Code Fast 1 is now available in Copilot Free auto model selection](https://github.blog/changelog/2026-03-04-grok-code-fast-1-is-now-available-in-copilot-free-auto-model-selection)
 
+### Copilot Memory がデフォルトONに（Pro/Pro+）
+
+Pro・Pro+ ユーザーに対して **Copilot Memory がデフォルト有効化**されました。Copilot があなたのコーディングスタイルや好みを記憶し、会話をまたいで活用できるようになります。
+
+> 参考: [Copilot Memory now on by default for Pro and Pro+ users](https://github.blog/changelog/2026-03-04-copilot-memory-now-on-by-default-for-pro-and-pro-users-in-public-preview)
+
+### AI コミット共著者の自動付与
+
+`git.addAICoAuthor` 設定を有効にすると、Copilot が生成したコードを含む**コミットに `Co-authored-by: GitHub Copilot` が自動付与**されます。
+
+```json
+// settings.json
+"git.addAICoAuthor": "chatAndAgent"  // "all" でインライン補完も対象
+```
+
+GithubのコミットログにAI貢献が明示されるため、AI生成コードの透明性を高めたいチームに有用です。
+
+### Edit Mode が廃止予定
+
+**Edit Mode（鉛筆アイコンのモード）が v1.125 で完全削除**される予告が出ました。Agent Mode が Edit Mode の機能をすべてカバーするため、Agent Mode に一本化されます。
+
+現在は `chat.editMode.hidden` 設定で一時的に表示を戻せますが、v1.125 以降はこの設定も無効になります。Edit Mode を使っているワークフローがあれば、Agent Mode への移行を検討してください。
+
 ---
 
 ## エンジニアへの影響まとめ
@@ -221,10 +311,14 @@ xAI の高速モデル **Grok Code Fast 1** が、Copilot Free プランの auto
 |------|-------------|
 | **エージェントに長時間タスクを任せやすくなった** | Lifecycle Hooks でエージェントの前後処理を制御 + Session Memory で文脈を維持 |
 | **手順書をエージェントに丸ごと覚えさせられる** | SKILL.md でデプロイ・テスト・レビュー手順を外部化 |
+| **Skill/Agentをチャットから即作成できる** | `/create-skill`, `/create-agent` などのスラッシュコマンド |
+| **エージェントが勝手に動く範囲の可視化・制御** | Agent Debug パネル + `/yolo`/`/disableYolo` で承認フローを制御 |
+| **セッションを分岐して並列探索できる** | `/fork` でアプローチを分岐、`/compact` で長時間作業を継続 |
 | **コードレビューの質が上がった** | エージェント型アーキテクチャ + GPT-5.4 の精度向上 |
 | **デザイン⇔コードのループが自動化できる** | Figma MCP の双方向連携 |
 | **Jiraタスクの消化を自動化できる** | Copilot Coding Agent の Jira 連携 |
 | **ファイル全体への一括修正提案** | Next Edit Suggestions の全ファイル対応 |
+| **AI貢献の透明性向上** | `git.addAICoAuthor` でコミットに自動付与 |
 
 ---
 
