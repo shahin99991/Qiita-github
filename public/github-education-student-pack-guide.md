@@ -1,14 +1,14 @@
 ---
-title: "学生なら絶対使うべき！GitHub Student Developer Pack 完全ガイド【2026年版】"
+title: 学生なら絶対使うべき！GitHub Student Developer Pack 完全ガイド【2026年版】
 tags:
   - GitHub
+  - 初心者
   - 学生
   - GitHubEducation
-  - Copilot
-  - 初心者
+  - copilot
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-09T19:37:11+09:00'
+id: 25b397e206d07bf24f29
 organization_url_name: null
 slide: false
 ignorePublish: false
