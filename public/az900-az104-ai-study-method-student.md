@@ -14,6 +14,11 @@ slide: false
 ignorePublish: false
 ---
 
+:::note info
+☁️ **Azure の勉強環境は無料で作れます！** Azure for Students なら $100 クレジット + 25以上の無料サービスがクレカ不要で使えます。
+👉 [Azure for Students（無料で始める）](https://azure.microsoft.com/free/students?wt.mc_id=studentamb_486039)
+:::
+
 ## はじめに：自己紹介
 
 はじめまして。現在大学1年生のshahinと申します。
