@@ -7,7 +7,7 @@ tags:
   - GitHubEducation
   - copilot
 private: false
-updated_at: '2026-03-12T02:45:04+09:00'
+updated_at: '2026-03-12T03:23:40+09:00'
 id: 25b397e206d07bf24f29
 organization_url_name: null
 slide: false
