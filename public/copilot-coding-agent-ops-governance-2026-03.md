@@ -1,14 +1,14 @@
 ---
-title: "GitHub Copilot coding agentは実務でどう運用する？可観測性・ガバナンス観点で読む2026年3月アップデート"
+title: GitHub Copilot coding agentは実務でどう運用する？可観測性・ガバナンス観点で読む2026年3月アップデート
 tags:
-  - GitHubCopilot
-  - 開発プロセス
   - CI
+  - devops
+  - 開発プロセス
   - ガバナンス
-  - DevOps
+  - GitHubCopilot
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-30T22:59:57+09:00'
+id: 6b2d9561dc46bbd5c238
 organization_url_name: null
 slide: false
 ignorePublish: false

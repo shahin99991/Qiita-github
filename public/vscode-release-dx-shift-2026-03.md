@@ -1,14 +1,14 @@
 ---
-title: "VS Code 1.111〜1.113で何が変わった？GitHub Copilot時代の開発体験を実務視点で整理（2026年3月版）"
+title: VS Code 1.111〜1.113で何が変わった？GitHub Copilot時代の開発体験を実務視点で整理（2026年3月版）
 tags:
-  - VSCode
-  - GitHubCopilot
-  - 開発効率
   - 生産性
+  - VSCode
+  - 開発効率
   - エンジニアリング
+  - GitHubCopilot
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-30T22:59:57+09:00'
+id: 2cfb510de783dec47905
 organization_url_name: null
 slide: false
 ignorePublish: false
