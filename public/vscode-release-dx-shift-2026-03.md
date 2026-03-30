@@ -7,7 +7,7 @@ tags:
   - エンジニアリング
   - GitHubCopilot
 private: false
-updated_at: '2026-03-30T22:59:57+09:00'
+updated_at: '2026-03-30T23:05:00+09:00'
 id: 2cfb510de783dec47905
 organization_url_name: null
 slide: false
