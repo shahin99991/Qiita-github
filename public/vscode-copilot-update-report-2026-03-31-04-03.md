@@ -1,14 +1,14 @@
 ---
-title: "GitHub Copilot / VS Code 更新まとめ（2026/03/31-04/03）"
+title: GitHub Copilot / VS Code 更新まとめ（2026/03/31-04/03）
 tags:
-  - GitHubCopilot
   - VSCode
-  - 開発生産性
-  - 生成AI
   - ソフトウェア開発
+  - GitHubCopilot
+  - 生成AI
+  - 開発生産性
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-04-03T15:46:03+09:00'
+id: 0d83c8d5149b9ff55702
 organization_url_name: null
 slide: false
 ignorePublish: false
