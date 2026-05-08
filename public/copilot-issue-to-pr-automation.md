@@ -1,12 +1,12 @@
 ---
-title: "GitHub Copilot cloud agentでIssueからPR作成までを自動化する実践ガイド"
+title: "GitHub Copilot cloud agent で Issue から PR 作成までを自動化する実践ガイド【デモあり】"
 tags:
   - GitHub
   - GitHubCopilot
   - AI
   - DevOps
-  - 開発生産性
-private: false
+  - 生産性向上
+private: true
 ---
 
 ## はじめに
@@ -23,7 +23,7 @@ Copilot Workspace という呼び方を見かけることもありますが、�
 
 - Issue から PR までの自動化フロー
 - Copilot に任せるときの現実的な境界線
-- デモで見せるべき画面と、撮るべきスクリーンショット
+- 実務で運用するときの注意点と適切な粒度感
 
 ## 全体像
 
@@ -85,7 +85,7 @@ GitHub のドキュメントでは、現在は **Copilot cloud agent** という
 
 ### Step 2: Copilot をアサインする
 
-Issue に Copilot を割り当てると、Copilot が作業を開始します。ここでは、README の変更や大規模な方針説明よりも、Issue 本文のような短い要件が効きます。
+Issue に Copilot を割り当てると、Copilot が作業を開始します。このとき、Issue 本文が短く具体的であるほど、Copilot の実装精度が上がります。
 
 追加指示は、アサイン時のモーダルに書き込みます。
 
@@ -103,7 +103,7 @@ Copilot は、いきなり編集する前に、関連箇所を読みながら計
 - テスト追加が含まれているか
 - 余計なファイルを触ろうとしていないか
 
-:::note warn
+:::note warning
 Copilot が出した計画を、そのまま正解として受け取らないほうが安全です。実装前の計画レビューを挟むだけで、不要な変更をかなり減らせます。
 :::
 
@@ -164,13 +164,7 @@ GitHub Copilot cloud agent を使うと、Issue から PR までの流れをか�
 
 一方で、使い方のコツは「全部を自動化すること」ではありません。**小さな Issue に絞り、計画を確認し、PR を人間がレビューする**。この運用が一番強いです。
 
-デモでは、次の順番で見せると伝わりやすいです。
-
-- Issue 作成
-- Copilot アサイン
-- 計画確認
-- PR 差分確認
-- コメントで修正
+まず1つ、小さな Issue を選んで試してみてください。実際に動いた瞬間に、運用の感覚がつかめます。
 
 ## 参考
 
