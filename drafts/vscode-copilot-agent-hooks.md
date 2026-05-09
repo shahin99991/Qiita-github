@@ -36,11 +36,11 @@ Hooksは、Copilot Agentのライフサイクルの特定のタイミングで�
 
 ## 前提条件・環境
 
-| 項目                         | バージョン / 備考            |
-| ---------------------------- | ---------------------------- |
-| VS Code                      | 最新版（1.99以上推奨）       |
-| GitHub Copilot               | Business / Enterprise プラン |
-| GitHub Copilot Chat 拡張機能 | 最新版                       |
+| 項目                         | バージョン / 備考                                     |
+| ---------------------------- | ----------------------------------------------------- |
+| VS Code                      | 最新版（1.99以上推奨）                                |
+| GitHub Copilot               | 有効なプラン（Free / Pro / Business / Enterprise 等） |
+| GitHub Copilot Chat 拡張機能 | 最新版                                                |
 
 ---
 
