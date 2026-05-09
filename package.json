@@ -7,6 +7,11 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@qiita/qiita-cli": "^1.8.0"
+    "@qiita/qiita-cli": "^1.8.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "eslint": "^10.3.0",
+    "eslint-formatter-compact": "^9.0.1",
+    "globals": "^17.6.0"
   }
 }

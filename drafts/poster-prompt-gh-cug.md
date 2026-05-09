@@ -1,4 +1,5 @@
 # Gh-CUG 学校掲示用ポスター 画像生成プロンプト
+
 ## Google Gemini（Nano Banana）用
 
 ---
@@ -62,7 +63,7 @@ Create a university bulletin board poster with the following details:
 
 [Key Information to Include]
 - Community: GitHub Copilot User Group Japan (Gh-CUG)
-- Tagline: "We only know what we know — and that's enough!" 
+- Tagline: "We only know what we know — and that's enough!"
 - Subtitle: Beginners & students welcome! Learn AI & GitHub Copilot tips in a relaxed community
 - Event: Yuru-yona Gh-CUG #01
 - Date: May 26, 2026 (Tue) 21:00〜 Online
@@ -89,10 +90,10 @@ Please use the attached image as a style/mood reference.
 
 ## 💡 追加指示（生成後に調整したい場合）
 
-| やりたいこと | 追加プロンプト |
-|-------------|--------------|
-| もっとポップにしたい | 「もっとカラフルでポップなデザインにして」 |
-| シンプルにしたい | 「余白を多くしてミニマルなデザインにして」 |
-| キャラを変えたい | 「ロボットではなくタコのキャラクター（Octocat 風）にして」 |
-| 文字を大きくしたい | 「キャッチコピーの文字をもっと大きく目立たせて」 |
-| 配色を変えたい | 「背景を白にして、アクセントカラーを青緑にして」 |
+| やりたいこと         | 追加プロンプト                                             |
+| -------------------- | ---------------------------------------------------------- |
+| もっとポップにしたい | 「もっとカラフルでポップなデザインにして」                 |
+| シンプルにしたい     | 「余白を多くしてミニマルなデザインにして」                 |
+| キャラを変えたい     | 「ロボットではなくタコのキャラクター（Octocat 風）にして」 |
+| 文字を大きくしたい   | 「キャッチコピーの文字をもっと大きく目立たせて」           |
+| 配色を変えたい       | 「背景を白にして、アクセントカラーを青緑にして」           |

@@ -1,6 +1,6 @@
 ---
 name: commit-message
-description: 'Conventional Commitsに従ったコミットメッセージを対話形式で生成する。USE FOR: コミットメッセージを書く、コミット文を作る、git commitのメッセージ、コミット内容をまとめる。DO NOT USE FOR: PRの説明文、リリースノートの作成。'
+description: "Conventional Commitsに従ったコミットメッセージを対話形式で生成する。USE FOR: コミットメッセージを書く、コミット文を作る、git commitのメッセージ、コミット内容をまとめる。DO NOT USE FOR: PRの説明文、リリースノートの作成。"
 argument-hint: '変更内容を簡単に説明してください（例: "ログイン機能を追加"、"決済バグを修正"）'
 ---
 
@@ -33,6 +33,7 @@ Conventional Commits仕様に従ったコミットメッセージを、対話形
 ```
 
 **制約**:
+
 - `description` は50文字以内・命令形・現在形（「追加した」→「追加」）
 - 日本語・英語どちらでも対応（argument-hint と同じ言語に揃える）
 - 破壊的変更がある場合は footer に `BREAKING CHANGE: <説明>` を必ず含める

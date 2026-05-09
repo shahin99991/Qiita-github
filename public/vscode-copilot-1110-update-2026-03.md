@@ -7,7 +7,7 @@ tags:
   - GitHubCopilot
   - アップデート情報
 private: false
-updated_at: '2026-03-09T10:38:54+09:00'
+updated_at: "2026-03-09T10:38:54+09:00"
 id: 114635a4d036fd0cb5cf
 organization_url_name: null
 slide: false
@@ -71,6 +71,7 @@ lifecycle:
 
 ```markdown
 <!-- SKILL.md の例 -->
+
 # Deploy to Staging
 
 ## 手順
@@ -95,7 +96,9 @@ lifecycle:
 
 ```markdown
 <!-- /memories/session/current-task.md の例 -->
+
 ## 現在のタスク
+
 - 機能: ユーザー認証モジュールのリファクタリング
 - 方針: JWT から session-based に移行（理由: マイクロサービス間の負荷分散のため）
 - 注意: 既存の `/api/v1/auth` エンドポイントの後方互換性を維持すること
@@ -107,12 +110,12 @@ lifecycle:
 
 設定で `workbench.browser.enableChatTools` を有効にすると、以下のツールがエージェントから使えます：
 
-| ツール | 用途 |
-|--------|------|
-| `openBrowserPage` / `navigatePage` | ページを開く・移動する |
-| `readPage` / `screenshotPage` | ページ内容の取得・スクリーンショット |
-| `clickElement` / `typeInPage` | クリック・テキスト入力 |
-| `runPlaywrightCode` | カスタムブラウザ自動化 |
+| ツール                             | 用途                                 |
+| ---------------------------------- | ------------------------------------ |
+| `openBrowserPage` / `navigatePage` | ページを開く・移動する               |
+| `readPage` / `screenshotPage`      | ページ内容の取得・スクリーンショット |
+| `clickElement` / `typeInPage`      | クリック・テキスト入力               |
+| `runPlaywrightCode`                | カスタムブラウザ自動化               |
 
 「フロントエンドを修正しながら、ブラウザで見た目を確認して再修正する」ループをエージェントが自律的に行えるようになります。
 
@@ -128,12 +131,12 @@ Extensions ビューの検索ボックスに `@agentPlugins` と入力するか�
 
 エージェントモードで以下のスラッシュコマンドが使えるようになりました：
 
-| コマンド | 生成されるもの |
-|---------|--------------|
-| `/create-skill` | Skillファイル（`SKILL.md`） |
-| `/create-agent` | カスタムAgentファイル（`.agent.md`） |
-| `/create-prompt` | 再利用可能なプロンプトファイル |
-| `/create-hook` | Hookの設定 |
+| コマンド              | 生成されるもの                       |
+| --------------------- | ------------------------------------ |
+| `/create-skill`       | Skillファイル（`SKILL.md`）          |
+| `/create-agent`       | カスタムAgentファイル（`.agent.md`） |
+| `/create-prompt`      | 再利用可能なプロンプトファイル       |
+| `/create-hook`        | Hookの設定                           |
 | `/create-instruction` | プロジェクト規約のインストラクション |
 
 会話の流れから抽出もできます。例えばデバッグを数ターンこなした後に `/create-skill` と入力すると、その手順をSkillとして保存できます。
@@ -190,6 +193,7 @@ OpenAI の最新エージェント特化モデル **GPT-5.4 が一般提供（GA
 
 コーディングエージェント系タスク（複数ファイルにわたるリファクタリング、テスト生成、PR レビューなど）で精度が大幅に向上しているとされています。Copilot Pro・Business・Enterprise の全プランで利用可能です。
 ＱA
+
 > 参考: [GPT-5.4 is generally available in GitHub Copilot](https://github.blog/changelog/2026-03-05-gpt-5-4-is-generally-available-in-github-copilot)
 
 ### Copilot コードレビューがエージェントアーキテクチャに刷新
@@ -215,8 +219,8 @@ function formatId(id: string): string {
 }
 
 // ファイル内の他の呼び出し箇所にも提案が出るようになった
-const result1 = formatId(42);   // ← string に直すよう提案
-const result2 = formatId(100);  // ← string に直すよう提案（離れた行でも）
+const result1 = formatId(42); // ← string に直すよう提案
+const result2 = formatId(100); // ← string に直すよう提案（離れた行でも）
 ```
 
 > 参考: [Long-distance Next Edit Suggestions](https://code.visualstudio.com/blogs/2026/02/26/long-distance-nes)
@@ -241,9 +245,9 @@ const result2 = formatId(100);  // ← string に直すよう提案（離れた�
 
 Figma MCP サーバーのアップデートで、**コード → Figma 方向のデザイン生成**が可能になりました。
 
-| 方向 | できること |
-|------|-----------|
-| Figma → コード（従来） | Figmaのデザインを参照してコードを生成 |
+| 方向                     | できること                                                      |
+| ------------------------ | --------------------------------------------------------------- |
+| Figma → コード（従来）   | Figmaのデザインを参照してコードを生成                           |
 | コード → Figma（新機能） | VS Code で作ったUIをFigmaに「編集可能なフレーム」として書き出し |
 
 デザイナーとエンジニアが「Figmaに戻って修正」「コードに反映」を繰り返すループが VS Code + Figma MCP で自動化できるようになります。
@@ -307,18 +311,18 @@ GithubのコミットログにAI貢献が明示されるため、AI生成コー�
 
 今回のアップデートで何が変わるのか、実務目線で整理します。
 
-| 変化 | 実現する機能 |
-|------|-------------|
+| 変化                                             | 実現する機能                                                                 |
+| ------------------------------------------------ | ---------------------------------------------------------------------------- |
 | **エージェントに長時間タスクを任せやすくなった** | Lifecycle Hooks でエージェントの前後処理を制御 + Session Memory で文脈を維持 |
-| **手順書をエージェントに丸ごと覚えさせられる** | SKILL.md でデプロイ・テスト・レビュー手順を外部化 |
-| **Skill/Agentをチャットから即作成できる** | `/create-skill`, `/create-agent` などのスラッシュコマンド |
-| **エージェントが勝手に動く範囲の可視化・制御** | Agent Debug パネル + `/yolo`/`/disableYolo` で承認フローを制御 |
-| **セッションを分岐して並列探索できる** | `/fork` でアプローチを分岐、`/compact` で長時間作業を継続 |
-| **コードレビューの質が上がった** | エージェント型アーキテクチャ + GPT-5.4 の精度向上 |
-| **デザイン⇔コードのループが自動化できる** | Figma MCP の双方向連携 |
-| **Jiraタスクの消化を自動化できる** | Copilot Coding Agent の Jira 連携 |
-| **ファイル全体への一括修正提案** | Next Edit Suggestions の全ファイル対応 |
-| **AI貢献の透明性向上** | `git.addAICoAuthor` でコミットに自動付与 |
+| **手順書をエージェントに丸ごと覚えさせられる**   | SKILL.md でデプロイ・テスト・レビュー手順を外部化                            |
+| **Skill/Agentをチャットから即作成できる**        | `/create-skill`, `/create-agent` などのスラッシュコマンド                    |
+| **エージェントが勝手に動く範囲の可視化・制御**   | Agent Debug パネル + `/yolo`/`/disableYolo` で承認フローを制御               |
+| **セッションを分岐して並列探索できる**           | `/fork` でアプローチを分岐、`/compact` で長時間作業を継続                    |
+| **コードレビューの質が上がった**                 | エージェント型アーキテクチャ + GPT-5.4 の精度向上                            |
+| **デザイン⇔コードのループが自動化できる**        | Figma MCP の双方向連携                                                       |
+| **Jiraタスクの消化を自動化できる**               | Copilot Coding Agent の Jira 連携                                            |
+| **ファイル全体への一括修正提案**                 | Next Edit Suggestions の全ファイル対応                                       |
+| **AI貢献の透明性向上**                           | `git.addAICoAuthor` でコミットに自動付与                                     |
 
 ---
 

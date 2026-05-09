@@ -7,7 +7,7 @@ tags:
   - 生産性向上
   - GitHubCopilot
 private: false
-updated_at: '2026-03-08T07:25:43+09:00'
+updated_at: "2026-03-08T07:25:43+09:00"
 id: b978e6f5338960b2a9ee
 organization_url_name: null
 slide: false
@@ -39,14 +39,15 @@ ignorePublish: false
 
 まず「何が作れるか」を整理します。4種類あります。
 
-| 種類 | ファイル名 | 役割 | 使い時 |
-|------|-----------|------|--------|
-| **Custom Agent** | `*.agent.md` | 専門ペルソナを持つAI | 繰り返す専門タスク |
-| **Skill** | `SKILL.md` | 手順書＋スクリプトのセット | 複雑な手順を再利用 |
-| **Instructions** | `*.instructions.md` | 常時適用のルール | コーディング規約など |
-| **Prompt** | `*.prompt.md` | 一回限りのタスク | 決まったフォーマットで出力 |
+| 種類             | ファイル名          | 役割                       | 使い時                     |
+| ---------------- | ------------------- | -------------------------- | -------------------------- |
+| **Custom Agent** | `*.agent.md`        | 専門ペルソナを持つAI       | 繰り返す専門タスク         |
+| **Skill**        | `SKILL.md`          | 手順書＋スクリプトのセット | 複雑な手順を再利用         |
+| **Instructions** | `*.instructions.md` | 常時適用のルール           | コーディング規約など       |
+| **Prompt**       | `*.prompt.md`       | 一回限りのタスク           | 決まったフォーマットで出力 |
 
 **一言で言うと：**
+
 - 「常にこのルールで動いてほしい」→ Instructions
 - 「この役割のAIをいつでも呼び出したい」→ Agent
 - 「この手順をいつでも再実行したい」→ Skill
@@ -79,27 +80,27 @@ tools: [read, search]
 
 ```yaml
 ---
-name: セキュリティレビューアー          # 省略するとファイル名が使われる
-description: "説明文"                  # 必須・エージェントピッカーに表示される
-tools: [read, search, edit, execute]  # 使えるツールを制限
-model: 'gpt-4o'                       # VS Codeのモデルピッカーに表示される識別子を指定
-user-invocable: true                  # false = ピッカー非表示（サブエージェント専用にする場合）
-disable-model-invocation: true        # true = 他エージェントからの自動呼び出しを禁止
-agents: ['sub-agent-a']               # 使えるサブエージェントを限定（tools に agent も必要）
+name: セキュリティレビューアー # 省略するとファイル名が使われる
+description: "説明文" # 必須・エージェントピッカーに表示される
+tools: [read, search, edit, execute] # 使えるツールを制限
+model: "gpt-4o" # VS Codeのモデルピッカーに表示される識別子を指定
+user-invocable: true # false = ピッカー非表示（サブエージェント専用にする場合）
+disable-model-invocation: true # true = 他エージェントからの自動呼び出しを禁止
+agents: ["sub-agent-a"] # 使えるサブエージェントを限定（tools に agent も必要）
 ---
 ```
 
 ### 使えるtoolsの主な値
 
-| エイリアス | できること |
-|-----------|-----------|
-| `read` | ファイル読み取り |
-| `edit` | ファイル編集 |
-| `search` | ワークスペース検索 |
-| `execute` | ターミナルコマンド実行 |
-| `web` | Webページ取得 |
-| `agent` | サブエージェントの呼び出し |
-| `todo` | タスクリスト管理 |
+| エイリアス | できること                 |
+| ---------- | -------------------------- |
+| `read`     | ファイル読み取り           |
+| `edit`     | ファイル編集               |
+| `search`   | ワークスペース検索         |
+| `execute`  | ターミナルコマンド実行     |
+| `web`      | Webページ取得              |
+| `agent`    | サブエージェントの呼び出し |
+| `todo`     | タスクリスト管理           |
 
 :::note warn
 ⚠️ **`infer` プロパティは deprecated**：古い記事やサンプルで見かける `infer: true/false` は廃止されました。現在は `user-invocable` と `disable-model-invocation` の2つに分離されています。
@@ -123,11 +124,10 @@ Skillは「手順書＋関連ファイルのパッケージ」です。
 
 ```yaml
 ---
-name: qiita-article                   # フォルダ名と一致させる（必須）
-description: 'Qiita記事を作成するスキル。Use for: 記事を書く、Qiita投稿、技術ブログ。'
-argument-hint: '記事のトピックを入力'
+name: qiita-article # フォルダ名と一致させる（必須）
+description: "Qiita記事を作成するスキル。Use for: 記事を書く、Qiita投稿、技術ブログ。"
+argument-hint: "記事のトピックを入力"
 ---
-
 # Qiita記事作成の手順
 
 ## 手順
@@ -138,12 +138,12 @@ argument-hint: '記事のトピックを入力'
 
 ### AgentとSkillの使い分け
 
-| | Agent | Skill |
-|---|---|---|
-| 呼び出し方 | エージェントピッカーで選択 | `/スキル名` or 自動検出 |
-| 持続性 | セッション中ずっと同じペルソナ | 必要なときだけ読み込み |
-| 付随するファイル | なし | スクリプト・テンプレートを同梱できる |
-| オープンスタンダード | なし | あり（Claude・Copilot CLIでも使える） |
+|                      | Agent                          | Skill                                 |
+| -------------------- | ------------------------------ | ------------------------------------- |
+| 呼び出し方           | エージェントピッカーで選択     | `/スキル名` or 自動検出               |
+| 持続性               | セッション中ずっと同じペルソナ | 必要なときだけ読み込み                |
+| 付随するファイル     | なし                           | スクリプト・テンプレートを同梱できる  |
+| オープンスタンダード | なし                           | あり（Claude・Copilot CLIでも使える） |
 
 ---
 
@@ -197,6 +197,7 @@ tools: [read, edit, search, web, agent, todo]
 あなたはQiita記事作成の総合プロデューサーです。
 
 ## 作業フロー
+
 1. トピック確認
 2. qiita-researcher に調査を依頼
 3. 記事構成を作成
@@ -214,7 +215,7 @@ tools: [read, edit, search, web, agent, todo]
 ---
 description: "Qiita記事のリサーチ専門。技術背景・最新動向・参考リンクを調査する。"
 tools: [web, search, read]
-user-invocable: true    # ピッカーに表示 → 直接呼び出しもできる
+user-invocable: true # ピッカーに表示 → 直接呼び出しもできる
 ---
 ```
 
@@ -224,7 +225,7 @@ user-invocable: true    # ピッカーに表示 → 直接呼び出しもでき�
 ---
 description: "内部専用のリサーチエージェント。"
 tools: [web, search, read]
-user-invocable: false   # ピッカー非表示・サブエージェントとしてのみ呼び出し可
+user-invocable: false # ピッカー非表示・サブエージェントとしてのみ呼び出し可
 ---
 ```
 
@@ -294,7 +295,7 @@ jobs:
       - uses: increments/qiita-cli/actions/publish@v1
         with:
           qiita-token: ${{ secrets.QIITA_TOKEN }}
-          root: "."  # Qiita-github/ リポジトリのルートを指す
+          root: "." # Qiita-github/ リポジトリのルートを指す
 ```
 
 **記事のフロントマター（Qiita CLI形式）：**
@@ -305,7 +306,7 @@ title: "記事タイトル"
 tags:
   - タグ1
 private: false
-updated_at: ''
+updated_at: ""
 id: null          ← 初回はnull、公開後にQiita記事IDが自動で入る
 ---
 ```
