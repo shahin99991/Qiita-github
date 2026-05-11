@@ -1,0 +1,10 @@
+{
+  "name": "azure-arc",
+  "source": "microsoftdocs-agent-skills",
+  "description": "Expert knowledge for Azure Arc development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding p...",
+  "description_ja": "",
+  "whenToUse": "This skill provides expert guidance for Azure Arc. Covers troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & ...",
+  "categories": [],
+  "installedAt": "2026-05-11T13:53:12.767Z",
+  "relativePath": "azure-arc"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "azure-advisor",
+  "source": "microsoftdocs-agent-skills",
+  "description": "Expert knowledge for Azure Advisor development including best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns.",
+  "description_ja": "",
+  "whenToUse": "This skill provides expert guidance for Azure Advisor. Covers best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. It combines local quick-...",
+  "categories": [],
+  "installedAt": "2026-05-11T13:57:17.903Z",
+  "relativePath": "azure-advisor"
+}
