@@ -7,12 +7,21 @@ tags:
   - GitHubEducation
   - copilot
 private: false
-updated_at: "2026-03-12T03:23:40+09:00"
+updated_at: "2026-05-11T00:00:00+09:00"
 id: 25b397e206d07bf24f29
 organization_url_name: null
 slide: false
 ignorePublish: false
 ---
+
+:::note warn
+**【2026年5月時点 重要なアップデート】**
+
+- **2026年4月20日〜**：Copilot Pro・Copilot Pro+・**学生プランの新規サインアップが一時停止中**です（既存ユーザーへの影響はなし）。再開時期は未発表のため、[公式 Docs](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students) を随時確認してください。
+- **2025年4月〜**：学生向け無料プランの名称が「Copilot Pro」から **「Copilot Student」** に変更されました。
+- **2025年5月〜**：**プレミアムリクエスト制度**が導入されました（Copilot Student は月300回）。
+- **2026年6月1日〜**：リクエスト数ベースから**使用量ベース課金**に移行予定です。
+  :::
 
 :::note info
 ☁️ **Azure も学生は無料！** $100 クレジット + 25以上の無料クラウドサービスが使えます。クレカ不要。
@@ -84,25 +93,34 @@ GitHub Education が提供する、学生専用の開発者特典プログラム
 
 ---
 
-## GitHub Copilot Pro を有効化する
+## GitHub Copilot Student を有効化する
 
-申請が通ったら、まず Copilot Pro を有効化しましょう。
+申請が通ったら、まず Copilot Student を有効化しましょう。
 
-### Copilot Free vs Copilot Pro（学生）の違い
+:::note info
+2025年4月から、学生向け無料 Copilot は「**Copilot Student**」という独立したプランになりました（旧称: Copilot Pro 学生無料）。機能面は Copilot Pro とほぼ同等です。
+:::
 
-| 項目         | Copilot Free                       | **Copilot Pro（学生無料）**   |
-| ------------ | ---------------------------------- | ----------------------------- |
-| コード補完   | 月2,000回                          | **無制限**                    |
-| チャット     | 月50回                             | **無制限**                    |
-| モデル選択   | 制限あり                           | 複数モデル選択可              |
-| エディタ対応 | 主要エディタ対応（利用回数に制限） | 主要エディタ全対応（無制限）  |
-| 月額料金     | 無料                               | **学生は無料**（通常 $10/月） |
+### プラン比較（2026年5月時点）
+
+| 項目                 | Copilot Free | **Copilot Student（学生無料）** | Copilot Pro    | Copilot Pro+ |
+| -------------------- | ------------ | ------------------------------- | -------------- | ------------ |
+| 月額料金             | 無料         | **無料**                        | $10/月         | $39/月       |
+| コード補完           | 月2,000回    | **無制限**                      | 無制限         | 無制限       |
+| チャット             | 月50回       | **無制限**（対象モデル）        | 無制限         | 無制限       |
+| プレミアムリクエスト | **月50回**   | **月300回**                     | 月300回        | 月1,500回    |
+| 追加リクエスト購入   | 不可         | $0.04/回                        | $0.04/回       | $0.04/回     |
+| モデル選択           | 制限あり     | 追加モデル対応                  | 追加モデル対応 | 全モデル対応 |
+
+> **プレミアムリクエスト**とは、GPT-4o・Claude 3.5 Sonnet・Gemini 1.5 Pro などの高性能モデルを使用した際に消費されるリクエスト枠です。無料モデル（GPT-4o mini など）の利用は枠の消費なし。
 
 ### 有効化手順
 
-1. GitHub アカウント設定 → 「Code, planning, and automation」→「Copilot」
-2. 学生認証済みなら「GitHub Copilot Pro を無料で取得」ボタンが表示される
-3. クリックして有効化完了
+1. [github.com/settings/education/benefits](https://github.com/settings/education/benefits) にアクセス
+2. 「Free GitHub developer resources for students and teachers」→「Learn more」をクリック
+3. 画面の指示に従って Copilot Student を有効化
+
+> ⚠️ **2026年4月20日〜新規サインアップは一時停止中です。** 既存ユーザーはそのまま利用できます。再開後は上記手順で有効化できます。
 
 ### 認証状態を確認する方法
 
@@ -337,16 +355,20 @@ IntelliJ IDEA、PyCharm、WebStorm など**全製品が在籍中は無料**。
 
 GitHub Student Developer Pack で受け取れる主要な特典をまとめます：
 
-| カテゴリ           | 特典                                            |
-| ------------------ | ----------------------------------------------- |
-| **AI 開発支援**    | GitHub Copilot Pro 完全無料（無制限）           |
-| **IDE**            | JetBrains 全製品 在籍中無料                     |
-| **クラウド**       | DigitalOcean $200 / Azure $100 クレジット       |
-| **開発環境**       | Codespaces 月180時間                            |
-| **ドメイン**       | Namecheap .me ドメイン + SSL 無料               |
-| **パスワード管理** | 1Password Developer Tools 込み 1年無料          |
-| **学習**           | DataCamp・FrontendMasters・Educative など       |
-| **資格**           | GitHub 認定試験バウチャー1枚（〜2026年6月30日） |
+| カテゴリ           | 特典                                                                       |
+| ------------------ | -------------------------------------------------------------------------- |
+| **AI 開発支援**    | GitHub Copilot Student 無料（コード補完無制限・月300プレミアムリクエスト） |
+| **IDE**            | JetBrains 全製品 在籍中無料                                                |
+| **クラウド**       | DigitalOcean $200 / Azure $100 クレジット                                  |
+| **開発環境**       | Codespaces 月180時間                                                       |
+| **ドメイン**       | Namecheap .me ドメイン + SSL 無料                                          |
+| **パスワード管理** | 1Password Developer Tools 込み 1年無料                                     |
+| **学習**           | DataCamp・FrontendMasters・Educative など                                  |
+| **資格**           | GitHub 認定試験バウチャー1枚（〜2026年6月30日）                            |
+
+:::note warn
+**Copilot Student の新規登録は2026年4月20日から一時停止中です。** 再開時期は未発表のため [公式 Docs](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students) を確認してください。
+:::
 
 申請に必要なのは**在籍証明書1枚と数分の手続き**だけ。
 
@@ -373,6 +395,8 @@ GitHub Education と合わせて、**Azure の学生向け無料プラン**も�
 - [GitHub Student Developer Pack — 特典一覧](https://education.github.com/pack)
 - [申請方法 — GitHub Docs](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student)
 - [申請トラブルシューティング — GitHub Docs](https://docs.github.com/en/education/about-github-education/github-education-for-students/solving-problems-with-your-github-education-access)
-- [Copilot Pro を無料で取得する — GitHub Docs](https://docs.github.com/en/copilot/how-tos/manage-your-account/get-free-access-to-copilot-pro)
+- [**Copilot Student を有効化する — GitHub Docs**](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students)
+- [個人向け Copilot プランの比較 — GitHub Docs](https://docs.github.com/en/copilot/concepts/billing/individual-plans)
+- [プレミアムリクエストとは — GitHub Docs](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests)
 - [GitHub Classroom — 公式 Docs](https://docs.github.com/en/education/manage-coursework-with-github-classroom/get-started-with-github-classroom/about-github-classroom)
 - [Azure for Students — Microsoft 公式](https://azure.microsoft.com/free/students?wt.mc_id=studentamb_486039)
