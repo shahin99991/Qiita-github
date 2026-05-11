@@ -530,3 +530,4 @@ AI によるレビューはあくまで **人間のレビューを補助する�
 - [GitHub Actions: Pull Request トリガー](https://docs.github.com/ja/actions/using-workflows/events-that-trigger-workflows#pull_request)
 - [marocchino/sticky-pull-request-comment](https://github.com/marocchino/sticky-pull-request-comment)
 - [hashicorp/setup-terraform Action](https://github.com/hashicorp/setup-terraform)
+  「AI インフラレビュアー」を導入してみてください！
