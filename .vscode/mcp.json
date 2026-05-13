@@ -8,6 +8,15 @@
         "AZURE_DEVOPS_PAT": "${env:AZURE_DEVOPS_PAT}",
         "AZURE_DEVOPS_ORG": "${env:AZURE_DEVOPS_ORG}"
       }
+    },
+    "azure": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@azure/mcp@latest", "server", "start"],
+      "env": {
+        "AZURE_SUBSCRIPTION_ID": "${env:AZURE_SUBSCRIPTION_ID}",
+        "AZURE_TENANT_ID": "${env:AZURE_TENANT_ID}"
+      }
     }
   }
 }

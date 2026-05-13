@@ -39,10 +39,12 @@ argument-hint: '記事のトピックや技術名を入力してください（�
 - Qiita Markdownの記法を使用する
 - 日本語で親しみやすい文体で書く
 - 図解や表を適切に活用する
+- [humanize-writing スキル](../humanize-writing/SKILL.md) の**生成指示型**ルールに従って執筆する（同じ書き出しの連続・抽象語・定型接続詞を避ける）
 
 ### Step 5: レビューと改善
 
 - `qiita-reviewer` エージェントに記事のレビューを依頼する
+- [humanize-writing スキル](../humanize-writing/SKILL.md) の**レビュー型**で原稿をスキャンし、AIっぽさを除去する
 - フィードバックを反映して最終版を完成させる
 
 ## 出力形式
