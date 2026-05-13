@@ -282,6 +282,8 @@ instruction ファイルへの書き出し形式を 3 種類から選べます�
 
 スキルが増えるほど Copilot との協働が深まってくる感じがあって、触っていて楽しかったです。やまぱんさん、素晴らしい拡張機能をありがとうございます！
 
+私自身、まだまだ勉強中で手探りな部分も多いので、もし「ここ違ってるよ！」や「もっとこういう便利な使い方があるよ！」といった指摘やアドバイスがあれば、ぜひコメント欄で教えていただけると嬉しいです🙇‍♂️
+
 ## 参考
 
 - [Agent Skills Ninja - VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-skill-ninja)
