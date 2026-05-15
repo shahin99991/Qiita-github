@@ -34,36 +34,21 @@ published: false
 
 ## 全体アーキテクチャ
 
-```
-GitHub Actions (cron: 毎週月曜 8:00 UTC)
-         │
-         ▼
-  VS Code / Agent Mode
-  .github/prompts/security-report.prompt.md
-         │
-    ┌────┼──────────────────────┐
-    │    │                      │
-    ▼    ▼                      ▼
-Playwright  Microsoft     Microsoft Graph API
-   MCP    Sentinel MCP    ＋ Azure REST API
-    │    Server（公式）         │
-    │      │              ┌─────┴──────────────┐
-    │      │              │                    │
-    │SS取得│         Intune デバイス   Defender for Cloud
-    │    インシデント  コンプライアンス    セキュアスコア
-    │    エンティティ  └─────────┬──────────────┘
-    └──────────────────────────┘
-                  │
-                  ▼
-         Markdown レポート生成
-    （SIEM / エンドポイント / クラウドセキュリティ）
-                  │
-                  ▼
-         python-pptx / marp で PPTX 変換
-                  │
-                  ▼
-         Azure Blob Storage にアップロード
-```
+![総合セキュリティレポート自動生成 アーキテクチャ](https://github.com/shahin99991/Qiita-github/blob/main/drafts/security-report-architecture.png?raw=true)
+
+:::details アーキテクチャの補足説明
+
+| 層                 | コンポーネント                          | 役割                                          |
+| ------------------ | --------------------------------------- | --------------------------------------------- |
+| トリガー           | GitHub Actions (cron 毎週月曜)          | 週次自動実行 + OIDC 認証                      |
+| オーケストレーター | VS Code Agent Mode + `.prompt.md`       | SentinelMCP Tier1/2/3 構造でワークフロー定義  |
+| SIEM               | Microsoft Sentinel MCP Server           | インシデント・エンティティ・ATT&CK データ取得 |
+| エンドポイント     | Microsoft Graph API (Intune)            | デバイスコンプライアンス状態取得              |
+| クラウド           | Azure REST API (Defender for Cloud)     | セキュアスコア・推奨事項取得                  |
+| 視覚資料           | Playwright MCP                          | 3ポータルのスクリーンショット自動撮影         |
+| 出力               | marp / python-pptx → Azure Blob Storage | PPTX 変換・納品                               |
+
+:::
 
 **事前に1点確認してください。**
 

@@ -1,0 +1,169 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="960" math="0" shadow="1">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="title" value="総合セキュリティレポート自動生成 アーキテクチャ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="130" y="20" width="780" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ── Row 1: GitHub Actions ── -->
+    <mxCell id="gh-actions" value="⏰ GitHub Actions&lt;br&gt;&lt;b&gt;cron: 毎週月曜 08:00 UTC&lt;/b&gt;&lt;br&gt;workflow_dispatch も対応" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e6ff;strokeColor=#9673a6;strokeWidth=2;arcSize=12;shadow=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="380" y="80" width="280" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- ── Row 2: VS Code Agent Mode ── -->
+    <mxCell id="vscode" value="🤖 &lt;b&gt;VS Code Agent Mode&lt;/b&gt;&lt;br&gt;.github/prompts/security-report.prompt.md&lt;br&gt;SentinelMCP Tier1 / Tier2 / Tier3 構造" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;shadow=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="230" y="210" width="580" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Arrow: GitHub Actions → VS Code -->
+    <mxCell id="e-gh-vscode" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="gh-actions" target="vscode" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════
+         Row 3: 4 Tool Boxes
+         ══════════════════════════════════════════════════════ -->
+
+    <!-- Col 1: Sentinel MCP Server -->
+    <mxCell id="sentinel-mcp" value="🛡️ &lt;b&gt;Microsoft Sentinel&lt;br&gt;MCP Server&lt;/b&gt;&lt;br&gt;公式 GA (2025年11月)&lt;br&gt;SIEM / 脅威インテリジェンス" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#0078d4;strokeWidth=2;arcSize=12;shadow=1;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="20" y="360" width="200" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Sentinel data items -->
+    <mxCell id="sentinel-data" value="&lt;b&gt;取得データ&lt;/b&gt;&lt;br&gt;・インシデント (重大度別)&lt;br&gt;・Entity Analyzer リスク評価&lt;br&gt;・ATT&amp;CK タクティクス分布&lt;br&gt;・Custom KQL Tools" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#0078d4;strokeWidth=1;arcSize=8;fontSize=9;align=left;" vertex="1" parent="1">
+      <mxGeometry x="20" y="458" width="200" height="85" as="geometry" />
+    </mxCell>
+
+    <!-- Col 2: Graph API (Intune) -->
+    <mxCell id="graph-api" value="📱 &lt;b&gt;Microsoft Graph API&lt;/b&gt;&lt;br&gt;Intune デバイス管理&lt;br&gt;エンドポイントコンプライアンス&lt;br&gt;DeviceManagementManagedDevices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#00b050;strokeWidth=2;arcSize=12;shadow=1;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="250" y="360" width="210" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Intune data items -->
+    <mxCell id="intune-data" value="&lt;b&gt;取得データ&lt;/b&gt;&lt;br&gt;・非準拠デバイス一覧&lt;br&gt;・コンプライアンス状態概要&lt;br&gt;・30日以上未同期デバイス" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#00b050;strokeWidth=1;arcSize=8;fontSize=9;align=left;" vertex="1" parent="1">
+      <mxGeometry x="250" y="458" width="210" height="85" as="geometry" />
+    </mxCell>
+
+    <!-- Col 3: Azure REST API (Defender for Cloud) -->
+    <mxCell id="rest-api" value="☁️ &lt;b&gt;Azure REST API&lt;/b&gt;&lt;br&gt;Defender for Cloud&lt;br&gt;クラウドセキュリティポスチャ&lt;br&gt;Microsoft.Security/*" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=12;shadow=1;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="490" y="360" width="210" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Defender data items -->
+    <mxCell id="defender-data" value="&lt;b&gt;取得データ&lt;/b&gt;&lt;br&gt;・セキュアスコア (0〜100)&lt;br&gt;・未解決の推奨事項 Top10&lt;br&gt;・セキュリティアラート" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffde7;strokeColor=#d6b656;strokeWidth=1;arcSize=8;fontSize=9;align=left;" vertex="1" parent="1">
+      <mxGeometry x="490" y="458" width="210" height="85" as="geometry" />
+    </mxCell>
+
+    <!-- Col 4: Playwright MCP -->
+    <mxCell id="playwright-mcp" value="🎭 &lt;b&gt;Playwright MCP&lt;/b&gt;&lt;br&gt;ブラウザ自動化&lt;br&gt;ポータル視覚資料収集&lt;br&gt;--storage-state でセッション利用" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;arcSize=12;shadow=1;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="730" y="360" width="210" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- Screenshot items -->
+    <mxCell id="screenshot-data" value="&lt;b&gt;撮影対象&lt;/b&gt;&lt;br&gt;・Sentinel ダッシュボード&lt;br&gt;・Intune コンプライアンス&lt;br&gt;・Defender for Cloud スコア&lt;br&gt;・インシデント一覧" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fde8e7;strokeColor=#b85450;strokeWidth=1;arcSize=8;fontSize=9;align=left;" vertex="1" parent="1">
+      <mxGeometry x="730" y="458" width="210" height="85" as="geometry" />
+    </mxCell>
+
+    <!-- Arrows: VS Code → 4 tools -->
+    <mxCell id="e-vscode-sentinel" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#0078d4;strokeWidth=2;exitX=0.1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="vscode" target="sentinel-mcp" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-vscode-graph" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00b050;strokeWidth=2;exitX=0.35;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="vscode" target="graph-api" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-vscode-rest" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=2;exitX=0.65;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="vscode" target="rest-api" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-vscode-playwright" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=2;exitX=0.9;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="vscode" target="playwright-mcp" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Arrows: tool → data -->
+    <mxCell id="e-sentinel-data" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#0078d4;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="sentinel-mcp" target="sentinel-data" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-graph-data" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00b050;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="graph-api" target="intune-data" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-rest-data" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="rest-api" target="defender-data" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-playwright-data" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="playwright-mcp" target="screenshot-data" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ── Row 4: Markdown Report ── -->
+    <mxCell id="markdown-report" value="📝 &lt;b&gt;Markdown レポート生成&lt;/b&gt;&lt;br&gt;SentinelMCP Tier1 (トリアージ) / Tier2 (調査) / Tier3 (フォレンジック)&lt;br&gt;SIEM ・ エンドポイント ・ クラウドセキュリティ 3軸統合" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="200" y="625" width="560" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- Arrows: data items → Markdown Report (using invisible waypoints) -->
+    <mxCell id="e-sentinel-report" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#0078d4;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.1;entryY=0;entryDx=0;entryDy=0;" edge="1" source="sentinel-data" target="markdown-report" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-intune-report" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00b050;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.35;entryY=0;entryDx=0;entryDy=0;" edge="1" source="intune-data" target="markdown-report" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-defender-report" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.65;entryY=0;entryDx=0;entryDy=0;" edge="1" source="defender-data" target="markdown-report" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e-screenshot-report" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.9;entryY=0;entryDx=0;entryDy=0;" edge="1" source="screenshot-data" target="markdown-report" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ── Row 5: PPTX ── -->
+    <mxCell id="pptx" value="📊 &lt;b&gt;PPTX 変換&lt;/b&gt;&lt;br&gt;marp (CLI) / python-pptx&lt;br&gt;security-report.pptx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=12;shadow=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="370" y="760" width="220" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Arrow: Markdown → PPTX -->
+    <mxCell id="e-report-pptx" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="markdown-report" target="pptx" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ── Row 6: Azure Blob Storage ── -->
+    <mxCell id="blob-storage" value="☁️ &lt;b&gt;Azure Blob Storage&lt;/b&gt;&lt;br&gt;weekly-reports/{date}-security-report.pptx" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;shadow=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="330" y="892" width="300" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Arrow: PPTX → Blob -->
+    <mxCell id="e-pptx-blob" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="pptx" target="blob-storage" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ── Legend ── -->
+    <mxCell id="legend-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#cccccc;strokeWidth=1;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="960" y="355" width="170" height="200" as="geometry" />
+    </mxCell>
+    <mxCell id="legend-title-text" value="&lt;b&gt;凡例&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="960" y="360" width="170" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="leg1" value="SIEM (Sentinel MCP)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#0078d4;strokeWidth=1;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="970" y="388" width="150" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="leg2" value="エンドポイント (Intune)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#00b050;strokeWidth=1;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="970" y="420" width="150" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="leg3" value="クラウドセキュリティ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="970" y="452" width="150" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="leg4" value="視覚資料 (Playwright)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="970" y="484" width="150" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="leg5" value="レポート生成・出力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="970" y="516" width="150" height="25" as="geometry" />
+    </mxCell>
+
+    <!-- ── OIDC Auth note ── -->
+    <mxCell id="oidc-note" value="🔑 OIDC 認証 (シークレットレス)&lt;br&gt;azure/login@v2 + Federated Identity&lt;br&gt;Security Reader ロール" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e6ff;strokeColor=#9673a6;strokeWidth=1;arcSize=8;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="960" y="180" width="170" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="e-oidc" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=1;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="oidc-note" target="gh-actions" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

@@ -1,0 +1,9 @@
+{
+  "name": "drawio",
+  "source": "github-awesome-copilot",
+  "description": "Generate draw.io diagrams as .drawio files and export to PNG/SVG/PDF with embedded XML",
+  "whenToUse": "Generate draw.io diagrams as native `.drawio` files and export them to PNG images that can be embedded in Word documents.",
+  "categories": [],
+  "installedAt": "2026-05-15T05:13:37.963Z",
+  "relativePath": "drawio"
+}
