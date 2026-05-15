@@ -1,5 +1,5 @@
 ---
-title: "Playwright MCP × Microsoft Sentinel MCP Server × VS Code Skills で顧客向けセキュリティレポートを全自動生成してみる"
+title: "Playwright MCP × Sentinel MCP Server × Microsoft Graph で顧客向け総合セキュリティレポートを全自動生成してみる（Intune / Defender for Cloud 対応）"
 emoji: "🛡️"
 type: "tech"
 topics: ["azure", "githubcopilot", "security", "playwright", "mcp"]
@@ -10,18 +10,24 @@ published: false
 
 セキュリティレポートの作成は、まだ多くの現場で「ポータルを開いてスクリーンショットを撮る」「KQL クエリをコピペする」「PowerPoint にペーストする」という手作業です。週次で顧客向けレポートを用意するなら、その工数だけで半日は消えます。
 
-この記事では、以下の3つを組み合わせてそのフローを自動化する方法を扱います。
+この記事では、以下を組み合わせて **SIEM・エンドポイント・クラウドセキュリティ** の3軸をカバーする総合レポートを自動化する方法を扱います。
 
-- **Microsoft Sentinel MCP Server** — Sentinel のデータレイクに自然言語でアクセスする公式マネージドサーバー（2025年11月 GA）
-- **Playwright MCP** — Azure Portal / Microsoft Defender ポータルのブラウザ操作とスクリーンショット取得
-- **SentinelMCP フレームワーク** — Tier1/2/3 の SOC 調査構造をプロンプトに組み込む
+| 役割                               | ツール                                              |
+| ---------------------------------- | --------------------------------------------------- |
+| **SIEM / 脅威インテリジェンス**    | Microsoft Sentinel MCP Server（2025年11月 GA）      |
+| **エンドポイントコンプライアンス** | Microsoft Graph API（Intune デバイス管理）          |
+| **クラウドセキュリティポスチャ**   | Azure REST API（Defender for Cloud セキュアスコア） |
+| **ポータル視覚資料**               | Playwright MCP（ブラウザ操作・スクリーンショット）  |
+| **SOC 調査の構造化**               | SentinelMCP フレームワーク（Tier1/2/3）             |
 
 最終的には GitHub Actions の定期実行で PPTX レポートまで生成し、Azure Blob Storage に納品するパイプラインを目指します。
 
 この記事を読むと以下ができるようになります：
 
 - ✅ Microsoft Sentinel MCP Server を VS Code に接続してインシデントデータを自然言語で取得する
-- ✅ Playwright MCP で Sentinel ダッシュボードのスクリーンショットを自動取得する
+- ✅ Microsoft Graph API で Intune デバイスコンプライアンス情報を自動取得する
+- ✅ Azure REST API で Defender for Cloud のセキュアスコアと推奨事項を取得する
+- ✅ Playwright MCP で Sentinel / Intune / Defender for Cloud ポータルのスクリーンショットを自動取得する
 - ✅ SentinelMCP の Tier 構造を `.prompt.md` に組み込んでレポートを構造化する
 - ✅ python-pptx / marp で Markdown → PPTX に変換する
 - ✅ GitHub Actions + OIDC 認証で週次自動実行する
@@ -35,24 +41,28 @@ GitHub Actions (cron: 毎週月曜 8:00 UTC)
   VS Code / Agent Mode
   .github/prompts/security-report.prompt.md
          │
-    ┌────┴────┐
-    │         │
-    ▼         ▼
-Playwright   Microsoft Sentinel
-   MCP       MCP Server（公式）
-    │         │
-    │ SS取得  │ インシデント・エンティティ取得
-    └────┬────┘
-         │
-         ▼
-  Markdown レポート生成
-  (SentinelMCP Tier 構造)
-         │
-         ▼
-  python-pptx / marp で PPTX 変換
-         │
-         ▼
-  Azure Blob Storage にアップロード
+    ┌────┼──────────────────────┐
+    │    │                      │
+    ▼    ▼                      ▼
+Playwright  Microsoft     Microsoft Graph API
+   MCP    Sentinel MCP    ＋ Azure REST API
+    │    Server（公式）         │
+    │      │              ┌─────┴──────────────┐
+    │      │              │                    │
+    │SS取得│         Intune デバイス   Defender for Cloud
+    │    インシデント  コンプライアンス    セキュアスコア
+    │    エンティティ  └─────────┬──────────────┘
+    └──────────────────────────┘
+                  │
+                  ▼
+         Markdown レポート生成
+    （SIEM / エンドポイント / クラウドセキュリティ）
+                  │
+                  ▼
+         python-pptx / marp で PPTX 変換
+                  │
+                  ▼
+         Azure Blob Storage にアップロード
 ```
 
 **事前に1点確認してください。**
@@ -61,15 +71,17 @@ SentinelMCP（eshlomo1/SentinelMCP）は npx で起動する MCP サーバーで
 
 ## 前提条件
 
-| 項目                     | 要件                                                |
-| ------------------------ | --------------------------------------------------- |
-| VS Code                  | 1.99 以降（Agent モード + MCP サポート）            |
-| GitHub Copilot           | Pro / Business / Enterprise                         |
-| Azure サブスクリプション | Microsoft Sentinel 有効化済み                       |
-| Sentinel Data Lake       | オンボーディング済み（Sentinel MCP の前提条件）     |
-| Node.js                  | 18 以上（Playwright MCP 用）                        |
-| Python                   | 3.10 以上（PPTX 生成ステップのみ）                  |
-| 権限                     | Security Reader 以上（Sentinel MCP サーバー接続用） |
+| 項目                     | 要件                                                                    |
+| ------------------------ | ----------------------------------------------------------------------- |
+| VS Code                  | 1.99 以降（Agent モード + MCP サポート）                                |
+| GitHub Copilot           | Pro / Business / Enterprise                                             |
+| Azure サブスクリプション | Microsoft Sentinel 有効化済み                                           |
+| Sentinel Data Lake       | オンボーディング済み（Sentinel MCP の前提条件）                         |
+| Node.js                  | 18 以上（Playwright MCP 用）                                            |
+| Python                   | 3.10 以上（PPTX 生成ステップのみ）                                      |
+| 権限（Azure RBAC）       | Security Reader 以上（Sentinel MCP・Defender for Cloud 共通）           |
+| Intune                   | Microsoft Intune（Endpoint Manager）有効化済み                          |
+| Graph API 権限           | `DeviceManagementManagedDevices.Read.All`（アプリ権限・管理者同意必要） |
 
 ## Step 1: MCP サーバーのセットアップ
 
@@ -244,6 +256,99 @@ SigninLogs
 
 :::
 
+## Step 2.5: Intune デバイスコンプライアンスデータを取得する
+
+Intune 専用の MCP サーバーは現時点で存在しないため、**Microsoft Graph API** を直接呼び出してデバイスコンプライアンス情報を取得します。この取得処理は GitHub Actions のステップとして実行し、結果を JSON ファイルに保存します。Step 4 の Agent はこの JSON を読み込んでレポートに統合します。
+
+### 必要な Graph API 権限を設定する
+
+`DeviceManagementManagedDevices.Read.All` はアプリケーション権限（Role）です。Delegated 権限（ユーザー委任）ではなく「アプリ権限」で追加し、管理者の同意を付与してください。
+
+```bash
+# Graph API のアプリケーション権限を追加
+# GUID: DeviceManagementManagedDevices.Read.All = 2f51be20-0bb4-4fed-bf7b-db946066c75e
+az ad app permission add \
+  --id <app-object-id> \
+  --api 00000003-0000-0000-c000-000000000000 \
+  --api-permissions 2f51be20-0bb4-4fed-bf7b-db946066c75e=Role
+
+# 管理者の同意を付与（Global Administrator が必要）
+az ad app permission admin-consent --id <app-object-id>
+```
+
+### 取得できる主要データ
+
+| データ                    | Graph API エンドポイント                                                          |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| 非準拠デバイス一覧        | `/v1.0/deviceManagement/managedDevices?$filter=complianceState eq 'noncompliant'` |
+| コンプライアンス概要      | `/v1.0/deviceManagement/managedDeviceOverview`                                    |
+| 30 日以上未同期のデバイス | `?$filter=lastSyncDateTime le <date>&$select=deviceName,lastSyncDateTime`         |
+
+### CI での取得スクリプト例（GitHub Actions 用）
+
+```bash
+# Graph API トークンを取得（az login 済みの環境で実行）
+GRAPH_TOKEN=$(az account get-access-token \
+  --resource https://graph.microsoft.com \
+  --query accessToken -o tsv)
+
+# 非準拠デバイス一覧を取得
+curl -s \
+  --header "Authorization: Bearer ${GRAPH_TOKEN}" \
+  --header "ConsistencyLevel: eventual" \
+  "https://graph.microsoft.com/v1.0/deviceManagement/managedDevices?\$filter=complianceState%20eq%20'noncompliant'&\$select=deviceName,userPrincipalName,operatingSystem,osVersion,complianceState,lastSyncDateTime&\$count=true" \
+  --output reports/intune-noncompliant.json
+
+# コンプライアンス状態の概要を取得
+curl -s \
+  --header "Authorization: Bearer ${GRAPH_TOKEN}" \
+  "https://graph.microsoft.com/v1.0/deviceManagement/managedDeviceOverview" \
+  --output reports/intune-overview.json
+
+unset GRAPH_TOKEN
+```
+
+:::message
+⚠️ `az account get-access-token --resource https://graph.microsoft.com` は Graph API 用トークンです。管理プレーン（`management.azure.com`）用トークンとは別物です。アプリ権限に管理者の同意が与えられていない場合は `403 Forbidden` になります。
+:::
+
+## Step 2.6: Defender for Cloud セキュアスコアを取得する
+
+**Microsoft Defender for Cloud** のセキュアスコアと未解決の推奨事項を Azure REST API で取得します。Sentinel MCP Server 用の Security Reader ロールがあればそのまま使用できます（追加権限設定は不要）。
+
+### 取得できる主要データ
+
+| データ                                 | REST API エンドポイント           |
+| -------------------------------------- | --------------------------------- |
+| セキュアスコア（全体・コントロール別） | `Microsoft.Security/secureScores` |
+| 未解決の推奨事項（Unhealthy）          | `Microsoft.Security/assessments`  |
+| セキュリティアラート                   | `Microsoft.Security/alerts`       |
+
+```bash
+# Azure 管理プレーントークンを取得（Sentinel ステップと同じリソース）
+ARM_TOKEN=$(az account get-access-token \
+  --resource https://management.azure.com \
+  --query accessToken -o tsv)
+
+# セキュアスコアを取得
+curl -s \
+  --header "Authorization: Bearer ${ARM_TOKEN}" \
+  "https://management.azure.com/subscriptions/${AZURE_SUBSCRIPTION_ID}/providers/Microsoft.Security/secureScores?api-version=2020-01-01" \
+  --output reports/defender-secure-score.json
+
+# 未解決の推奨事項を取得
+curl -s \
+  --header "Authorization: Bearer ${ARM_TOKEN}" \
+  "https://management.azure.com/subscriptions/${AZURE_SUBSCRIPTION_ID}/providers/Microsoft.Security/assessments?api-version=2021-06-01" \
+  --output reports/defender-recommendations.json
+
+unset ARM_TOKEN
+```
+
+:::message
+💡 Defender for Cloud のデータはサブスクリプションスコープで取得できます。リソースグループ単位に絞りたい場合は URL を `/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Security/...` に変更してください。
+:::
+
 ## Step 3: Playwright MCP でダッシュボードを撮影する
 
 Azure Portal のセッションを保存済みの状態で、以下を Agent モードで実行します。
@@ -256,13 +361,21 @@ Playwright MCP を使って以下を実施してください：
    （URL: https://portal.azure.com/#blade/Microsoft_Azure_Security_Insights/MainMenuBlade/overview）
 3. ページ全体のスクリーンショットを取得し、reports/screenshots/sentinel-overview.png として保存
 4. アクティブなインシデント一覧のスクリーンショットも取得し、reports/screenshots/incidents.png として保存
-5. 取得した画像のパスを返答してください
+5. Intune ポータルのデバイスコンプライアンス画面に移動する
+   （URL: https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesComplianceMenu/~/deviceComplianceStatus）
+6. コンプライアンス概要のスクリーンショットを取得し、reports/screenshots/intune-compliance.png として保存
+7. Defender for Cloud のセキュアスコアダッシュボードに移動する
+   （URL: https://portal.azure.com/#view/Microsoft_Azure_Security/SecurityMenuBlade/~/0）
+8. セキュアスコアのスクリーンショットを取得し、reports/screenshots/defender-score.png として保存
+9. 取得した画像のパスを返答してください
 ```
 
 `--output-dir` を設定しておくと、スクリーンショットが自動的に指定フォルダに保存されます。
 
 :::message
 💡 `--headless` モードでは Azure Portal の一部コンポーネント（動的な SVG グラフ等）が正しく描画されない場合があります。その場合は `--headless` を外して headed モードで実行してください。
+
+また、Intune ポータル（`intune.microsoft.com`）のスクリーンショットを取得する場合は、Step 1 のセッション保存時に `portal.azure.com` に加えて `intune.microsoft.com` にもアクセスしておく必要があります。共通の Entra ID SSO コーキーをセッションファイルに含めるためです。
 :::
 
 ## Step 4: SentinelMCP の Tier 構造をプロンプトに組み込む
@@ -281,7 +394,7 @@ SentinelMCP（eshlomo1/SentinelMCP）は、SOC 運用の階層構造を YAML で
 ```markdown
 ---
 mode: agent
-description: "Sentinel 週次セキュリティレポート — Tier1/2/3 構造で自動生成"
+description: "週次総合セキュリティレポート — SIEM / エンドポイント / クラウドセキュリティ 3 軸で自動生成"
 tools:
   - sentinel/get_incidents
   - sentinel/analyze_entity
@@ -291,7 +404,7 @@ tools:
   - playwright/browser_snapshot
 ---
 
-# Sentinel 週次セキュリティレポート生成
+# 週次総合セキュリティレポート生成
 
 ## Tier 1: トリアージ（Sentinel MCP で照会）
 
@@ -310,20 +423,38 @@ tools:
 1. Entity Analyzer で検出された高リスク URL・IOC の評価を取得
 2. カスタム KQL ツールで MTTR（平均解決時間）を計算
 
+## エンドポイントコンプライアンス（Intune）
+
+CI ステップで取得済みの JSON ファイルを読み込んでください：
+
+1. reports/intune-overview.json を読み込み、コンプライアンス状態サマリー（準拠 / 非準拠 / 未管理 の件数）を取得
+2. reports/intune-noncompliant.json を読み込み、非準拠デバイス上位 10 件をデバイス名・ユーザー・OS・最終同期日時で表形式に整理
+3. 最終同期から 30 日以上経過しているデバイスを特定し、リスク項目として記録
+
+## クラウドセキュリティ（Defender for Cloud）
+
+1. reports/defender-secure-score.json を読み込み、現在のセキュアスコア（0～100）を取得
+2. reports/defender-recommendations.json を読み込み、未解決の推奨事項を高優先度順に上位 10 件抽出
+3. 推奨事項を「リソース保護」「データ保護」「アクセス管理」の3カテゴリに分類
+
 ## 視覚資料（Playwright MCP）
 
-1. Sentinel 概要ダッシュボードのスクリーンショット取得
-2. アクティブインシデント一覧のスクリーンショット取得
+1. Sentinel 概要ダッシュボードのスクリーンショット取得（reports/screenshots/sentinel-overview.png）
+2. アクティブインシデント一覧のスクリーンショット取得（reports/screenshots/incidents.png）
+3. Intune デバイスコンプライアンス概要のスクリーンショット取得（reports/screenshots/intune-compliance.png）
+4. Defender for Cloud セキュアスコアのスクリーンショット取得（reports/screenshots/defender-score.png）
 
 ## レポート出力
 
 すべての結果を reports/weekly-security-report.md に保存してください。
 以下の構成で出力すること：
 
-- エグゼクティブサマリー（指標表）
-- Tier 1 結果
-- Tier 2 結果
-- Tier 3 結果
+- エグゼクティブサマリー（SIEM / エンドポイント / クラウドの KPI 一覧表）
+- Tier 1 結果（Sentinel インシデント）
+- Tier 2 結果（ID・エンティティリスク）
+- Tier 3 結果（フォレンジック・MTTR）
+- エンドポイントコンプライアンス（Intune 非準拠デバイス）
+- クラウドセキュリティポスチャ（Defender for Cloud スコア・推奨事項）
 - 推奨アクション（Critical/High/Medium 優先度付き）
 ```
 
@@ -438,11 +569,13 @@ az ad app federated-credential create \
     "audiences": ["api://AzureADTokenExchange"]
   }'
 
-# Security Reader 権限を付与
+# Security Reader 権限を付与（Sentinel / Defender for Cloud 共通）
 az role assignment create \
   --role "Security Reader" \
   --assignee <app-client-id> \
   --scope /subscriptions/<sub-id>/resourceGroups/rg-sentinel
+
+# Intune デバイスデータ取得には Graph API のアプリ権限も必要（Step 2.5 参照）
 ```
 
 ### ワークフロー全体
@@ -512,6 +645,41 @@ jobs:
             "https://management.azure.com/subscriptions/${AZURE_SUBSCRIPTION_ID}/resourceGroups/rg-sentinel/providers/Microsoft.OperationalInsights/workspaces/sentinel-law/providers/Microsoft.SecurityInsights/incidents?api-version=2024-03-01&%24filter=properties%2Fstatus%20ne%20%27Closed%27"
           unset ACCESS_TOKEN
 
+      - name: Intune コンプライアンスデータを取得（Graph API）
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          GRAPH_TOKEN=$(az account get-access-token \
+            --resource https://graph.microsoft.com \
+            --query accessToken -o tsv)
+          curl -s \
+            --header "Authorization: Bearer ${GRAPH_TOKEN}" \
+            --header "ConsistencyLevel: eventual" \
+            "https://graph.microsoft.com/v1.0/deviceManagement/managedDevices?\$filter=complianceState%20eq%20'noncompliant'&\$select=deviceName,userPrincipalName,operatingSystem,osVersion,complianceState,lastSyncDateTime&\$count=true" \
+            --output reports/intune-noncompliant.json
+          curl -s \
+            --header "Authorization: Bearer ${GRAPH_TOKEN}" \
+            "https://graph.microsoft.com/v1.0/deviceManagement/managedDeviceOverview" \
+            --output reports/intune-overview.json
+          unset GRAPH_TOKEN
+
+      - name: Defender for Cloud セキュアスコアを取得（Azure REST API）
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          ARM_TOKEN=$(az account get-access-token \
+            --resource https://management.azure.com \
+            --query accessToken -o tsv)
+          curl -s \
+            --header "Authorization: Bearer ${ARM_TOKEN}" \
+            "https://management.azure.com/subscriptions/${AZURE_SUBSCRIPTION_ID}/providers/Microsoft.Security/secureScores?api-version=2020-01-01" \
+            --output reports/defender-secure-score.json
+          curl -s \
+            --header "Authorization: Bearer ${ARM_TOKEN}" \
+            "https://management.azure.com/subscriptions/${AZURE_SUBSCRIPTION_ID}/providers/Microsoft.Security/assessments?api-version=2021-06-01" \
+            --output reports/defender-recommendations.json
+          unset ARM_TOKEN
+
       - name: Playwright MCP でスクリーンショット取得
         run: |
           npx @playwright/mcp@latest \
@@ -550,6 +718,11 @@ jobs:
           path: |
             reports/security-report.pptx
             reports/weekly-security-report.md
+            reports/incident-data.json
+            reports/intune-overview.json
+            reports/intune-noncompliant.json
+            reports/defender-secure-score.json
+            reports/defender-recommendations.json
           retention-days: 90
 
       - name: 認証セッションファイルを削除
@@ -611,6 +784,22 @@ async function main() {
     url: "https://portal.azure.com/#view/Microsoft_Azure_Security_Insights/MainMenuBlade/~/incidents",
   });
   await callMcpTool("browser_take_screenshot", { filename: "incidents.png" });
+
+  // Intune デバイスコンプライアンス
+  await callMcpTool("browser_navigate", {
+    url: "https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesComplianceMenu/~/deviceComplianceStatus",
+  });
+  await callMcpTool("browser_take_screenshot", {
+    filename: "intune-compliance.png",
+  });
+
+  // Defender for Cloud セキュアスコア
+  await callMcpTool("browser_navigate", {
+    url: "https://portal.azure.com/#view/Microsoft_Azure_Security/SecurityMenuBlade/~/0",
+  });
+  await callMcpTool("browser_take_screenshot", {
+    filename: "defender-score.png",
+  });
 
   console.log("Screenshots saved to reports/screenshots/");
 }
@@ -674,32 +863,38 @@ npx @marp-team/marp-cli \
 
 ## まとめ
 
-| やりたいこと                     | 使うツール                                           |
-| -------------------------------- | ---------------------------------------------------- |
-| Sentinel データを自然言語で取得  | Microsoft Sentinel MCP Server（公式・GA）            |
-| エンティティのリスク評価         | Sentinel MCP Server — Entity Analyzer                |
-| ポータルのスクリーンショット取得 | Playwright MCP + `--storage-state`                   |
-| SOC 調査の構造化                 | SentinelMCP フレームワーク（eshlomo1）→ `.prompt.md` |
-| レポートワークフローの定義       | `.github/prompts/*.prompt.md`                        |
-| Markdown → PPTX 変換             | marp（シンプル）または python-pptx（細かい制御）     |
-| 週次自動化                       | GitHub Actions + OIDC 認証                           |
-| 企業テンプレート対応             | `.github/skills/pptx-report/SKILL.md`                |
+| やりたいこと                          | 使うツール                                                       |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| Sentinel データを自然言語で取得       | Microsoft Sentinel MCP Server（公式・GA）                        |
+| エンティティのリスク評価              | Sentinel MCP Server — Entity Analyzer                            |
+| Intune デバイスコンプライアンス取得   | Microsoft Graph API（`DeviceManagementManagedDevices.Read.All`） |
+| Defender for Cloud セキュアスコア取得 | Azure REST API（`Microsoft.Security/secureScores`）              |
+| ポータルのスクリーンショット取得      | Playwright MCP + `--storage-state`                               |
+| SOC 調査の構造化                      | SentinelMCP フレームワーク（eshlomo1）→ `.prompt.md`             |
+| レポートワークフローの定義            | `.github/prompts/*.prompt.md`                                    |
+| Markdown → PPTX 変換                  | marp（シンプル）または python-pptx（細かい制御）                 |
+| 週次自動化                            | GitHub Actions + OIDC 認証                                       |
+| 企業テンプレート対応                  | `.github/skills/pptx-report/SKILL.md`                            |
 
 各ツールの役割は明確です：
 
-- **Microsoft Sentinel MCP Server** — 自然言語でインシデント・エンティティ・脅威インテリジェンスにアクセスする公式ゲートウェイ
-- **Playwright MCP** — ポータルを自動撮影する視覚資料収集ツール
+- **Microsoft Sentinel MCP Server** — 自然言語でインシデント・エンティティ・脅威インテリジェンスにアクセスする公式ゲートウェイ（SIEM 層）
+- **Microsoft Graph API** — Intune デバイスコンプライアンスを直接取得するエンドポイント層
+- **Azure REST API** — Defender for Cloud セキュアスコアと推奨事項を取得するクラウド層
+- **Playwright MCP** — 3つのポータルを自動撮影する視覚資料収集ツール
 - **SentinelMCP（eshlomo1）** — Tier1/2/3 という「何を調べるか」の思考フレームワーク
 
-この3つを `.prompt.md` 一枚に束ねると、週次レポートをエージェントに投げるだけで生成できます。PPTX 変換まで含めると、顧客への提出物を週次で自動生成できます。
+これらを `.prompt.md` 一枚に束ねると、週次レポートをエージェントに投げるだけで生成できます。PPTX 変換まで含めると、SIEM・エンドポイント・クラウドの3軸をカバーした顧客料金レベルの総合セキュリティレポートを週次で自動生成できます。
 
-実装上の注意点は2つあります。Azure Portal の MFA セッションは有効期限があるため定期的な再生成が必要で、Playwright のヘッドレスモードでは動的な SVG グラフが描画されないケースがあります。まず headed モードで動作確認してから、headless + CI の順で移行してください。
+実装上の注意点は3つあります。Azure Portal の MFA セッションは有効期限があるため定期的な再生成が必要です。Playwright のヘッドレスモードでは動的な SVG グラフが描画されないケースがあります。まず headed モードで動作確認してから、headless + CI の順で移行してください。Intune Graph API にはアプリ権限への管理者同意が必要で、一度設定するとサービスプリンシパルが自動で取得できるようになります。
 
 ## 参考
 
 - [Microsoft Sentinel MCP Server — Microsoft Learn](https://learn.microsoft.com/azure/sentinel/datalake/sentinel-mcp-overview)
 - [Sentinel MCP Server 入門ガイド — Microsoft Learn](https://learn.microsoft.com/azure/sentinel/datalake/sentinel-mcp-get-started)
 - [Sentinel MCP Server GA 発表ブログ — Microsoft](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsoft-sentinel-mcp-server---generally-available-with-exciting-new-capabiliti/4470125)
+- [Microsoft Graph API — Intune デバイス管理](https://learn.microsoft.com/graph/api/resources/intune-devices-manageddevice)
+- [Defender for Cloud — Secure Score REST API](https://learn.microsoft.com/rest/api/defenderforcloud/secure-scores/list)
 - [microsoft/playwright-mcp — GitHub](https://github.com/microsoft/playwright-mcp)
 - [eshlomo1/SentinelMCP — GitHub](https://github.com/eshlomo1/SentinelMCP)
 - [VS Code Prompt Files ドキュメント](https://code.visualstudio.com/docs/copilot/customization/prompt-files)
