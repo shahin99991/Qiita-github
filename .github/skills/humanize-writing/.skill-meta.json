@@ -1,0 +1,9 @@
+{
+  "name": "humanize-writing",
+  "source": "unknown",
+  "description": "Remove AI-generated tone and make writing sound more human in Japanese and English. Use when reviewing drafts for AIっぽさ, humanizing article/blog text, 文体チェック, AI感を消したい, or ChatGPT tells.",
+  "whenToUse": "原稿の AIっぽさ監査（レビュー型）; 最初から人間らしく書かせる（生成指示型）; 日本語記事（Qiita / WordPress / note）、英語記事（Medium）、技術ドキュメント・README; キーワード: `AIっぽさ`, `humanize`, `人間らしく`, `文体チェック`, `AI感`, `ChatGPT tells`",
+  "categories": [],
+  "installedAt": "2026-05-13T08:38:13.822Z",
+  "relativePath": "humanize-writing"
+}

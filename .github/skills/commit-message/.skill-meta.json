@@ -1,0 +1,8 @@
+{
+  "name": "commit-message",
+  "source": "unknown",
+  "description": "Conventional Commitsに従ったコミットメッセージを対話形式で生成する。USE FOR: コミットメッセージを書く、コミット文を作る、git commitのメッセージ、コミット内容をまとめる。DO NOT USE FOR: PRの説明文、リリースノートの作成。",
+  "categories": [],
+  "installedAt": "2026-05-13T08:38:13.805Z",
+  "relativePath": "commit-message"
+}

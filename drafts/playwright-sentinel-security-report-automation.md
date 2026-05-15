@@ -1,5 +1,5 @@
 ---
-title: "Playwright MCP × Azure Sentinel MCP × VS Code Skills で顧客向けセキュリティレポートを全自動生成してみる"
+title: "Playwright MCP × Microsoft Sentinel MCP Server × VS Code Skills で顧客向けセキュリティレポートを全自動生成してみる"
 tags:
   - PlaywrightMCP
   - AzureSentinel
@@ -14,15 +14,15 @@ tags:
 
 この記事では、以下の3つを組み合わせてそのフローを自動化する方法を扱います。
 
+- **Microsoft Sentinel MCP Server** — Sentinel のデータレイクに自然言語でアクセスする公式マネージドサーバー（2025年11月 GA）
 - **Playwright MCP** — Azure Portal / Microsoft Defender ポータルのブラウザ操作とスクリーンショット取得
-- **Azure MCP Server** — KQL クエリを自然言語 + ツール呼び出しで実行（Log Analytics / Sentinel）
 - **SentinelMCP フレームワーク** — Tier1/2/3 の SOC 調査構造をプロンプトに組み込む
 
 最終的には GitHub Actions の定期実行で PPTX レポートまで生成し、Azure Blob Storage に納品するパイプラインを目指します。
 
 この記事を読むと以下ができるようになります：
 
-- ✅ Azure MCP で Sentinel のインシデントデータを KQL で取得する
+- ✅ Microsoft Sentinel MCP Server を VS Code に接続してインシデントデータを自然言語で取得する
 - ✅ Playwright MCP で Sentinel ダッシュボードのスクリーンショットを自動取得する
 - ✅ SentinelMCP の Tier 構造を `.prompt.md` に組み込んでレポートを構造化する
 - ✅ python-pptx / marp で Markdown → PPTX に変換する
@@ -40,10 +40,10 @@ GitHub Actions (cron: 毎週月曜 8:00 UTC)
     ┌────┴────┐
     │         │
     ▼         ▼
-Playwright   Azure MCP Server
-   MCP       (Log Analytics KQL)
+Playwright   Microsoft Sentinel
+   MCP       MCP Server（公式）
     │         │
-    │ SS取得  │ インシデントデータ取得
+    │ SS取得  │ インシデント・エンティティ取得
     └────┬────┘
          │
          ▼
@@ -57,29 +57,44 @@ Playwright   Azure MCP Server
   Azure Blob Storage にアップロード
 ```
 
-**前提として2点確認してください。**
+**事前に1点確認してください。**
 
-1. 「Sentinel 専用の MCP ツール」は現時点で存在しません。Sentinel のデータは Log Analytics ワークスペース上にあるため、Azure MCP の `monitor_workspace_log_query` ツール（KQL 実行）で代替します。
-2. SentinelMCP（eshlomo1/SentinelMCP）は npx で起動する MCP サーバーではなく、Tier1〜3 の調査手順を定義した **YAML フレームワーク**です。`.prompt.md` の構造に落とし込んで活用します。
+SentinelMCP（eshlomo1/SentinelMCP）は npx で起動する MCP サーバーではなく、Tier1〜3 の調査手順を定義した **YAML フレームワーク**です。Microsoft 公式の Sentinel MCP Server（後述）とは別物なので、混同しないよう注意してください。
 
 ## 前提条件
 
-| 項目                     | 要件                                     |
-| ------------------------ | ---------------------------------------- |
-| VS Code                  | 1.99 以降（Agent モード + MCP サポート） |
-| GitHub Copilot           | Pro / Business / Enterprise              |
-| Azure サブスクリプション | Microsoft Sentinel 有効化済み            |
-| Node.js                  | 18 以上                                  |
-| Python                   | 3.10 以上（PPTX 生成ステップのみ）       |
-| 権限                     | Log Analytics Contributor 以上           |
+| 項目                     | 要件                                                |
+| ------------------------ | --------------------------------------------------- |
+| VS Code                  | 1.99 以降（Agent モード + MCP サポート）            |
+| GitHub Copilot           | Pro / Business / Enterprise                         |
+| Azure サブスクリプション | Microsoft Sentinel 有効化済み                       |
+| Sentinel Data Lake       | オンボーディング済み（Sentinel MCP の前提条件）     |
+| Node.js                  | 18 以上（Playwright MCP 用）                        |
+| Python                   | 3.10 以上（PPTX 生成ステップのみ）                  |
+| 権限                     | Security Reader 以上（Sentinel MCP サーバー接続用） |
 
 ## Step 1: MCP サーバーのセットアップ
 
-### `.vscode/mcp.json` に2つのサーバーを登録する
+### Microsoft Sentinel MCP Server を VS Code に追加する
+
+Sentinel MCP Server はフルマネージドのクラウドサービスです。`npx` のインストールは不要で、エンドポイント URL を登録するだけで使えます。
+
+1. `Ctrl+Shift+P` → **MCP: Add Server** を選択
+2. **HTTP または Server-Sent Events** を選択
+3. URL に `https://sentinel.microsoft.com/mcp/data-exploration` を入力
+4. サーバー名（例: `sentinel`）を設定
+5. スコープ（ワークスペース全体 / 現在のワークスペース）を選択
+6. 認証を求められたら **Security Reader 権限を持つアカウント**で許可
+
+この操作で `.vscode/mcp.json` に以下のエントリが追加されます：
 
 ```json
 {
   "servers": {
+    "sentinel": {
+      "type": "http",
+      "url": "https://sentinel.microsoft.com/mcp/data-exploration"
+    },
     "playwright": {
       "type": "stdio",
       "command": "npx",
@@ -95,19 +110,19 @@ Playwright   Azure MCP Server
         "--caps",
         "testing"
       ]
-    },
-    "azure": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@azure/mcp@latest", "server", "start"],
-      "env": {
-        "AZURE_SUBSCRIPTION_ID": "${env:AZURE_SUBSCRIPTION_ID}",
-        "AZURE_TENANT_ID": "${env:AZURE_TENANT_ID}"
-      }
     }
   }
 }
 ```
+
+| ツールコレクション                        | エンドポイント URL                                                   |
+| ----------------------------------------- | -------------------------------------------------------------------- |
+| データ探索（KQL・インシデント照会）       | `https://sentinel.microsoft.com/mcp/data-exploration`                |
+| エージェント作成（Security Copilot 連携） | `https://sentinel.microsoft.com/mcp/security-copilot-agent-creation` |
+
+:::note info
+💡 Sentinel MCP Server は **Sentinel Data Lake** へのオンボーディングが前提です。従来の Log Analytics ワークスペースのみの環境では使用できません。Data Lake が未設定の場合は、後述の「Azure MCP フォールバック」を参照してください。
+:::
 
 ### Playwright 用の Azure Portal セッションを事前保存する
 
@@ -130,36 +145,52 @@ npx playwright codegen \
 echo ".auth/" >> .gitignore
 ```
 
-### Azure MCP の認証確認
+## Step 2: Microsoft Sentinel MCP Server でデータを取得する
+
+サーバーを登録後、Agent モードで自然言語のまま照会できます。KQL を書く必要はありません。
+
+```text
+過去7日間のインシデントをサマリーしてください。
+重大度別（High/Medium/Low）と未解決件数、解決済み件数を表形式で出してください。
+```
+
+```text
+最もリスクの高いユーザーを3人挙げて、それぞれのリスク理由を説明してください。
+```
+
+```text
+今週検出された ATT&CK タクティクスの分布を教えてください。
+どの攻撃フェーズが最も多いですか？
+```
+
+Sentinel MCP Server が自動的に適切なデータソース（Identity Protection、Defender for Identity、SigninLogs など）を横断して照会し、構造化された回答を返します。
+
+### Entity Analyzer で高リスクエンティティを分析する
+
+GA と同時に追加された **Entity Analyzer** ツールを使うと、ユーザーや URL のリスク評価を一発で取得できます。
+
+```text
+ユーザー alice@contoso.com のリスク評価を実施してください。
+どのようなリスクイベントが関連していますか？
+```
+
+```text
+https://suspicious-domain.example.com のリスク評価をしてください。
+```
+
+### カスタム KQL ツールを活用する
+
+Defender Advanced Hunting に保存済みの KQL クエリは、Sentinel MCP Server で **MCP ツール化**できます。保存クエリのページから「MCP ツールとして保存」を選択するだけで、Agent がそのクエリをツールとして呼び出せるようになります。
+
+### Azure MCP フォールバック（Sentinel Data Lake 未使用の場合）
+
+Sentinel Data Lake に未オンボードの環境では、Azure MCP Server を代替として使えます。
 
 ```bash
-az login
-az account set --subscription "<your-subscription-id>"
-# 動作確認
-npx @azure/mcp@latest server start &
+npx -y @azure/mcp@latest server start &
 ```
 
-## Step 2: Sentinel データを Azure MCP で取得する
-
-Agent モードで以下のプロンプトを試してみます。
-
-```
-Azure MCP を使って、Log Analytics ワークスペース "sentinel-law"（リソースグループ: rg-sentinel）に
-対して以下の KQL クエリを実行してください：
-
-SecurityIncident
-| where TimeGenerated > ago(7d)
-| where Status != "Closed"
-| summarize
-    OpenCount = count(),
-    HighSeverity = countif(Severity == "High")
-  by Severity
-| order by Severity asc
-```
-
-### 実用的な KQL セット
-
-記事の本題となる KQL クエリを4本紹介します。
+実用的な KQL クエリは以下の4本です。
 
 **① 週次インシデントサマリー**
 
@@ -250,31 +281,32 @@ SentinelMCP（eshlomo1/SentinelMCP）は、SOC 運用の階層構造を YAML で
 mode: agent
 description: "Sentinel 週次セキュリティレポート — Tier1/2/3 構造で自動生成"
 tools:
-  - azure/monitor_workspace_log_query
+  - sentinel/get_incidents
+  - sentinel/analyze_entity
+  - sentinel/run_hunting_query
   - playwright/browser_navigate
   - playwright/browser_take_screenshot
   - playwright/browser_snapshot
-  - azure/storage_blob_upload
 ---
 
 # Sentinel 週次セキュリティレポート生成
 
-## Tier 1: トリアージ（Azure MCP で KQL 実行）
+## Tier 1: トリアージ（Sentinel MCP で照会）
 
-1. SecurityIncident から過去7日間のサマリーを取得
+1. 過去7日間のインシデントサマリーを取得（重大度別・ステータス別）
 2. 未解決インシデント Top 10 を取得
-3. 重大度別・ステータス別の分布を取得
+3. 今週検出された ATT&CK タクティクス分布を取得
 
 ## Tier 2: 調査分析
 
-1. SigninLogs からリスクサインインを取得
-2. DeviceProcessEvents から不審プロセスを取得
-3. AzureActivity から特権操作ログを取得
+1. Entity Analyzer で Top 5 リスクユーザーのリスク評価を取得
+2. カスタム KQL ツール（事前登録済み）でリスクサインインを取得
+3. カスタム KQL ツールで特権操作ログを取得
 
 ## Tier 3: フォレンジック
 
-1. ThreatIntelligenceIndicator からマッチ結果を取得
-2. SecurityIncident から MTTR を計算
+1. Entity Analyzer で検出された高リスク URL・IOC の評価を取得
+2. カスタム KQL ツールで MTTR（平均解決時間）を計算
 
 ## 視覚資料（Playwright MCP）
 
@@ -406,7 +438,7 @@ az ad app federated-credential create \
 
 # Log Analytics Reader 権限を付与
 az role assignment create \
-  --role "Log Analytics Reader" \
+  --role "Security Reader" \
   --assignee <app-client-id> \
   --scope /subscriptions/<sub-id>/resourceGroups/rg-sentinel
 ```
@@ -450,7 +482,7 @@ jobs:
 
       - name: 依存パッケージをインストール
         run: |
-          npm install -g @azure/mcp@latest @playwright/mcp@latest @marp-team/marp-cli
+          npm install -g @playwright/mcp@latest @marp-team/marp-cli
           npx playwright install chromium --with-deps
           pip install python-pptx
 
@@ -460,15 +492,26 @@ jobs:
           mkdir -p .auth
           echo "${{ secrets.AZURE_SESSION_B64 }}" | base64 -d > .auth/azure-session.json
 
-      - name: KQL クエリ実行（インシデントデータ取得）
+      - name: Sentinel MCP でインシデントデータを取得
+        # Sentinel MCP Server（クラウドサービス）に対して Sentinel REST API 経由でアクセス
+        # OIDC でログイン済みのため az cli でトークン取得 → ヘッダーにセット
+        env:
+          SENTINEL_WORKSPACE_ID: ${{ secrets.SENTINEL_WORKSPACE_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         run: |
           mkdir -p reports/screenshots
-          azmcp monitor workspace log query \
-            --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }} \
-            --workspace "sentinel-law" \
-            --resource-group "rg-sentinel" \
-            --query "SecurityIncident | where TimeGenerated > ago(7d) | summarize count() by Severity, Status" \
-            > reports/incident-data.json
+          # トークンを変数に格納（コマンドライン引数に露出させない）
+          ACCESS_TOKEN=$(az account get-access-token \
+            --resource https://management.azure.com \
+            --query accessToken -o tsv)
+          # curl の --header オプションで Bearer トークンをセット
+          # ⚠️ トークンはシェル変数経由で渡し、プロセスリストやログに残さない
+          curl -s \
+            --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --output reports/incident-data.json \
+            "https://management.azure.com/subscriptions/${AZURE_SUBSCRIPTION_ID}/resourceGroups/rg-sentinel/providers/Microsoft.OperationalInsights/workspaces/sentinel-law/providers/Microsoft.SecurityInsights/incidents?api-version=2024-03-01&%24filter=properties%2Fstatus%20ne%20%27Closed%27"
+          unset ACCESS_TOKEN
 
       - name: Playwright MCP でスクリーンショット取得
         run: |
@@ -504,13 +547,24 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: security-report-${{ github.run_number }}
-          path: reports/
+          # セッションファイル・認証情報をアーティファクトに含めない
+          path: |
+            reports/security-report.pptx
+            reports/weekly-security-report.md
           retention-days: 90
+
+      - name: 認証セッションファイルを削除
+        if: always()
+        run: rm -f .auth/azure-session.json
 ```
 
 :::note warn
-⚠️ **セッションファイルの CI 管理**: `azure-session.json` を `base64` でエンコードして GitHub Secret に保存します。セッションには有効期限があるため、定期的な再生成する運用が必要です。本番では Managed Identity + headless ブラウザの組み合わせや、Playwright の `--user-data-dir` を Azure Key Vault 連携で管理する方法を検討してください。
-:::
+⚠️ **セッションファイルの CI 管理について3点**
+
+1. **base64 はエンコードであり暗号化ではありません。** GitHub Secrets に保存する際は secrets として扱い、ログへの出力を避けてください。
+2. セッションには有効期限があるため、定期的な再生成が必要です。期限切れを検知して Slack 通知する仕組みを設けることを推奨します。
+3. 本番環境では Managed Identity + Playwright の認証キャッシュを Azure Key Vault に保管する構成を検討してください。
+   :::
 
 ### `scripts/capture-screenshots.js` の最小実装例
 
@@ -626,21 +680,22 @@ npx @marp-team/marp-cli \
 
 ## まとめ
 
-| やりたいこと                      | 使うツール                                       |
-| --------------------------------- | ------------------------------------------------ |
-| Sentinel インシデントデータを取得 | Azure MCP + `monitor_workspace_log_query`        |
-| ポータルのスクリーンショット取得  | Playwright MCP + `--storage-state`               |
-| SOC 調査の構造化                  | SentinelMCP Tier1/2/3 → `.prompt.md`             |
-| レポートワークフローの定義        | `.github/prompts/*.prompt.md`                    |
-| Markdown → PPTX 変換              | marp（シンプル）または python-pptx（細かい制御） |
-| 週次自動化                        | GitHub Actions + OIDC 認証                       |
-| 企業テンプレート対応              | `.github/skills/pptx-report/SKILL.md`            |
+| やりたいこと                     | 使うツール                                           |
+| -------------------------------- | ---------------------------------------------------- |
+| Sentinel データを自然言語で取得  | Microsoft Sentinel MCP Server（公式・GA）            |
+| エンティティのリスク評価         | Sentinel MCP Server — Entity Analyzer                |
+| ポータルのスクリーンショット取得 | Playwright MCP + `--storage-state`                   |
+| SOC 調査の構造化                 | SentinelMCP フレームワーク（eshlomo1）→ `.prompt.md` |
+| レポートワークフローの定義       | `.github/prompts/*.prompt.md`                        |
+| Markdown → PPTX 変換             | marp（シンプル）または python-pptx（細かい制御）     |
+| 週次自動化                       | GitHub Actions + OIDC 認証                           |
+| 企業テンプレート対応             | `.github/skills/pptx-report/SKILL.md`                |
 
 各ツールの役割は明確です：
 
-- **Azure MCP** — KQL 実行によるデータ収集エンジン
+- **Microsoft Sentinel MCP Server** — 自然言語でインシデント・エンティティ・脅威インテリジェンスにアクセスする公式ゲートウェイ
 - **Playwright MCP** — ポータルを自動撮影する視覚資料収集ツール
-- **SentinelMCP** — Tier1/2/3 という「何を調べるか」の思考フレームワーク
+- **SentinelMCP（eshlomo1）** — Tier1/2/3 という「何を調べるか」の思考フレームワーク
 
 この3つを `.prompt.md` 一枚に束ねると、週次レポートをエージェントに投げるだけで生成できます。PPTX 変換まで含めると、顧客への提出物を週次で自動生成できます。
 
@@ -648,8 +703,10 @@ npx @marp-team/marp-cli \
 
 ## 参考
 
+- [Microsoft Sentinel MCP Server — Microsoft Learn](https://learn.microsoft.com/azure/sentinel/datalake/sentinel-mcp-overview)
+- [Sentinel MCP Server 入門ガイド — Microsoft Learn](https://learn.microsoft.com/azure/sentinel/datalake/sentinel-mcp-get-started)
+- [Sentinel MCP Server GA 発表ブログ — Microsoft](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsoft-sentinel-mcp-server---generally-available-with-exciting-new-capabiliti/4470125)
 - [microsoft/playwright-mcp — GitHub](https://github.com/microsoft/playwright-mcp)
-- [Azure MCP Server — microsoft/mcp](https://github.com/microsoft/mcp/blob/main/servers/Azure.Mcp.Server/README.md)
 - [eshlomo1/SentinelMCP — GitHub](https://github.com/eshlomo1/SentinelMCP)
 - [VS Code Prompt Files ドキュメント](https://code.visualstudio.com/docs/copilot/customization/prompt-files)
 - [Azure Federated Identity Credentials — Microsoft Learn](https://learn.microsoft.com/azure/active-directory/develop/workload-identity-federation)
