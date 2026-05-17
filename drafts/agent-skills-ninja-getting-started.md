@@ -19,7 +19,7 @@ GitHub Copilot の Agent Mode を触り始めてから、「スキルファイ�
 実際に使ってみたら「これ、めちゃくちゃ便利じゃん…」ってなったので、触ってみた記録として残しておきます。
 
 :::note info
-この記事は Agent Skills Ninja v0.8.28 時点の内容です（2026 年 5 月）。
+この記事は Agent Skills Ninja **v0.9.8** 時点の内容です（2026 年 5 月）。v0.8.28 以降にサイドバーの大幅刷新・拡張機能スキルの自動検出・Agent Resources Ninja との共存など複数の大型アップデートがあったため、当時との変更点もまとめてあります。
 :::
 
 ## そもそも SKILL.md って何？
@@ -64,7 +64,7 @@ _VS Code Marketplace で "Agent Skills Ninja" を検索したところ_
 ext install yamapan.agent-skill-ninja
 ```
 
-インストールしたら、アクティビティバーにかっこいい手裏剣アイコンが追加されました。
+インストールしたら、アクティビティバーにかっこいい手裏剣アイコンが追加されます。細かいですが地味にテンション上がります！
 
 ![アクティビティバーに追加された手裏剣アイコン](../Skill-Ninja-png/スクリーンショット 2026-05-11 225005.png)
 _左端に手裏剣が現れます_
@@ -76,13 +76,19 @@ _左端に手裏剣が現れます_
 ![サイドバー全体の構成](../Skill-Ninja-png/スクリーンショット 2026-05-11 225029.png)
 _3 つのセクションに整理されていてわかりやすい_
 
-こんな感じで 3 つのセクションに分かれています。
+v0.8.27 以降、サイドバーは **3つの独立したビュー** に整理されました。
 
-| セクション                       | 内容                                            |
-| -------------------------------- | ----------------------------------------------- |
-| **インストール済みスキル**       | ワークスペースの `.github/skills/` 配下のスキル |
-| **ユーザー / グローバル スキル** | `~/.copilot/skills` などの個人スキル            |
-| **Remote Skills**                | Official・Curated・Community のリモートスキル   |
+| ビュー                   | 内容                                                                        |
+| ------------------------ | --------------------------------------------------------------------------- |
+| **Installed Skills**     | ワークスペースの `.github/skills/` 配下のスキル（管理対象）                 |
+| **User / Global Skills** | `~/.copilot/skills` などの個人スキル＋インストール済み VS Code 拡張のスキル |
+| **Remote Skills**        | Official・Curated・Community のリモートスキル                               |
+
+**User / Global Skills ビューが特に充実しました。** v0.9.6 以降は、その配下に **「Installed Extensions」スコープ**が追加され、インストール済みの VS Code 拡張機能に同梱されている `SKILL.md` を自動で発見して表示してくれます（読み取り専用。アンインストール・登録操作は不可）。
+
+> 📸 _デモスクショ予定：Installed Extensions スコープが表示されているサイドバー_
+
+Remote Skills ではダブルクリックでワークスペースのデフォルトルートに即インストールできます（v0.9.4〜）。インラインの Install ボタンを使うと、ワークスペース or ユーザーグローバルのスコープ選択ピッカーが出ます。
 
 最初は全部空っぽですが、Remote Skills のところに公式リポジトリのスキルが並ぶのを見てテンション上がりました。
 
@@ -98,7 +104,7 @@ _シンプルな検索ボックスが出てきます_
 ![検索結果一覧](../Skill-Ninja-png/スクリーンショット 2026-05-11 225159.png)
 _Azure 関連のスキルがズラッと並ぶ！Official バッジが付いてるものは公式リポジトリから_
 
-スター数や公式バッジが見えるのがいいですね。信頼度を判断しやすいです。
+スター数や公式バッジが一覧で見えるのはいいですね。どれが信頼できるか一目でわかるので、選ぶときに迷わなくて助かります！
 
 検索のコツとして、こういう書き方ができます。
 
@@ -182,7 +188,7 @@ GitHub Copilot の Agent Mode では、Agent Skills Ninja が MCP ツールと�
 ![Agent Mode でスキルを探しているところ](../Skill-Ninja-png/スクリーンショット 2026-05-11 225832.png)
 _「Azure 関連のスキルを探して」と頼んだら 10 件ズラッと出てきた_
 
-利用可能な MCP ツールはこの 8 つです。
+使える MCP ツールはこの 8 つです。
 
 | ツール              | 何をするか                 |
 | ------------------- | -------------------------- |
@@ -194,6 +200,8 @@ _「Azure 関連のスキルを探して」と頼んだら 10 件ズラッと出
 | `#updateSkillIndex` | スキルインデックスを更新   |
 | `#webSearchSkills`  | GitHub でスキルを Web 検索 |
 | `#addSkillSource`   | 新しいスキルソースを追加   |
+
+会話だけでスキルの検索・インストール・instruction ファイルの更新まで全部やってくれるのは、使ってみると思った以上に快適でした！
 
 ## ハマったポイント：GitHub Token が必要
 
@@ -237,20 +245,23 @@ Token は [こちら](https://github.com/settings/tokens/new?description=Agent%2
 | obra/superpowers                                    | Community | 高品質スキル・エージェント集         |
 | muratcankoylan/Agent-Skills-for-Context-Engineering | Community | Context Engineering スキル（5,000+） |
 
-特に OpenAI の 1,700+ スキルと Context Engineering の 5,000+ スキルはボリュームがすごかったです。
+特に OpenAI の 1,700+ スキルと Context Engineering の 5,000+ スキルはボリュームがすごくて、最初はちょっと引きました笑。全部把握するより「検索で必要なときに探す」スタンスが合ってると思います！
 
 `Update Index` コマンドを叩くと最新情報に更新されます。
 
 ## 設定まわり
 
-一部設定だけ紹介しておきます。
+全部で 13 個あるので、よく使いそうなものをピックアップして紹介します。気になった人は Marketplace のページも覗いてみてください！
 
-| 設定キー                     | デフォルト       | メモ                                           |
-| ---------------------------- | ---------------- | ---------------------------------------------- |
-| `skillNinja.instructionFile` | `AGENTS.md`      | `copilot-instructions.md` などに変えることも可 |
-| `skillNinja.skillsDirectory` | `.github/skills` | スキルの保存先                                 |
-| `skillNinja.outputFormat`    | `full`           | `compact` にするとトークン節約になる           |
-| `skillNinja.language`        | `auto`           | 日本語 UI に自動対応してくれる                 |
+| 設定キー                               | デフォルト       | メモ                                           |
+| -------------------------------------- | ---------------- | ---------------------------------------------- |
+| `skillNinja.instructionFile`           | `AGENTS.md`      | `copilot-instructions.md` などに変えることも可 |
+| `skillNinja.skillsDirectory`           | `.github/skills` | スキルの保存先                                 |
+| `skillNinja.outputFormat`              | `full`           | `compact` にするとトークン節約になる           |
+| `skillNinja.language`                  | `auto`           | 日本語 UI に自動対応してくれる                 |
+| `skillNinja.autoUpdateSkillsOnUpgrade` | `prompt`         | 拡張機能アップデート時にスキルを自動更新       |
+| `skillNinja.showBuiltInSkills`         | `false`          | VS Code 標準の Built-in Skills を表示          |
+| `skillNinja.coexistenceMode`           | `auto`           | Agent Resources Ninja との共存モード           |
 
 ### 出力フォーマットについて
 
@@ -264,6 +275,101 @@ instruction ファイルへの書き出し形式を 3 種類から選べます�
 
 スキルが増えてきたら `compact` に切り替えるのが良さそうです。
 
+## instruction ファイルへの既定記載ルール
+
+インストールするとスキル情報が `AGENTS.md` に自動書き込みされますが、**何が書かれて何が書かれないか**を事前に知っておくと後でハマらずに済みます。特に Agent Resources Ninja と併用する場合は要チェックです！
+
+:::note info
+以下はやまぱんさんに直接確認した仕様です。単体インストール時と、姉妹拡張 **Agent Resources Ninja** と併用時で動作が変わります。
+:::
+
+### Skills Ninja 単体の場合
+
+スキルをインストールすると、`AGENTS.md`（または設定した instruction ファイル）の `<!-- skill-ninja-START / END -->` ブロックに自動追記されます。これはデフォルトで有効です。
+
+### Agent Resources Ninja と併用した場合
+
+Agent Resources Ninja（スキルだけでなくエージェント・プロンプト・MCP などあらゆるリソースを管理する姉妹拡張）と同時にインストールすると、**単一の `<!-- agent-ninja-START / END -->` ブロック**を共有します。このとき、何がブロックに書き込まれるかは以下の通りです。
+
+| リソース種別                                   | デフォルト記載  | 切り替え可否                 |
+| ---------------------------------------------- | --------------- | ---------------------------- |
+| **Skills**                                     | ✅ 記載される   | —                            |
+| **Agent**                                      | ✅ 記載される   | ユーザー設定でオフ可能       |
+| **Instruction**                                | ❌ 記載されない | ユーザー設定でオン可能       |
+| **Prompt / Hook / MCP / Plugin / Cursor Rule** | ❌ 対象外       | instruction block の外で管理 |
+
+> 📸 _デモスクショ予定：AGENTS.md に agent-ninja ブロックが生成された状態_
+
+**設定で切り替える方法**
+
+`resourceNinja.kindsExcluded` に種別名を追加すると、その種別を instruction ブロックから除外できます。逆に含めたい種別は `resourceNinja.kindsIncluded` で指定できます。
+
+例：Agent をブロックから除外し、Instruction を含める設定
+
+```json
+{
+  "resourceNinja.kindsExcluded": ["agent"],
+  "resourceNinja.kindsIncluded": ["instruction"]
+}
+```
+
+:::note warn
+`resourceNinja.kindsExcluded` と `kindsIncluded` は **Agent Resources Ninja** 側の設定です。Skills Ninja 単体インストール時は関係しません。
+:::
+
+## Agent Resources Ninja との共存（v0.9.0〜）
+
+v0.9.0 で、姉妹拡張機能 **[Agent Resources Ninja](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-resources-ninja)** との共存が大幅に改善されました。
+
+2つの拡張機能を同時にインストールしていると、どちらがどのデータを `AGENTS.md` に書くのか混乱しますよね。v0.9.0 以降は **exports API ベースの owner handoff** によって、両拡張が単一ブロックを分担管理します。
+
+```
+<!-- agent-ninja-START -->
+## Agent Skills
+...（Skills Ninja が書いた Skills）...
+## Agents
+...（Resources Ninja が書いた Agents）...
+<!-- agent-ninja-END -->
+```
+
+### 動作の切り替わり
+
+| 状態                               | AGENTS.md のブロック                                   |
+| ---------------------------------- | ------------------------------------------------------ |
+| Skills Ninja のみ                  | `<!-- skill-ninja-START/END -->`                       |
+| 両方インストール                   | `<!-- agent-ninja-START/END -->` に自動移行            |
+| Resources Ninja をアンインストール | 次回イベントで `<!-- skill-ninja-* -->` に自動切り替え |
+
+マーカーのクリーンアップや重複ブロックの発生は v0.9.8 で修正済みなので、基本的にユーザーが手動で何かする必要はないです！
+
+診断コマンドが3つ用意されています（コマンドパレットから実行）：
+
+| コマンド                                                | 用途                   |
+| ------------------------------------------------------- | ---------------------- |
+| `Agent Skills Ninja: Show Coexistence Status`           | 現在の共存状態を確認   |
+| `Agent Skills Ninja: Recompute Coexistence Ownership`   | オーナーシップを再計算 |
+| `Agent Skills Ninja: Clean Up Orphan Instruction Block` | 孤立したブロックを削除 |
+
+> 📸 _デモスクショ予定：Coexistence Status の表示_
+
+## v0.8.28 → v0.9.8 の主なアップデート
+
+記事を書いたのと同じ週に v0.9.8 まで上がっていて、正直このペースで来るとは思っていませんでした笑。ユーザー目線で気になった変更をまとめます。
+
+| バージョン    | 日付 | 主な内容                                                                        |
+| ------------- | ---- | ------------------------------------------------------------------------------- |
+| v0.8.27       | 5/11 | サイドバーを **3ビュー体制に分割**（Installed / User Global / Remote）          |
+| v0.8.28       | 5/11 | 各ビューにウェルカムアクション追加、日本語ラベルのローカライズ                  |
+| v0.9.0        | 5/12 | **Agent Resources Ninja との共存 v3.1**（shared `agent-ninja` ブロック）        |
+| v0.9.1〜0.9.3 | 5/12 | Built-in Skills の表示整理・ラベル統一（"Built-in Skills" に統一）              |
+| v0.9.4        | 5/13 | Remote Skills のダブルクリックでワークスペースにデフォルトインストール          |
+| v0.9.5        | 5/15 | Resource Ninja 管理のローカルスキルを remote index 欠落警告から除外             |
+| v0.9.6        | 5/17 | **Installed Extensions スコープ追加**：VS Code 拡張に同梱の SKILL.md を自動発見 |
+| v0.9.7        | 5/17 | 共有 `~/.agent-ninja/sources.json` の SSOT 整備、source 同期改善                |
+| v0.9.8        | 5/17 | Windows 絶対パスでのインストール失敗修正、共存マーカー判定の修正                |
+
+一番大きな変化は v0.8.27 の 3ビュー分割と v0.9.0 の Agent Resources Ninja 共存対応です。日常的な使い勝手に直結する変更が短期間にこれだけ入るのはすごいですね！
+
 ## まとめ
 
 使う前は「スキル管理ツールってそんなに変わらんでしょ」と思っていましたが、実際に触ってみたらかなり体験が変わりました。
@@ -274,11 +380,14 @@ instruction ファイルへの書き出し形式を 3 種類から選べます�
 - Agent Mode から会話でスキルの検索〜インストールができる
 - 公式・Curated・Community のスキルが一元管理されていてすぐ探せる
 - 日本語 UI 対応なのでとっつきやすい
+- サイドバー 3ビュー分割でワークスペース・個人・リモートのスキルが整理されてわかりやすくなった
+- VS Code 拡張機能に同梱された SKILL.md も自動検出してくれる（v0.9.6）
 
 **注意点：**
 
 - GitHub Token は使い始める前に必ず設定する
 - スキルが増えてきたら `compact` フォーマットへの切り替えを検討
+- Agent Resources Ninja と併用する場合は instruction ブロックの内容に注意（デフォルトの記載内容は上記参照）
 
 スキルが増えるほど Copilot との協働が深まってくる感じがあって、触っていて楽しかったです。やまぱんさん、素晴らしい拡張機能をありがとうございます！
 
@@ -288,6 +397,7 @@ instruction ファイルへの書き出し形式を 3 種類から選べます�
 
 - [Agent Skills Ninja - VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-skill-ninja)
 - [aktsmm/vscode-agent-skill-ninja - GitHub](https://github.com/aktsmm/vscode-agent-skill-ninja)
+- [CHANGELOG - GitHub](https://github.com/aktsmm/vscode-agent-skill-ninja/blob/master/CHANGELOG.md)
 - [README (日本語)](https://github.com/aktsmm/vscode-agent-skill-ninja/blob/master/README_ja.md)
 - [Agent Resources Ninja - VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-resources-ninja)
 - [MicrosoftDocs/Agent-Skills - GitHub](https://github.com/MicrosoftDocs/Agent-Skills)

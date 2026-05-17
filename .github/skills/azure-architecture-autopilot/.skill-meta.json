@@ -1,0 +1,10 @@
+{
+  "name": "azure-architecture-autopilot",
+  "source": "github-awesome-copilot",
+  "description": ">",
+  "description_ja": "",
+  "whenToUse": "A pipeline that designs Azure infrastructure using natural language, or analyzes existing resources to visualize architecture and proceed through modification and deployment.",
+  "categories": [],
+  "remotePath": "skills/azure-architecture-autopilot",
+  "installedAt": "2026-05-17T14:49:42.513Z"
+}
