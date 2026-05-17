@@ -152,7 +152,71 @@ SKILL.md はさらに深い手順書で、「Azure Bicep のレビュー頼む�
 
 この方法は **Agent Skills Ninja**（`yamapan.agent-skill-ninja`）という VS Code 拡張で一元管理できます（別記事で詳しく書きました！）。
 
-### 5. 質問を具体的・短く書く
+<details>
+<summary>▼ Agent Skills Ninja のダウンロードはこちら</summary>
+
+- [Agent Skills Ninja - VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-skill-ninja)
+- [Agent Resources Ninja - VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-resources-ninja)（姉妹拡張。エージェント・プロンプト・MCP なども管理できる）
+
+または VS Code のコマンドパレットから：
+
+```
+ext install yamapan.agent-skill-ninja
+ext install yamapan.agent-resources-ninja
+```
+
+</details>
+
+---
+
+### コラム：Agent Skills Ninja / Agent Resources Ninja をコスト削減にも活かす
+
+「スキル管理ツール」として紹介されることが多い Agent Skills Ninja ですが、実はトークン節約にも効いてくる設定がいくつかあります。
+
+#### compact フォーマットで instruction ファイルを軽量化
+
+Agent Skills Ninja が `AGENTS.md` に書き込むスキル一覧の形式を変えられます。
+
+```json
+{
+  "skillNinja.outputFormat": "compact"
+}
+```
+
+| フォーマット | 1 スキルあたりの文字数 | 特徴                                |
+| ------------ | ---------------------- | ----------------------------------- |
+| `full`       | 約 200 文字            | IMPORTANT プロンプト + 詳細テーブル |
+| `compact`    | 約 100 文字            | 圧縮インデックス（トークン節約！）  |
+| `legacy`     | 最小                   | IMPORTANT なし（後方互換用）        |
+
+スキルを 10 個入れている場合、`full` → `compact` 切り替えだけで instruction ファイルのスキル一覧部分が約半分になります。毎回のチャットでそのファイルがコンテキストに含まれる場合、**会話のたびに節約が積み上がる**構造です！
+
+#### AGENTS.md への記載内容を絞る（Agent Resources Ninja と併用時）
+
+Agent Resources Ninja と一緒に使っている場合、`resourceNinja.kindsExcluded` でブロックに含める種別を絞れます。
+
+```json
+{
+  "resourceNinja.kindsExcluded": ["agent", "instruction"]
+}
+```
+
+Agent 定義や Instructions を instruction ブロックから除外することで、AGENTS.md のサイズを抑えられます。「毎回全部のリソースが読まれる必要はない」タスクが多いなら試す価値あります。
+
+#### SKILL.md は「When to Use」を必ず書く
+
+SKILL.md に `## When to Use`（いつ使うか）セクションを書いておくと、エージェントが「このタスクにはこのスキルは不要」と判断して、**スキルの中身を読みにいかない**ことがあります。
+
+```markdown
+## When to Use
+
+Azure Bicep のテンプレート作成・レビューを依頼されたとき。
+他の IaC（Terraform など）や一般的なコーディングには使わない。
+```
+
+スキルを全部読み込まずに済む分、1 ターンあたりの入力トークンが増えにくくなります。
+
+---
 
 抽象的で長い質問は、長い回答 = 高い出力コストを生みます。
 
@@ -257,8 +321,31 @@ Agent Mode（エージェントモード）はすごく便利ですが、**内�
 
 ## 参考
 
+<details>
+<summary>📄 公式ドキュメント（クリックで展開）</summary>
+
 - [Usage-based billing for individuals - GitHub Docs](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals)
 - [Models and pricing for GitHub Copilot - GitHub Docs](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing)
 - [Preparing for your move to usage-based billing - GitHub Docs](https://docs.github.com/en/copilot/how-tos/manage-and-track-spending/prepare-for-your-move-to-usage-based-billing)
 - [About individual GitHub Copilot plans - GitHub Docs](https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/about-github-copilot-free)
-- [Copilot Billing Preview Tool](https://copilot-billing-preview.github.com/)
+- [Model multipliers for annual plans - GitHub Docs](https://docs.github.com/en/copilot/reference/copilot-billing/model-multipliers-for-annual-plans)
+
+</details>
+
+<details>
+<summary>🔧 ツール・拡張機能（クリックで展開）</summary>
+
+- [Copilot Billing Preview Tool（旧課金 vs 新課金の比較）](https://copilot-billing-preview.github.com/)
+- [Agent Skills Ninja - VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-skill-ninja)
+- [Agent Resources Ninja - VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yamapan.agent-resources-ninja)
+
+</details>
+
+<details>
+<summary>🛒 プラン・価格ページ（クリックで展開）</summary>
+
+- [GitHub Copilot 価格ページ](https://github.com/features/copilot#pricing)
+- [GitHub Copilot プランの比較 - GitHub Docs](https://docs.github.com/en/copilot/about-github-copilot/subscription-plans-for-github-copilot)
+- [使用量ダッシュボード（要ログイン）](https://github.com/settings/copilot)
+
+</details>
