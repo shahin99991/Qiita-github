@@ -319,6 +319,18 @@ Agent Mode（エージェントモード）はすごく便利ですが、**内�
 
 ---
 
+## あわせて読みたい
+
+この記事で紹介した **Agent Skills Ninja / Agent Resources Ninja** を使ったスキル管理のやり方は、別記事で詳しく書きました。コンテキストの設計から AGENTS.md の自動更新まで、使い方をまとめているので参考にしてみてください！
+
+https://qiita.com/shahin/items/agent-skills-ninja-getting-started
+
+:::note info
+↑ 公開後に正式な記事 URL に差し替えてください
+:::
+
+---
+
 ## 参考
 
 <details>
