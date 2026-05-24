@@ -1,0 +1,279 @@
+                      </div>
+                    </div>
+                    <div class="about-hobbies" data-aos="fade-left">
+                        <h3 class="hobbies-title">HOBBIES</h3>
+                        <div class="hobbies-list">
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <div class="hobby-content">
+                                    <div class="hobby-name">Music</div>
+                                    <div class="hobby-desc">Western Pop, EDM, Jazz</div>
+                                </div>
+                            </div>
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="hobby-content">
+                                    <div class="hobby-name">Programming</div>
+                                    <div class="hobby-desc">Software Development and Algorithms</div>
+                                </div>
+                            </div>
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-chess-knight"></i>
+                                </div>
+                                <div class="hobby-content">
+                                    <div class="hobby-name">Chess</div>
+                                    <div class="hobby-desc">Openings and Endgame Strategy</div>
+                                </div>
+                            </div>
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <div class="hobby-content">
+                                    <div class="hobby-name">Cloud Technology (Azure)</div>
+                                    <div class="hobby-desc">Interested in Azure Infrastructure, Monitoring, Deployment</div>
+                                </div>
+                            </div>
+                            <div class="hobby-item">
+                                <div class="hobby-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="hobby-content">
+                                    <div class="hobby-name">Github Copilot</div>
+                                    <div class="hobby-desc">AIコーディング支援・コミュニティ運営</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="section-container">
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">SKILLS</h2>
+                    <div class="section-subtitle">Technical Abilities</div>
+                </div>
+                <div class="skills-content">
+                        <div class="skills-grid" data-aos="fade-up">
+                        <div class="skill-item" data-skill="python">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-name">Python</div>
+                            <div class="skill-desc">FastAPI / GraphQL / ML</div>
+                        </div>
+                        <div class="skill-item" data-skill="nextjs">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="skill-name">Next.js</div>
+                            <div class="skill-desc">Node.js, React, Tailwind, React Query</div>
+                        </div>
+                        <div class="skill-item" data-skill="data">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="skill-name">Data</div>
+                            <div class="skill-desc">MySQL, PostgreSQL, SQLAlchemy, Alembic</div>
+                        </div>
+                        <div class="skill-item" data-skill="infra">
+                            <div class="skill-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="skill-name">Infrastructure</div>
+                            <div class="skill-desc">Azure, GCP, AWS, Kafka, Prometheus, Grafana, Kubernetes, CI/CD</div>
+                        </div>
+                    </div>
+                    <div class="badge-row badge-row-skills" data-aos="fade-up" data-aos-delay="300">
+                        <img src="AZ-900.png" alt="AZ-900" class="cert-badge-img-skills" />
+                        <img src="SC-900.png" alt="SC-900" class="cert-badge-img-skills" />
+                        <img src="AI-900.png" alt="AI-900" class="cert-badge-img-skills" />
+                        <img src="DP-900.png" alt="DP-900" class="cert-badge-img-skills" />
+                        <img src="AZ-104.png" alt="AZ-104" class="cert-badge-img-skills" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section">
+            <div class="section-container">
+                <div class="section-header" data-aos="fade-up">
+                    <div class="section-number">04</div>
+                    <h2 class="section-title">EXPERIENCE</h2>
+                    <div class="section-subtitle">Career Highlights</div>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-timeline">
+                        <div class="timeline-item" data-aos="fade-up">
+                            <div class="timeline-year">中学</div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Immersed in Competitive Programming</h3>
+                                    <p class="timeline-description">アルゴリズム問題の解決に熱中し、問題解決力を磨いた。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Managed a Game Modding Community</h3>
+                                    <p class="timeline-description">ゲーム改造コミュニティを運営し、情報共有やメンバーサポートを行った。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up">
+                            <div class="timeline-year">高校</div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Presentation on XAI at Information Processing Society of Japan National Conference</h3>
+                                    <p class="timeline-description">情報処理学会全国大会でXAIに関する研究成果を発表</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">技育CAMP参加/ハッカソン</h3>
+                                    <p class="timeline-description">チーム開発を通じて技術力を向上</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Chrome Extension リリース</h3>
+                                    <p class="timeline-description">ユーザー体験向上のためのChrome拡張機能を開発・公開</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Selected as Google Cloud Innovator</h3>
+                                    <p class="timeline-description">Google Cloud Innovatorに選出、技術コミュニティに参加</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Participation in Google Tech Equity Collective (TEC)</h3>
+                                    <p class="timeline-description">テクノロジーの公平性・多様性推進コミュニティに参加</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">業務委託にてシステム開発</h3>
+                                    <p class="timeline-description">バックエンドシステム開発の実務経験を積む</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Google X Zenn ハッカソン</h3>
+                                    <p class="timeline-description">Gemini API SDKを用いたチャットアプリを開発</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">42Tokyo Piscine Program</h3>
+                                    <p class="timeline-description">C言語集中学習（300時間）を修了（インターン参加のため途中辞退）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">技育展にて学生審査員を担当</h3>
+                                    <p class="timeline-description">技術コンテストで学生審査員を担当</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">技育祭2025春学生アンバサダー就任</h3>
+                                    <p class="timeline-description">技術カンファレンスの広報・運営を担当</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up">
+                            <div class="timeline-year">大1</div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Enrolled at Tokyo International University of Technology</h3>
+                                    <p class="timeline-description">東京国際工科専門職大学に入学</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">SaaSスタートアップにてインターンp</h3>
+                                    <p class="timeline-description">SaaSプロダクト開発のインターンを経験</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">AIスタートアップにてインターン</h3>
+                                    <p class="timeline-description">AI・データサイエンス分野の実務インターン</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Engineer Guild Hackathon - 決勝進出</h3>
+                                    <p class="timeline-description">外資系ハッカソンで決勝に選出</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">学内コンテスにてRAG技術を活用したSlackBot開発</h3>
+                                    <p class="timeline-description">RAG技術を活用したSlackBotを学内コンテストで開発</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">技育祭2025秋学生アンバサダー就任</h3>
+                                    <p class="timeline-description">技術イベント・コミュニティのアンバサダーを担当</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">プログラミング教室の講師を務める</h3>
+                                    <p class="timeline-description">初心者向けプログラミング教室を月8回担当</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">現在:電力会社にてAzureインフラ担当</h3>
+                                    <p class="timeline-description">電力会社でAzureインフラの設計・構築・運用を担当</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">YonaYonaAzureClubにて登壇</h3>
+                                    <p class="timeline-description">Azureインターン経験・知見をコミュニティで発信</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up">
+                            <div class="timeline-year">大2</div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Second Year at University</h3>
+                                    <p class="timeline-description">大学2年次、研究・キャリア形成に注力</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Zenn x MicrosoftのCopilot活用選手権に参加</h3>
+                                    <p class="timeline-description">Zenn × Microsoft主催のCopilot活用選手権に参加し、記事執筆・ノウハウ共有を行った</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Microsoft学生アンバサダープログラム&rarr;</h3>
+                                    <p class="timeline-description">Microsoft Student Ambassadorプログラムに参加し、技術・コミュニティ活動に取り組み中</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">現在:Microsftパートナー企業にてインターン</h3>
+                                    <p class="timeline-description">Microsoftパートナー企業で製品導入支援インターンに従事</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item no-year" data-aos="fade-up">
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Github Copilot User Group Japan設立</h3>
+                                <p class="timeline-description">Microsoft社員やMicrosoft MVPの方々と共に、Github Copilotの普及を目指すコミュニティを立ち上げ・運営</p>
+                            </div>
+                        </div>
+                    </div>
