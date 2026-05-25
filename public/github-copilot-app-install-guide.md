@@ -158,6 +158,8 @@ GitHub.com でコードを入力して「Continue」をクリック。
 | **Workflow 自動化**       | ❌                     | ❌                         | **✅**                 | ❌                     |
 | **対象ユーザー**          | 日常コーディング       | コードレビュー・Q&A        | エージェント駆動開発   | CLI 派・ヘビーユーザー |
 
+![GitHub Copilot App の4つの強み：Parallel Agents・No IDE needed・Full PR Lifecycle・GitHub Native が中央のロゴを囲む円形インフォグラフィック](./Github-Copilot-Apps-Image/demo-copilot-app-strengths.png)
+
 ### Copilot Chat in VSCode との違い
 
 VSCode 内の Copilot Chat は「今開いているファイル・プロジェクトに対して質問・指示する」のが得意です。インライン補完との組み合わせで、コーディング中に頭を使う部分を減らすのがメインの用途ですね。
@@ -310,8 +312,8 @@ Microsoft のエンジニアや MVP の方々と一緒に立ち上げたコミ�
 
 ---
 
-## 参考
+    ## 参考
 
-- [GitHub Copilot app 公式リポジトリ](https://github.com/github/app)
-- [GitHub Copilot app ドキュメント](https://docs.github.com/ja/copilot/github-copilot-app)
-- [GitHub Copilot User Group Japan（Gh-CUG）](https://gh-cug.connpass.com/)
+    - [GitHub Copilot app 公式リポジトリ](https://github.com/github/app)
+    - [GitHub Copilot app ドキュメント](https://docs.github.com/ja/copilot/github-copilot-app)
+    - [GitHub Copilot User Group Japan（Gh-CUG）](https://gh-cug.connpass.com/)
