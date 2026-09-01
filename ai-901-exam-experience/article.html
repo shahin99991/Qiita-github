@@ -1,0 +1,467 @@
+<!-- タイトル: AI-901（Microsoft Azure AI Fundamentals）合格体験記——AI-900からの差分と効率的な勉強法 -->
+<!-- YJK Article: WordPress コードエディタにそのままペーストしてください -->
+<!-- ※ CSS は WordPress 管理 > 外観 > カスタマイズ > 追加CSS に登録済みのものを使用 -->
+<div class="yjk-article">
+  <!-- アイキャッチ: WordPress投稿時に設定 -->
+  <hr />
+  <h2 id="sec-0">はじめに</h2>
+  <p>
+    こんにちは！最近Microsoft
+    Foundryを実務で触りながらAI資格を整理している横浜情報機器株式会社インターン生のロホマン
+    シャヒンです。
+  </p>
+  <!-- author-profile -->
+  <div class="yjk-author-profile">
+    <div class="yjk-author-icon">RS</div>
+    <div class="yjk-author-info">
+      <p class="yjk-author-name">ロホマン シャヒン</p>
+      <ul class="yjk-author-badges">
+        <li>Microsoft Student Ambassador</li>
+        <li>GitHub Copilot User Group Japan 運営</li>
+        <li>Azure Solutions Architect Expert 取得</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /author-profile -->
+  <p>
+    2026年8月30日、AI-901（Microsoft Azure AI
+    Fundamentals）に合格しました（得点：833/700）。実務でFoundryを触っている流れで、ちゃんと公式ドキュメントベースで学習しておきたいと思ったのがきっかけです。
+  </p>
+  <figure>
+    <img
+      src="Images/img-exam-result.png"
+      alt="試験結果スコアレポート（得点：833 / 合格点：700）"
+    />
+  </figure>
+  <p>
+    この試験、AI-900の後継なんですが、内容がけっこう変わっています。合格するまでの勉強法と、試験で感じた注意点を整理しました。
+  </p>
+  <nav class="yjk-toc">
+    <p><strong>目次</strong></p>
+    <ol>
+      <li><a href="#sec-1">AI-901とは？ — AI-900との違い</a></li>
+      <li><a href="#sec-2">試験範囲と出題比率</a></li>
+      <li><a href="#sec-3">実際の勉強方法（合計約3時間）</a></li>
+      <li><a href="#sec-4">試験で難しかった部分</a></li>
+      <li><a href="#sec-5">AI-901で学べるAI用語</a></li>
+    </ol>
+  </nav>
+  <hr />
+  <h2 id="sec-1">1. AI-901とは？ — AI-900との違い</h2>
+  <p>
+    AI-901は<strong>2026年4月15日にAI-900から更新された試験</strong>です。試験コードが変わっただけではなく、出題構成と求められる知識のレベルが大きく変わっています。
+  </p>
+  <h3 id="試験の基本情報">試験の基本情報</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>試験コード</td>
+        <td>AI-901</td>
+      </tr>
+      <tr>
+        <td>正式名称</td>
+        <td>Microsoft Azure AI Fundamentals</td>
+      </tr>
+      <tr>
+        <td>合格点</td>
+        <td>700点（1000点スケール）</td>
+      </tr>
+      <tr>
+        <td>前提資格</td>
+        <td>なし</td>
+      </tr>
+      <tr>
+        <td>英語版更新日</td>
+        <td>2026年4月15日</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="ai-900-との主な差分">AI-900 との主な差分</h3>
+  <p>
+    AI-900と比べると、「概念を知っている」だけでは受からなくなりました。<strong
+      >Python構文・SDK・REST APIの基礎知識が明示的に必要</strong
+    >になっています。
+  </p>
+  <figure>
+    <img
+      src="Images/img-ai901-vs-ai900-comparison.png"
+      alt="AI-900 vs AI-901 の出題構造比較"
+    />
+  </figure>
+  <table>
+    <thead>
+      <tr>
+        <th>観点</th>
+        <th>AI-900（旧）</th>
+        <th>AI-901（現行）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>受験者像</strong></td>
+        <td>技術・非技術両方を対象</td>
+        <td>AIソリューション開発キャリアの始まりを対象</td>
+      </tr>
+      <tr>
+        <td><strong>前提知識</strong></td>
+        <td>クラウドの基本程度（任意）</td>
+        <td>Python・REST API・SDK の理解が<strong>必須</strong></td>
+      </tr>
+      <tr>
+        <td><strong>試験構成</strong></td>
+        <td>5セクション（各15〜25%）</td>
+        <td><strong>2セクション</strong>（40〜45% / 55〜60%）</td>
+      </tr>
+      <tr>
+        <td><strong>Azure ML</strong></td>
+        <td>独立セクションで出題</td>
+        <td><strong>削除</strong>（ML概念は凝縮）</td>
+      </tr>
+      <tr>
+        <td><strong>主要プラットフォーム</strong></td>
+        <td>Azure AI Foundry（概念のみ）</td>
+        <td><strong>Microsoft Foundry（実装まで）</strong></td>
+      </tr>
+      <tr>
+        <td><strong>エージェント型AI</strong></td>
+        <td>記載なし</td>
+        <td><strong>新規追加</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Content Understanding</strong></td>
+        <td>記載なし</td>
+        <td><strong>新規追加</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    AI-900取得済みの方なら、<strong>追加で学習が必要なのはFoundry関連の実装部分だけ</strong>です。概念系はそのままカバーできます。
+  </p>
+  <hr />
+  <h2 id="sec-2">2. 試験範囲と出題比率</h2>
+  <p>出題は2セクションのみ、シンプルな構成になりました。</p>
+  <table>
+    <thead>
+      <tr>
+        <th>セクション</th>
+        <th>出題比率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. AIの概念と機能を特定する</strong></td>
+        <td>40〜45%</td>
+      </tr>
+      <tr>
+        <td>
+          <strong
+            >2. Microsoft Foundryを使用してAIソリューションを実装する</strong
+          >
+        </td>
+        <td>55〜60%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>セクション1（AI概念）</strong>
+    では、責任あるAIの6原則・AIモデルのコンポーネント・生成AI・エージェント型AI・テキスト分析・音声・コンピュータービジョン・情報抽出などが出ます。
+  </p>
+  <p>
+    <strong>セクション2（Foundry実装）</strong>
+    が新しい部分です。Foundryポータルでのモデルデプロイ、SDKを使ったチャットクライアントアプリ、単一エージェントの構築・テスト、マルチモーダル入力、Azure
+    Content
+    Understanding（ドキュメント・画像・音声からの情報抽出）が出題範囲に入っています。
+  </p>
+  <p>
+    試験全体の半分以上がFoundry関連の実装問題なので、<strong>Foundryをまったく触ったことがない方は一度ポータルを触っておくと理解がぐっと深まります</strong>。
+  </p>
+  <hr />
+  <h2 id="sec-3">3. 実際の勉強方法（合計約3時間）</h2>
+  <p>
+    正直なところ、すでにAZ-900・AI-900・AZ-104・AZ-305などを持っていて、実務でFoundryも触っていたので、勉強時間はかなり短くなりました。
+  </p>
+  <h3 id="使った教材">使った教材</h3>
+  <p><strong>① Microsoft Learn — 公式ラーニングパスを一周</strong></p>
+  <p>
+    まず公式から始めました。<a
+      href="https://learn.microsoft.com/training/paths/introduction-to-ai-on-azure/"
+      >Introduction to AI in Azure</a
+    >のラーニングパスが試験範囲に対応していて、セクション2（Foundry実装）の内容も含まれています。
+  </p>
+  <p>
+    Foundryを触ったことがある人は流し読みでも十分です。概念の整理に使いました。
+  </p>
+  <p><strong>② Udemy 問題集</strong></p>
+  <p>
+    <a
+      href="https://www.udemy.com/course/ai-901microsoft-azure-ai-fundamentals/"
+      >【うかる！】AI-901：Microsoft Azure AI Fundamentals 最強問題集</a
+    >
+    を一周しました。約1時間。
+  </p>
+  <p>全体の正答率は<strong>8割超え</strong>でした。実際のスコアはこちら：</p>
+  <div style="display: flex; gap: 6px; flex-wrap: wrap">
+    <p>
+      <img
+        src="Images/img-quiz-score-1.png"
+        style="width: 19%; min-width: 100px"
+        alt="問題セット1: 95%"
+      />
+      <img
+        src="Images/img-quiz-score-2.png"
+        style="width: 19%; min-width: 100px"
+        alt="問題セット2: 86%"
+      />
+      <img
+        src="Images/img-quiz-score-3.png"
+        style="width: 19%; min-width: 100px"
+        alt="問題セット3: 81%"
+      />
+      <img
+        src="Images/img-quiz-score-4.png"
+        style="width: 19%; min-width: 100px"
+        alt="問題セット4: 85%"
+      />
+      <img
+        src="Images/img-quiz-score-5.png"
+        style="width: 19%; min-width: 100px"
+        alt="問題セット5: 92%"
+      />
+    </p>
+  </div>
+  <p>
+    この問題集で8割を安定して取れていれば、本番試験でも合格ラインには届くと思います。
+  </p>
+  <p><strong>③ AI Skills Navigator（公式模擬試験）</strong></p>
+  <p>
+    Microsoft公式の<a href="https://aiskillsnavigator.microsoft.com"
+      >AI Skills Navigator</a
+    >でも事前に確認しました。問題の雰囲気と出題傾向を確かめるのに使いました。
+  </p>
+  <h3 id="勉強時間の内訳">勉強時間の内訳</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>教材</th>
+        <th>時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Microsoft Learn（ラーニングパス）</td>
+        <td>約1.5時間</td>
+      </tr>
+      <tr>
+        <td>Udemy問題集</td>
+        <td>約1時間</td>
+      </tr>
+      <tr>
+        <td>AI Skills Navigator</td>
+        <td>約0.5時間</td>
+      </tr>
+      <tr>
+        <td><strong>合計</strong></td>
+        <td><strong>約3時間</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    AI-900未取得の方や、AIの概念があまり馴染みがない方は、もう少し時間をかけた方がいいと思います。ただ、<strong>前提資格は一切必要ないファンダメンタルな試験</strong>なので、Azureを使ったことがなくても十分に挑戦できます。
+  </p>
+  <hr />
+  <h2 id="sec-4">4. 試験で難しかった部分</h2>
+  <p>
+    総合的にはそこまで難しくなかったんですが、引っかかりやすいポイントが2つありました。
+  </p>
+  <h3 id="pythonのコードを読む問題">4-1. Pythonのコードを読む問題</h3>
+  <p>
+    コードを実行するわけではないですが、SDKの使い方・メソッドの引数・返り値の形式などを問う問題が出ます。Foundry
+    SDKのコードをざっと読んでおくと安心です。
+  </p>
+  <h3 id="マルチモーダル入力の方法image-url-と-base64">
+    4-2. マルチモーダル入力の方法（Image URL と Base64）
+  </h3>
+  <p>
+    これが地味に引っかかりポイントです。ビジョン対応モデルに画像を渡す方法が2種類あります。
+  </p>
+  <figure>
+    <img
+      src="Images/img-multimodal-input.png"
+      alt="マルチモーダル入力：Image URL と Base64 の違い"
+    />
+  </figure>
+  <table>
+    <thead>
+      <tr>
+        <th>方法</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>URL指定</strong></td>
+        <td>Blob Storageや公開URLの画像を送る</td>
+      </tr>
+      <tr>
+        <td><strong>Base64</strong></td>
+        <td>ローカル画像を直接埋め込む</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    REST APIでは <code>image_url</code> フィールドでURLまたは
+    <code>data:image/jpeg;base64,...</code>
+    形式のデータを渡します。SDKではメソッドを通して画像を渡せます。「どの場面でどちらを使うか」を整理しておくと問題でも迷いません。
+  </p>
+  <hr />
+  <h2 id="sec-5">5. AI-901で学べるAI用語</h2>
+  <p>
+    試験勉強をしていて気づいたのですが、AI-901は<strong>Azure特有のサービス名を覚えるだけの試験ではない</strong>です。LLMやRAG、MCPなど、業界全体で使われる概念が体系的に出てくるので、Azureを普段触らない方にも意外と使える知識が身につきます。
+  </p>
+  <p>試験範囲で登場する主要なAI用語をまとめておきます。</p>
+  <table>
+    <thead>
+      <tr>
+        <th>カテゴリ</th>
+        <th>用語</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>基本概念</td>
+        <td>LLM、Token、Context Window、Prompt</td>
+      </tr>
+      <tr>
+        <td>拡張・改善</td>
+        <td>
+          Grounding、RAG（Retrieval-Augmented
+          Generation）、Fine-tuning、Embedding
+        </td>
+      </tr>
+      <tr>
+        <td>検索・取得</td>
+        <td>Vector Search</td>
+      </tr>
+      <tr>
+        <td>出力品質</td>
+        <td>Hallucination</td>
+      </tr>
+      <tr>
+        <td>自律型システム</td>
+        <td>Agent、Tool Calling、MCP（Model Context Protocol）</td>
+      </tr>
+      <tr>
+        <td>入力形式</td>
+        <td>Multimodal</td>
+      </tr>
+      <tr>
+        <td>倫理・安全</td>
+        <td>Responsible AI</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    特にRAG・Agent・MCPあたりは最近の業界トレンドとも直結していて、試験勉強しながら「あ、これ実務でやってることだ」となる瞬間が多かったです。
+  </p>
+  <hr />
+  <h2 id="sec-6">6. まとめ</h2>
+  <ul>
+    <li>
+      AI-901はAI-900の後継試験（2026年4月15日更新）。コードが変わっただけでなく、<strong>Foundry実装が出題の55〜60%を占めるように</strong>なった
+    </li>
+    <li>
+      AI-900取得済みなら<strong
+        >Foundry関連の実装部分を重点的に学習すれば十分</strong
+      >
+    </li>
+    <li>
+      勉強時間は約3時間（Microsoft Learn + Udemy問題集）で合格できた（得点833）
+    </li>
+    <li>
+      難しかった部分は<strong>Pythonコードの読み取り</strong>と<strong
+        >マルチモーダル入力のURL/Base64の使い分け</strong
+      >
+    </li>
+    <li>
+      AI-901は<strong>Azureを触ったことがない方にもおすすめ</strong>。現代のAI開発で使われる用語・概念が体系的に整理される
+    </li>
+  </ul>
+  <p>
+    次に取得を目指しているのは<strong
+      >Azure AI Apps and Agents Developer Associate</strong
+    >です。また受かったら体験記を書きます！
+  </p>
+  <p>
+    この記事が少しでも参考になったら、<strong>ぜひシェア</strong>していただけると嬉しいです！
+  </p>
+
+  <div class="yjk-cta">
+    <a href="https://yjk365security.jp/contact/" class="yjk-cta-button"
+      >YJKにFoundry・AI資格活用を相談する</a
+    >
+  </div>
+  <hr />
+  <h2 id="sec-7">出典</h2>
+  <ul>
+    <li>
+      <a
+        href="https://learn.microsoft.com/ja-jp/credentials/certifications/exams/ai-901"
+        >AI-901 試験詳細 — Microsoft Learn</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/ai-901"
+        >AI-901 学習ガイド（日本語） — Microsoft Learn</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://learn.microsoft.com/ja-jp/credentials/certifications/azure-ai-fundamentals/"
+        >Microsoft Azure AI Fundamentals 認定資格 — Microsoft Learn</a
+      >
+    </li>
+    <li>
+      <a href="https://learn.microsoft.com/azure/foundry/what-is-foundry"
+        >Microsoft Foundry 概要 — Azure ドキュメント</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://learn.microsoft.com/azure/foundry/openai/how-to/gpt-with-vision"
+        >ビジョン対応チャットモデル（マルチモーダル） — Azure ドキュメント</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://learn.microsoft.com/training/paths/introduction-to-ai-on-azure/"
+        >Introduction to AI in Azure ラーニングパス — Microsoft Learn</a
+      >
+    </li>
+  </ul>
+
+  <div class="yjk-share">
+    <a
+      class="yjk-share-x"
+      href="#"
+      onclick="
+        window.open(
+          'https://x.com/intent/tweet?text=' +
+            encodeURIComponent(document.title) +
+            '&url=' +
+            encodeURIComponent(location.href),
+          '_blank',
+          'width=550,height=420',
+        );
+        return false;
+      "
+      >𝕏 でシェアする</a
+    >
+  </div>
+</div>

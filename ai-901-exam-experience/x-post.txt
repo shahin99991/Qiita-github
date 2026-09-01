@@ -1,0 +1,7 @@
+AI-901（旧AI-900）に合格しました！得点833、勉強時間は約3時間。
+
+出題の55〜60%がMicrosoft Foundry実装に変わっていて、AI-900取得済みならFoundry部分だけ追加で学べば十分です。
+
+https://yjk365security.jp/blog/ai-901-exam-experience/
+
+#AI901 #Microsoft #AI資格
