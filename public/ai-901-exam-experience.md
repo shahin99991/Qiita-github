@@ -1,5 +1,5 @@
 ---
-title: AI-901（Microsoft Azure AI Fundamentals）合格体験記 — AI-900からの差分と3時間で受かった勉強法
+title: "AI-901（Microsoft Azure AI Fundamentals）合格体験記 — AI-900からの差分と3時間で受かった勉強法"
 tags:
   - Azure
   - AI
@@ -7,7 +7,7 @@ tags:
   - MicrosoftLearn
   - 勉強法
 private: false
-updated_at: '2026-09-02T06:45:21+09:00'
+updated_at: "2026-09-02T06:45:21+09:00"
 id: aa9ca5194843559806be
 organization_url_name: mspjp
 slide: false
@@ -34,7 +34,7 @@ https://shahin99991.github.io/Myportfolio/
 
 2026年8月30日、AI-901（Microsoft Azure AI Fundamentals）に合格しました（得点：833/700）。実務でFoundryを触っている流れで、ちゃんと公式ドキュメントベースで学習しておきたいと思ったのがきっかけです。
 
-![試験結果スコアレポート（得点：833 / 合格点：700）](./Images/img-exam-result.png)
+![試験結果スコアレポート（得点：833 / 合格点：700）](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/ai-901-exam-experience/Images/img-exam-result.png)
 
 AI-900の後継試験なんですが、内容がけっこう変わっていてちょっと驚きました。合格するまでの勉強法と、試験で感じた注意点をまとめておきます。
 
@@ -58,7 +58,7 @@ AI-901は**2026年4月15日にAI-900から更新された試験**です。試験
 
 AI-900と比べて「概念を知っている」だけでは受からなくなりました。**Python構文・SDK・REST APIの基礎知識が明示的に必要**になっています。
 
-![AI-900 vs AI-901 の出題構造比較](./Images/img-ai901-vs-ai900-comparison.png)
+![AI-900 vs AI-901 の出題構造比較](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/ai-901-exam-experience/Images/img-ai901-vs-ai900-comparison.png)
 
 | 観点                      | AI-900（旧）                 | AI-901（現行）                             |
 | ------------------------- | ---------------------------- | ------------------------------------------ |
@@ -105,7 +105,7 @@ Foundryを触ったことがある人は流し読みでも十分です。概念�
 
 **② Udemy 問題集**
 
-![Udemy 問題集のスクリーンショット](./Images/スクリーンショット%202026-09-02%20063229.png)
+![Udemy 問題集のスクリーンショット](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/ai-901-exam-experience/Images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20063229.png)
 
 [【うかる！】AI-901：Microsoft Azure AI Fundamentals 最強問題集](https://www.udemy.com/course/ai-901microsoft-azure-ai-fundamentals/) を一周しました。約1時間。
 
@@ -150,7 +150,7 @@ AI-900未取得の方や、AIの概念があまり馴染みがない方はもう
 
 これが地味に引っかかりポイントでした。ビジョン対応モデルに画像を渡す方法が2種類あります。
 
-![マルチモーダル入力：Image URL と Base64 の違い](./Images/img-multimodal-input.png)
+![マルチモーダル入力：Image URL と Base64 の違い](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/ai-901-exam-experience/Images/img-multimodal-input.png)
 
 | 方法        | 用途                              |
 | ----------- | --------------------------------- |
