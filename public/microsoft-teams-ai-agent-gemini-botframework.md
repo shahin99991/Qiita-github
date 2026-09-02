@@ -7,7 +7,7 @@ tags:
   - GitHub
   - MicrosoftTeams
 private: false
-updated_at: "2026-09-02T20:19:54+09:00"
+updated_at: '2026-09-02T20:26:23+09:00'
 id: ebe1e6bac81d2bdf5053
 organization_url_name: mspjp
 slide: false
@@ -113,7 +113,7 @@ Bot はスレッドの会話履歴を自動取得し、ヒアリングシート�
 
 実際に GitHub 側を確認すると、`srohomon-bot`（Bot 用アカウント）名義で Pull Request がちゃんと作られています。
 
-![AIエージェントが自動作成したPull RequestがGitHub上に表示されている画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185555.png?v=2)
+![AIエージェントが自動作成したPull RequestがGitHub上に表示されている画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20202442.png?v=2)
 
 **シナリオ②: 共有された技術記事を要約してもらう**
 
