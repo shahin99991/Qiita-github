@@ -1,13 +1,13 @@
 ---
 title: Teamsだけで動く社内AIエージェントを自作した話 ── Foundry × Bot Framework × Microsoft Graph 連携の裏側
 tags:
-  - Gemini
-  - MicrosoftTeams
-  - AzureFunctions
-  - GitHub
   - AIエージェント
+  - AzureFunctions
+  - Gemini
+  - GitHub
+  - MicrosoftTeams
 private: false
-updated_at: "2026-09-02T19:47:04+09:00"
+updated_at: '2026-09-02T20:00:29+09:00'
 id: ebe1e6bac81d2bdf5053
 organization_url_name: mspjp
 slide: false
@@ -105,41 +105,41 @@ Bot は依頼内容を解析し、**どのツールをどの順番で呼ぶべ�
 
 打ち合わせの会話が流れているスレッドの最後に、一言メンションで依頼します。
 
-![打ち合わせスレッドで、YJK-AI-Agentにヒアリングシート更新とPR作成を依頼している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185612.png)
+![打ち合わせスレッドで、YJK-AI-Agentにヒアリングシート更新とPR作成を依頼している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185612.png?v=2)
 
 Bot はスレッドの会話履歴を自動取得し、ヒアリングシートの更新と GitHub への Pull Request 作成まで一気に終えて、成果物のファイルパスと PR URL を返信してくれます。
 
-![YJK-AI-Agentがヒアリングシート更新とPR作成の完了を報告している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185636.png)
+![YJK-AI-Agentがヒアリングシート更新とPR作成の完了を報告している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185636.png?v=2)
 
 実際に GitHub 側を確認すると、`srohomon-bot`（Bot 用アカウント）名義で Pull Request がちゃんと作られています。
 
-![AIエージェントが自動作成したPull RequestがGitHub上に表示されている画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185555.png)
+![AIエージェントが自動作成したPull RequestがGitHub上に表示されている画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185555.png?v=2)
 
 **シナリオ②: 共有された技術記事を要約してもらう**
 
 チャンネルに技術記事のリンクが複数流れてきたとき、まとめて要約を依頼します。
 
-![複数ユーザーが共有した技術記事の要約をYJK-AI-Agentに依頼している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185940.png)
+![複数ユーザーが共有した技術記事の要約をYJK-AI-Agentに依頼している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20185940.png?v=2)
 
 コスト管理・VPN移行・データ保護といった要点が整理されて返ってきます。
 
-![YJK-AI-Agentが記事の要点をまとめて返信している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190008.png)
+![YJK-AI-Agentが記事の要点をまとめて返信している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190008.png?v=2)
 
 **シナリオ③: 会話からアクションアイテムを抽出してIssue化する**
 
 会話の中で出た「やるべきこと」を、そのまま GitHub Issue に変換してもらいます。
 
-![会話履歴からアクションアイテムを抽出し、GitHub Issueを自動生成している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190127.png)
+![会話履歴からアクションアイテムを抽出し、GitHub Issueを自動生成している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190127.png?v=2)
 
 GitHub の Issues 画面を見ると、機能改善やバグ修正、案件対応など複数の Issue が一気に登録されています。地味にこれが一番実用性を感じた瞬間でした。
 
-![自動生成された複数のIssueが並ぶGitHubのIssues画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190204.png)
+![自動生成された複数のIssueが並ぶGitHubのIssues画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190204.png?v=2)
 
 **シナリオ④: 直近のオンライン会議を一覧化する**
 
 Microsoft Graph 経由でオンライン会議の情報を取得し、一覧とファイル出力の両方を同時にこなしてくれます。
 
-![YJK-AI-Agentが直近のオンライン会議情報を一覧化し、ファイル出力もしている画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190521.png)
+![YJK-AI-Agentが直近のオンライン会議情報を一覧化し、ファイル出力もしている画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20190521.png?v=2)
 
 ---
 
