@@ -7,7 +7,7 @@ tags:
   - GitHub
   - MicrosoftTeams
 private: false
-updated_at: "2026-09-02T20:13:46+09:00"
+updated_at: "2026-09-02T20:19:54+09:00"
 id: ebe1e6bac81d2bdf5053
 organization_url_name: mspjp
 slide: false
@@ -86,7 +86,7 @@ Bot は依頼内容を解析し、**どのツールをどの順番で呼ぶべ�
 一般的な AI エージェントの多くは、依頼のたびに背景情報を**自分でコピペして渡し直す**必要があります。YJK-AI-Agent はスレッド／チャンネルの会話履歴を自動取得してからタスクを実行するため、そのひと手間が要りません。
 
 ```
-太郎: Orbital Lasers様との打ち合わせ、Azure AI Foundry導入の初回ヒアリングでした。要件はA・B・C…
+太郎: A社様との打ち合わせ、Azure AI Foundry導入の初回ヒアリングでした。要件はA・B・C…
 花子: 見積りは来週までに欲しいとのことです
 太郎: @YJK-AI-Agent 今のスレッドの内容を踏まえてヒアリングシートを更新してPRにして
 ```
@@ -109,7 +109,7 @@ Bot は依頼内容を解析し、**どのツールをどの順番で呼ぶべ�
 
 Bot はスレッドの会話履歴を自動取得し、ヒアリングシートの更新と GitHub への Pull Request 作成まで一気に終えて、成果物のファイルパスと PR URL を返信してくれます。
 
-![YJK-AI-Agentがヒアリングシート更新とPR作成の完了を報告している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20201731.png?v=2)
+![YJK-AI-Agentがヒアリングシート更新とPR作成の完了を報告している画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/YJK-AI/Image/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202026-09-02%20202442.png?v=2)
 
 実際に GitHub 側を確認すると、`srohomon-bot`（Bot 用アカウント）名義で Pull Request がちゃんと作られています。
 
