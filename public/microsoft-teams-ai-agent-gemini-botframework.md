@@ -7,7 +7,7 @@ tags:
   - GitHub
   - MicrosoftTeams
 private: false
-updated_at: "2026-09-02T20:27:22+09:00"
+updated_at: "2026-09-02T21:10:12+09:00"
 id: ebe1e6bac81d2bdf5053
 organization_url_name: mspjp
 slide: false
