@@ -17,7 +17,7 @@ ignorePublish: false
 ## はじめに
 
 GitHub Copilot User Group Japan運営兼、Microsoft Student Ambassadorのロホマン シャヒンです。
-![詳細なプロフィールはこちらから（Portfolio）](https://shahin99991.github.io/Myportfolio/)
+[詳細なプロフィールはこちらから（Portfolio）](https://shahin99991.github.io/Myportfolio/)
 
 :::note
 この記事が少しでも参考になったら、**ぜひいいね・共有**をお願いします。
@@ -94,7 +94,11 @@ GH-900は比較的新しい試験で、**2026年1月に出題範囲が大幅に�
 
 ### ① 書籍「読んでつなげる GitHub」を一周読む
 
-最初に手を付けたのが、書店で買える[『読んでつなげる GitHub GH-900 GitHub Foundations 対応』（Compass Books）](https://www.amazon.co.jp/dp/4839991418)です。
+最初に手を付けたのが、書店で買える[『読んでつなげる GitHub GH-900 GitHub Foundations 対応』（Compass Books / マイナビ出版）](https://www.amazon.co.jp/dp/4839991418)です。2026年9月11日発売の、GH-900に対応した日本語の対策書です。
+
+![『読んでつなげる GitHub』の書影](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-book-cover.png)
+
+著者陣が心強い本で、**日本マイクロソフトの社員の方（やまぱん！さん・森友梨映さん）と、Microsoft MVPの亀川和史さん**が執筆しています。GitHub・Azureを中から知る人たちと、MVPとして長年コミュニティを牽引してきた人の組み合わせなので、内容の信頼度が高いです。
 
 GH-900は新しい試験なのに、もうちゃんとした対策本が本屋に並んでいるんですよね。これがありがたかった。この本は、GitとGitHubの違いから始まって、リポジトリ・コミット・ブランチ・Pull Request・Actions・Copilot・Projects・セキュリティまで、試験範囲を順番に網羅しています。
 
