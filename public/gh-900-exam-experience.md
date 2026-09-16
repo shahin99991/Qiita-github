@@ -7,7 +7,7 @@ tags:
   - 勉強法
   - 初心者
 private: false
-updated_at: '2026-09-16T20:20:35+09:00'
+updated_at: '2026-09-16T20:24:35+09:00'
 id: ea071b25d62da902719a
 organization_url_name: mspjp
 slide: false
@@ -118,26 +118,26 @@ GH-900は新しい試験なのに、もうちゃんとした対策本が本屋�
 
 ![Udemy 問題集のコースページ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-udemy-course.png)
 
-模擬試験が6セット収録されていて、1セット50問・計300問というボリューム。各セットは85分の制限時間付きで、本番を想定した演習ができます。
+模擬試験が6セット収録されていて、1セット25問・計150問収録されています。各セットは85分の制限時間付きで、本番を想定した演習ができます。
 
 ![収録されている模擬試験（6セット）](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-udemy-curriculum.png)
 
 実際の正答率がこちらです。
 
 <div>
-<img src="https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-quiz-scores-1-3.png" width="49%" alt="模擬試験1〜3の結果（74% / 82% / 88%）">
+<img src="https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-quiz-scores-1-3.png" width="49%" alt="模擬試験1〜3の結果（72% / 80% / 88%）">
 <img src="https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-quiz-scores-4-6.png" width="49%" alt="模擬試験4・6の結果（92% / 91%）">
 </div>
 
 | 問題セット | 正答率 | スコア |
 | ---------- | ------ | ------ |
-| セット 1   | 74%    | 37/50  |
-| セット 2   | 82%    | 41/50  |
-| セット 3   | 88%    | 44/50  |
-| セット 4   | 92%    | 46/50  |
-| セット 6   | 91%    | 46/50  |
+| セット 1   | 72%    | 18/25  |
+| セット 2   | 80%    | 20/25  |
+| セット 3   | 88%    | 22/25  |
+| セット 4   | 92%    | 23/25  |
+| セット 6   | 91%    | 23/25  |
 
-初回は74%しか取れませんでした。出題範囲の広さが見えて正直ちょっと怖くなったので、**9割を安定して超えるまで解き直す**ことにしました。間違えた問題は解説を読んで、本の該当箇所にも戻る。これを繰り返して、4セット目で92%、6セット目でも91%と安定してきたタイミングで受験を決めました。
+初回は72%しか取れませんでした。出題範囲の広さが見えて正直ちょっと怖くなったので、**9割を安定して超えるまで解き直す**ことにしました。間違えた問題は解説を読んで、本の該当箇所にも戻る。これを繰り返して、4セット目で92%、6セット目でも91%と安定してきたタイミングで受験を決めました。
 
 本番は問題集より少しひねった聞かれ方をする問題もありましたが、問題集で9割安定していれば合格ラインには届く感触でした（実際855点でした）。
 
