@@ -1,0 +1,7 @@
+【IT業界志望の学生必見】就活で使える資格 GH-900（GitHub Foundations）に合格しました！
+
+GitHubの基礎を公式に証明できる登竜門の資格。勉強は1週間、書籍「読んでつなげる GitHub」+ Udemy問題集だけで850点でした。勉強法とおすすめ教材をまとめました👇
+
+https://qiita.com/shahin0809/items/ea071b25d62da902719a
+
+#GH900 #GitHub #資格 #就活 #駆け出しエンジニアと繋がりたい
