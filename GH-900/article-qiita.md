@@ -7,7 +7,7 @@ tags:
   - 勉強法
   - 初心者
 private: false
-updated_at: '2026-09-16T19:08:30+09:00'
+updated_at: '2026-09-16T20:20:35+09:00'
 id: ea071b25d62da902719a
 organization_url_name: mspjp
 slide: false
@@ -27,7 +27,7 @@ GitHub Copilot User Group Japan運営兼、Microsoft Student Ambassadorのロホ
 
 2026年9月8日、GH-900（GitHub Foundations）に合格しました（得点：855/700）。先日 [AI-901の合格体験記](https://qiita.com/shahin0809/items/aa9ca5194843559806be) を書いたばかりですが、今回はGitHubの資格です。
 
-![試験結果スコアレポート（得点：855 / 合格点：700）](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-exam-result.png)
+![試験結果スコアレポート（得点：850 / 合格点：700）](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-exam-result.png)
 
 勉強期間は約1週間、使った教材は「書籍1冊 + Udemy問題集」のみ。この組み合わせが思った以上に相性が良かったので、試験の紹介とあわせて勉強法をまとめておきます。
 
@@ -96,7 +96,7 @@ GH-900は比較的新しい試験で、**2026年1月に出題範囲が大幅に�
 
 ### ① 書籍「読んでつなげる GitHub」を一周読む
 
-最初に手を付けたのが、書店で買える[『読んでつなげる GitHub GH-900 GitHub Foundations 対応』（Compass Books / マイナビ出版）](https://www.amazon.co.jp/dp/4839991418)です。2026年9月11日発売の、GH-900に対応した日本語の対策書です。
+最初に手を付けたのが、書店で買える[『読んでつなげる GitHub GH-900 GitHub Foundations 対応』（Compass Books / マイナビ出版）](https://www.amazon.co.jp/o/ASIN/4839991413/mynavibooks-22/)です。2026年9月11日発売の、GH-900に対応した日本語の対策書です。
 
 ![『読んでつなげる GitHub』の書影](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-book-cover.png)
 
