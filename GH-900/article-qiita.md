@@ -1,5 +1,5 @@
 ---
-title: "GH-900（GitHub Foundations）合格体験記 — 特にIT業界志望の学生におすすめしたい資格"
+title: GH-900（GitHub Foundations）合格体験記 — 特にIT業界志望の学生におすすめしたい資格
 tags:
   - GitHub
   - Git
@@ -7,11 +7,13 @@ tags:
   - 勉強法
   - 初心者
 private: false
-updated_at: "2026-09-16T12:00:00+09:00"
+updated_at: '2026-09-16T19:08:30+09:00'
 id: ea071b25d62da902719a
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
