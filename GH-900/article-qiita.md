@@ -7,7 +7,7 @@ tags:
   - 勉強法
   - 初心者
 private: false
-updated_at: '2026-09-17T06:57:29+09:00'
+updated_at: '2026-09-17T07:00:14+09:00'
 id: ea071b25d62da902719a
 organization_url_name: mspjp
 slide: false
@@ -114,7 +114,7 @@ GH-900は新しい試験なのに、もうちゃんとした対策本が本屋�
 
 ### ③ Udemyの問題集を9割超えるまで解く
 
-仕上げはUdemyの[【うかる！】GH-900：GitHub Foundations 最強問題集](https://www.udemy.com/course/gh-900github-foundations-certification/)です。
+仕上げはUdemyの[【うかる！】GH-900：GitHub Foundations 最強問題集](https://www.udemy.com/course/gh-900github-foundations-certification/?referralCode=6FE828167B52BE8D6426)です。
 
 ![Udemy 問題集のコースページ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/GH-900/Images/img-udemy-course.png)
 
@@ -193,5 +193,5 @@ GitHubの認定資格には他にも、Actions（GH-200）やGitHub Copilot（GH
 - [試験 GH-900 の学習ガイド — Microsoft Learn](https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/gh-900)
 - [GitHub Foundations ラーニングパス パート1 — Microsoft Learn](https://learn.microsoft.com/ja-jp/training/paths/github-foundations/)
 - [GitHub Foundations ラーニングパス パート2 — Microsoft Learn](https://learn.microsoft.com/ja-jp/training/paths/github-foundations-2/)
-- [『読んでつなげる GitHub GH-900 GitHub Foundations 対応』（Compass Books）— Amazon](https://www.amazon.co.jp/dp/4839991418)
-- [【うかる！】GH-900：GitHub Foundations 最強問題集 — Udemy](https://www.udemy.com/course/gh-900github-foundations-certification/)
+- [『読んでつなげる GitHub GH-900 GitHub Foundations 対応』（Compass Books）— Amazon](https://www.amazon.co.jp/o/ASIN/4839991413/mynavibooks-22/)
+- [【うかる！】GH-900：GitHub Foundations 最強問題集 — Udemy](https://www.udemy.com/course/gh-900github-foundations-certification/?referralCode=6FE828167B52BE8D6426)
