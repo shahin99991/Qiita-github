@@ -41,6 +41,71 @@ argument-hint: '記事のトピックや技術名を入力してください（�
 - 図解や表を適切に活用する
 - [humanize-writing スキル](../humanize-writing/SKILL.md) の**生成指示型**ルールに従って執筆する（同じ書き出しの連続・抽象語・定型接続詞を避ける）
 
+### Step 4.5: TL;DR セクションと概要イメージの生成（推奨）
+
+記事に実用価値のある手順・検証結果がある場合、「はじめに」の直後に **TL;DR** セクションを入れると読者の離脱を防げます。
+
+**① TL;DR の内容**
+「この記事を読まなくても要点だけ分かる」レベルの情報を凝縮する。含めるもの：
+
+- **何が起きた/何をしたか** の1〜2文要約
+- **試したこと → 結果** の対応表（✅/⚠️/❌ などの記号で成否を一目で分かるように）
+- **対象環境・前提条件** の1行補足
+
+**② 概要イメージ（図解バナー）の生成**
+TL;DR の冒頭に、記事全体の流れが一目で分かる解説画像を1枚入れる。**Gemini API（Nano Banana Pro / `gemini-3-pro-image`）で生成する**のが手軽で高品質です。
+
+生成スクリプトの雛形（`<topic>/generate_tldr_image.py` として作成）：
+
+```python
+#!/usr/bin/env python3
+"""TL;DR 用の解説イメージを Gemini API（Nano Banana Pro）で生成する"""
+import os, sys
+from pathlib import Path
+
+def _load_env():
+    for env_path in [Path(__file__).parents[1] / ".env", Path(".env")]:
+        if env_path.exists():
+            for line in open(env_path, encoding="utf-8"):
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, _, v = line.partition("=")
+                    os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+            return
+
+_load_env()
+client = __import__("google.genai", fromlist=["genai"]).Client(api_key=os.environ["GEMINI_API_KEY"])
+from google.genai import types
+
+OUTPUT = Path(__file__).parent / "Images" / "img-00-tldr-overview.png"
+PROMPT = """日本語の技術ブログ用 TL;DR 解説バナー画像を作成。16:9 横長、テキスト主役のインフォグラフィック。
+【テーマ】<記事のテーマを1文で>
+【画像内に描画する日本語テキスト（正確に）】
+- 大見出し: 「<記事のキャッチな一文>」
+- 左/中央/右の3ボックス構成で「入力 → 処理 → 出力」の流れを描く
+- 各ボックスに見出しと箇条書き2〜3個
+【スタイル】フラット・モダン、白または薄グレー背景、日本語フォントは太めで読みやすく
+"""
+resp = client.models.generate_content(
+    model="gemini-3-pro-image",
+    contents=[PROMPT],
+    config=types.GenerateContentConfig(response_modalities=["IMAGE"]),
+)
+for part in resp.candidates[0].content.parts:
+    if part.inline_data is not None:
+        OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+        OUTPUT.write_bytes(part.inline_data.data)
+        print(f"✅ 保存完了: {OUTPUT}")
+        break
+```
+
+ポイント：
+
+- モデルは **`gemini-3-pro-image`（Nano Banana Pro）** を使う。テキスト描画の精度が最も高い（2026-09 時点の最新）
+- プロンプトは「**描画する日本語テキストをそのまま列挙**」すると文字化け・誤字が激減する
+- 生成後は必ず目視確認し、気に入らなければプロンプトを調整して再生成する
+- 生成した画像は記事と同じフォルダ（`<topic>/Images/`）に置き、**記事公開前に GitHub push して raw URL を有効化**する
+
 ### Step 5: レビューと改善
 
 - `qiita-reviewer` エージェントに記事のレビューを依頼する
@@ -86,6 +151,34 @@ Step 4 の執筆時および Step 5 のレビュー時に、以下の口調ス�
 「とても便利です！！本当にすごいです！！！」
 ```
 
+## 冒頭の定型フォーマット（必須）
+
+`## はじめに` の直後、本文の最初に必ず以下のブロックを入れる。
+
+**① 著者挨拶（1行）**
+記事のトピックに合わせて、著者が「〜しているShahinです！」の形で自己紹介する。
+例:
+
+- GitHub Copilot Agent を毎日何かしら試しているShahinです！
+- Azure をよく触っているShahinです！
+- 最近 AI エージェントにハマっているShahinです！
+
+**② いいね・共有・コメント依頼（:::note ブロック）**
+
+```markdown
+:::note
+この記事が少しでも参考になったら、**ぜひいいね・共有**をお願いします。
+間違っている箇所や「ここが分かりにくかった」という指摘は、やさしくコメントいただけると助かります！
+:::
+```
+
+この2点は毎回省略しないこと。
+
+**③ TL;DR セクション（推奨）**
+「はじめに」の直後に、記事の要点と概要イメージをまとめた TL;DR を入れる（詳しくは Step 4.5 を参照）。読者が本文を読むかどうかをここで判断できるようにする。
+
+---
+
 ## 出力形式
 
 最終的な記事は以下の形式で出力する:
@@ -100,6 +193,30 @@ tags:
 ---
 
 ## はじめに
+
+[トピックに合わせた「〜しているShahinです！」の挨拶]
+
+:::note
+この記事が少しでも参考になったら、**ぜひいいね・共有**をお願いします。
+間違っている箇所や「ここが分かりにくかった」という指摘は、やさしくコメントいただけると助かります！
+:::
+
+...
+
+## TL;DR（ここだけ読めばOK）
+
+![記事全体の流れを示す解説イメージ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/<topic>/Images/img-00-tldr-overview.png)
+
+**何が起きた？ / 何をした？**
+[1〜2文の要約]
+
+**実際に試して分かったこと**
+
+| 試したこと | 結果     |
+| ---------- | -------- |
+| 〜         | ✅/⚠️ 〜 |
+
+**対象**: [プラン・環境などの前提]
 
 ...
 
@@ -120,8 +237,10 @@ tags:
 
 - [ ] タイトルに具体的なキーワードが含まれている
 - [ ] 「はじめに」で記事の目的と対象読者が明確
+- [ ] TL;DR で要点が把握でき、概要イメージが記事の流れを表している（推奨）
 - [ ] コード例が実際に動作する
 - [ ] コードブロックに言語指定がある
 - [ ] 「まとめ」で要点が整理されている
 - [ ] タグが適切（最大5つ）
 - [ ] 読了時間が適切（5〜15分程度）
+- [ ] 画像は公開前に GitHub push 済みで raw URL が有効
