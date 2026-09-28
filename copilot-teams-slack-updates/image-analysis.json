@@ -1,0 +1,472 @@
+[
+  {
+    "summary": "Microsoft Teams/Slack上でGitHubからの通知が表示されており、GitHubアカウントとの接続を促すメッセージとボタンが見えます。上部には「GitHub signin」という通知も表示されています。",
+    "ui_elements": [
+      "GitHubメッセージ",
+      "「Connect GitHub account」ボタン",
+      "チャットメッセージ入力欄",
+      "メッセージツールバー",
+      "「GitHub signin」通知",
+      "既読表示",
+      "送信先表示"
+    ],
+    "visible_text": "GitHub 15:09、このメッセージはあなただけに表示されます、Connect your GitHub account、Connect GitHub account、GitHub signin、最後の既読、送信先: スレッドのみ、スレッドで返信、15:09",
+    "features_shown": ["GitHubアカウント連携のプロンプト", "GitHubからの通知"],
+    "repo_visible": null,
+    "model_visible": null,
+    "demo_step_candidate": "その他 (GitHub連携初期設定/認証プロンプト)",
+    "notable": "GitHub CopilotがGitHubリポジトリにアクセスする前に、ユーザーがGitHubアカウントと連携する必要があることを示す初期設定ステップと推測されます。画面の異なる箇所で「GitHub signin」と「Connect GitHub account」の両方が表示されており、認証がまだ完了していない状態を示唆しています。",
+    "file": "スクリーンショット 2026-09-28 151003.png"
+  },
+  {
+    "summary": "この画像は、GitHubアカウントとMicrosoft Teamsアカウントを連携する設定画面を示しています。この連携により、Teams内でGitHubのリンクプレビューやIssueの操作などが可能になります。",
+    "ui_elements": [
+      "GitHubロゴ",
+      "Microsoft Teamsロゴ",
+      "プラス記号",
+      "説明テキスト",
+      "「Connect GitHub account」ボタン",
+      "「Learn more」リンク",
+      "著作権表示",
+      "「Terms / Privacy」リンク"
+    ],
+    "visible_text": "Finish connecting your GitHub account to your Teams account. This will connect your accounts so that you can use Teams to view rich previews for private GitHub links, open and close issues, and other features that depend on your access to GitHub. Learn more. Connect GitHub account. GitHub Inc. ©2026. Terms / Privacy.",
+    "features_shown": [
+      "GitHubアカウント連携設定",
+      "TeamsでのGitHubリンクプレビュー",
+      "TeamsでのIssue作成・クローズ"
+    ],
+    "repo_visible": null,
+    "model_visible": null,
+    "demo_step_candidate": "その他",
+    "notable": "「GitHub Copilot in Microsoft Teams / Slack」の機能検証デモの一環で、CopilotがGitHubの情報をTeamsで活用するための前提となるアカウント連携設定画面である点。",
+    "file": "スクリーンショット 2026-09-28 151013.png"
+  },
+  {
+    "summary": "GitHub Connector for Teamsの認証画面が表示されており、ユーザーは既存のGitHubアカウントで続行するか、別のGitHubアカウントを使用するかを選択できます。",
+    "ui_elements": [
+      "GitHubロゴ",
+      "Microsoft Teamsロゴ",
+      "見出し「Authorize GitHub Connector for Teams」",
+      "説明文「From the options below, choose which account you would like to use to authorize this app.」",
+      "「Signed in as [ユーザー名]」と表示されたアカウント選択ボックス",
+      "「Continue」ボタン",
+      "「or」区切り",
+      "「Use a different account」ボタン"
+    ],
+    "visible_text": "Authorize GitHub Connector for Teams\nFrom the options below, choose which account you would like to use to authorize this app.\nSigned in as [ユーザー名（塗りつぶし）]\nContinue\nor\nUse a different account",
+    "features_shown": [
+      "GitHubとMicrosoft Teams間の連携設定（GitHub Copilot for Teamsの利用前提となる認証プロセス）"
+    ],
+    "repo_visible": null,
+    "model_visible": null,
+    "demo_step_candidate": "その他（GitHub Copilot for Teamsを利用するための初期セットアップ/認証ステップ）",
+    "notable": "GitHub CopilotをMicrosoft Teamsで利用するために必要なGitHubアカウントの認証プロセスが示されており、連携の初期設定画面として重要です。",
+    "file": "スクリーンショット 2026-09-28 151027.png"
+  },
+  {
+    "summary": "Microsoft Teams上でGitHubアプリが導入され、ユーザーがGitHubアカウントを接続するための初期画面と、GitHubをTeamsで利用する際の主な機能（Issue作成、コード修正、アカウント設定など）のガイドが表示されている。",
+    "ui_elements": [
+      "GitHubアプリのメッセージカード",
+      "アカウント接続ボタン（Connect GitHub account）",
+      "GitHub機能説明カード",
+      "プロンプト例のリスト",
+      "アカウント設定関連コマンドのリスト",
+      "チャット入力欄",
+      "チャット履歴区切り線（最後の既読）",
+      "右上サインインボタン（GitHub signin）"
+    ],
+    "visible_text": "GitHub 15:09\nこのメッセージはあなただけに表示されます\nConnect your GitHub account\nConnect GitHub account\n翻訳\nGitHub is installed and connected to your account.\nHere's what you can do with GitHub from Teams.\nWork with GitHub\n@mention GitHub and describe the task, including opening issues and pull requests. Reply in the thread to iterate.\n@Github [your prompt]\nExamples\n@Github add error handling to the login function in owner/repo\n@Github raise an issue to fix the login bug in owner/repo\n@Github add tests\n@Github refactor the code to use async/await\nAccount and settings\nConnect your GitHub account @Github signin\nDisconnect your GitHub account @Github signout\nSet a default repository for this channel @Github settings\nHave feedback? Share it with us\n送信先: スレッドのみ\nスレッドで返信\nGitHub signin",
+    "features_shown": [
+      "Microsoft Teamsとの連携",
+      "GitHubアカウントの接続・切断",
+      "デフォルトリポジトリの設定",
+      "メンションによるGitHub操作（Issue作成、Pull Request作成、コード関連の指示）",
+      "プロンプト例の提示",
+      "フィードバック機能"
+    ],
+    "repo_visible": null,
+    "model_visible": null,
+    "demo_step_candidate": "その他（GitHubアプリの機能紹介・初期設定ガイド）",
+    "notable": null,
+    "file": "スクリーンショット 2026-09-28 151048.png"
+  },
+  {
+    "summary": "GitHub Copilotが、Microsoft Teams/Slackチャネルのデフォルトリポジトリが変更されたことを通知しています。Copilotとの今後の会話が新しいリポジトリ「YJK-Inc/Test-Repo」を使用する旨が示されています。",
+    "ui_elements": [
+      "GitHub Copilotのメッセージカード",
+      "GitHub settingsボタン",
+      "Changeボタン",
+      "Clearボタン",
+      "翻訳リンク",
+      "メッセージ入力欄",
+      "スレッドの要約ボタン"
+    ],
+    "visible_text": "GitHub settings, AI により生成 15:10 編集済み, このメッセージはあなただけに表示されます, New Copilot conversations in this channel will use [REDACTED] by default. The repository changed from YJK-Inc/Foundry- to YJK-Inc/Test-Repo., Change, Clear, 翻訳, rohoman shahin set this channel's default repository to YJK-Inc/Test-Repo. New Copilot conversations here will use it automatically. Send settings to change it., 送信先: スレッドのみ, スレッドで返信, スレッドの要約",
+    "features_shown": [
+      "リポジトリ設定（チャンネルのデフォルトリポジトリ）",
+      "Copilotの通知（リポジトリ変更時）",
+      "チャットボットによる設定変更の確認と案内",
+      "Copilot会話のコンテキスト管理（リポジトリ単位）",
+      "プライベートメッセージ通知",
+      "スレッドの要約"
+    ],
+    "repo_visible": "YJK-Inc/Test-Repo",
+    "model_visible": null,
+    "demo_step_candidate": "その他",
+    "notable": "ユーザー（rohoman shahin）が 'settings' コマンドを使用してチャンネルのデフォルトリポジトリを変更したことが示唆されており、Copilotがその変更を通知し、ユーザーがそれを確認する一連のやり取りが見られます。また、メッセージが「あなただけに表示されます」とプライベートなものであることも特徴的です。",
+    "file": "スクリーンショット 2026-09-28 151214.png"
+  },
+  {
+    "summary": "GitHub Copilot AIがユーザーからのREADME更新依頼を受け、作業の計画と進捗を詳細なタスクリストとともに表示している画面です。",
+    "ui_elements": [
+      "チャットメッセージ (ユーザーのプロンプト)",
+      "AI生成メッセージ (Copilotの応答)",
+      "GitHubのAIによる生成を示すヘッダー",
+      "ユーザーのアバターと名前",
+      "日付と時刻スタンプ",
+      "AIによる作業の進行状況を示すセクション",
+      "タスクリストと進捗バー (0/4 done)",
+      "個別のタスク項目 (例: リポジトリの現状構成を確認)",
+      "GitHubへのリンク ('Open in GitHub' およびリポジトリ名)",
+      "メッセージ入力欄",
+      "メッセージオプションアイコン (絵文字、添付ファイルなど)",
+      "スレッドの要約ボタン"
+    ],
+    "visible_text": "メンション文: \"GitHub README を最新の構成に更新して\"\nCopilotの応答: \"承知しました、README を最新の構成に合わせて更新します。作業を進めます。\"\nタスクリストタイトル: \"README を最新構成に更新: 0/4 done\"\nタスク項目: \"リポジトリの現状構成を確認\", \"既存READMEの内容を確認\", \"README を最新構成に更新\", \"変更をコミット・プッシュ\"\nその他: \"GitHub AI により生成\", \"Open in GitHub\", \"gpt-5.6-sol\", \"スレッドの要約\", \"rohoman shahin\", \"2026/09/28 15:14\"",
+    "features_shown": [
+      "Copilotの応答 (ユーザーのプロンプトに対するAIの回答)",
+      "タスクの自動生成と進捗管理",
+      "GitHubリポジトリへの直接リンク",
+      "スレッド内でのAIとの対話",
+      "スレッドの要約機能 (UI要素として表示)"
+    ],
+    "repo_visible": "gpt-5.6-sol",
+    "model_visible": "GitHub AI",
+    "demo_step_candidate": "その他 (ユーザーの依頼に対するCopilotの詳細な応答とタスク分解のデモ)",
+    "notable": "メッセージの日付が未来の日付（2026/09/28）になっており、デモ用途であることが示唆されます。GitHubのREADME更新という具体的な依頼に対し、AIが手順を細かく分解し、進行中のタスクとして表示している点が注目に値します。",
+    "file": "スクリーンショット 2026-09-28 151530.png"
+  },
+  {
+    "summary": "Microsoft Teamsのようなチャットインターフェースで、GitHub CopilotがREADMEファイルを最新の構成に更新し、その作業が完了したことを報告しています。Copilotは新規にREADMEファイルを作成し、プルリクエストも自動生成したと説明しています。",
+    "ui_elements": [
+      "チャットインターフェース",
+      "メッセージ投稿欄",
+      "ユーザーアイコン (GitHubアイコン、人型アイコン)",
+      "メッセージバブル",
+      "チェックボックス付きタスクリスト",
+      "ハイパーリンク",
+      "リアクションボタン (いいね、低評価)",
+      "スレッドの要約ボタン",
+      "送信先表示",
+      "編集済みラベル"
+    ],
+    "visible_text": "GitHub AIにより生成, GitHub READMEを最新の構成に更新して, Open in GitHub - gpt-5.6-sol, READMEを最新構成に更新: 4/4 done, リポジトリの現状構成を確認, 既存READMEの内容を確認, READMEを最新構成に更新, 変更をコミット・プッシュ, READMEを最新のリポジトリ構成に合わせて新規作成し、PRを作成しました, PR: #2 docs: READMEを最新のリポジトリ構成に更新, ※もともと README.md は存在しなかったため、新規作成という形になっています。内容を確認の上マージしてください。",
+    "features_shown": [
+      "READMEファイルの自動生成・更新",
+      "プルリクエスト (PR) の自動作成",
+      "タスク進捗状況の表示 (チェックリスト)",
+      "GitHubリポジトリへの直接リンク",
+      "ファイル・ディレクトリ構成の説明",
+      "スクリプトの役割説明",
+      "セットアップ手順の提示",
+      "既存ドキュメントへのリンク",
+      "モデル名の表示 (gpt-5.6-sol)",
+      "AIによる生成であることの明示"
+    ],
+    "repo_visible": null,
+    "model_visible": "gpt-5.6-sol",
+    "demo_step_candidate": "その他",
+    "notable": "CopilotがREADMEファイルを「新規作成」した点（もともと存在しなかったという補足がある）と、その内容（ディレクトリ構成、スクリプトの役割、セットアップ手順、実行方法、既存ドキュメントへのリンク）を詳細に提示している点。また、具体的なモデル名（gpt-5.6-sol）が表示されている点。",
+    "file": "スクリーンショット 2026-09-28 151636.png"
+  },
+  {
+    "summary": "CopilotがMicrosoft Teamsでの会話に基づいてGitHubに作成した、READMEファイルを最新のリポジトリ構成に更新するプルリクエストの画面です。README.mdの新規作成と詳細な概要が示されています。",
+    "ui_elements": [
+      "GitHubヘッダー（Code, Issues, Pull requestsなど）",
+      "プルリクエストタイトル",
+      "プルリクエストステータス（Open）",
+      "ブランチ情報（master, copilot/update-readme）",
+      "タブナビゲーション（Conversation, Commits, Checks, Files changed）",
+      "Copilotによるコメントセクション",
+      "プルリクエストの概要（description）",
+      "メンションによる変更指示の提案",
+      "競合ステータス表示（No conflicts with base branch）"
+    ],
+    "visible_text": "docs: README を最新のリポジトリ構成に更新 #2、Copilot AI commented 1 minute ago、概要、README.md が存在しなかったため、現在のリポジトリ構成に合わせて新規作成しました。、Created from a Microsoft Teams conversation.、Copilot uses AI. Check for mistakes.、Mention @copilot in a comment to make changes to this pull request.、No conflicts with base branch、Merging can be performed automatically.",
+    "features_shown": [
+      "CopilotによるGitHubプルリクエストの自動作成",
+      "Microsoft Teamsとの連携（Teamsでの会話からのPR作成）",
+      "AIによる生成物であることの明示（Copilot uses AI. Check for mistakes.）",
+      "プルリクエストコメントでの変更指示受付（Mention @copilot in a comment to make changes to this pull request.）"
+    ],
+    "repo_visible": null,
+    "model_visible": null,
+    "demo_step_candidate": "その他（Teams/Slackからの指示によるGitHub Pull Requestの自動生成）",
+    "notable": "Microsoft Teamsの会話を元に、CopilotがREADME.mdの新規作成と詳細な説明文を持つプルリクエストをGitHubに自動生成した点。説明文にGEMINI_API_KEYへの言及があり、プロジェクトがGoogle Gemini APIを使用している可能性を示唆している点も特徴的です。",
+    "file": "スクリーンショット 2026-09-28 151710.png"
+  },
+  {
+    "summary": "PythonコードのZeroDivisionErrorを修正するよう、GitHubボットに依頼している画面。",
+    "ui_elements": [
+      "チャットメッセージ",
+      "コードブロック (Pythonエラーログ)",
+      "メッセージ入力欄",
+      "送信先表示 (スレッドのみ)",
+      "スレッドの要約ボタン"
+    ],
+    "visible_text": "ユーザーからの「GitHub このエラー直して」という依頼、およびPythonのZeroDivisionErrorトレースバック（「division by zero」、「discount_rate = 100 / quantity if quantity == 0 else 0」）",
+    "features_shown": ["メンション開始", "コード分析/エラー修正"],
+    "repo_visible": "Test-Repo",
+    "model_visible": null,
+    "demo_step_candidate": "img-01 メンション開始",
+    "notable": "意図的に`quantity == 0`の場合に`100 / quantity`を実行しようとする、古典的なZeroDivisionErrorを発生させている点が注目される。Copilotがこのような明確な論理エラーを修正できることを示すデモンストレーション。",
+    "file": "スクリーンショット 2026-09-28 151932.png"
+  },
+  {
+    "summary": "GitHub CopilotがPythonのZeroDivisionErrorのトレースバックを分析し、修正を提案していますが、リポジトリの不一致とユーザーの画像添付読み込み失敗により、対応を進めるための選択肢を提示しています。",
+    "ui_elements": [
+      "チャットインターフェース",
+      "Copilotの応答メッセージ（エラー分析、コードスニペット、トレースバック含む）",
+      "ユーザーのメッセージ（画像添付失敗通知）",
+      "Copilotのフォローアップメッセージ（リポジトリの不一致説明と対応策の提案）",
+      "提案リスト（箇条書き）",
+      "GitHubへのリンク"
+    ],
+    "visible_text": "GitHub このエラー直して\nZeroDivisionError: division by zero\nFile \"/home/shahin/demo-repos/Test-Repo/app/main.py\", line 17, in calculate_total_price\ndiscount_rate = 100 / quantity if quantity == 0 else 0\nI couldn't read these images. Try attaching them again:\nこのエラーは `Test-Repo/app/main.py` の `calculate_total_price` 関数に関するものですが、現在このスレッドは `YJK-Inc/Foundry-` リポジトリに接続されており、該当ファイルが見つかりませんでした。\nチャンネルのデフォルトが `YJK-Inc/Test-Repo` に変更されているようですが、このスレッドは Foundry- のままです。\n1. このスレッドを `YJK-Inc/Test-Repo` に切り替えて修正する\n2. Foundry- のままで別対応する（該当ファイルの内容を貼っていただければ確認します）\nどちらで進めますか？\nOpen in GitHub · gpt-5.6-sol",
+    "features_shown": [
+      "コードエラーの解析と修正提案",
+      "Pythonのトレースバック解釈",
+      "リポジトリ情報の認識と不一致検出",
+      "リポジトリ切り替えの提案",
+      "ファイル内容の直接提供による対応の提案",
+      "会話型UIでのプロンプトと応答",
+      "外部サービス（GitHub）へのリンク提供",
+      "モデル名の表示",
+      "画像添付失敗の通知"
+    ],
+    "repo_visible": "YJK-Inc/Foundry-, YJK-Inc/Test-Repo",
+    "model_visible": "gpt-5.6-sol",
+    "demo_step_candidate": "その他",
+    "notable": "Copilotがユーザーの添付画像を読み取れなかったと明示している点、および、エラー報告されたリポジトリと現在のスレッドのリポジトリの不一致を検出し、その解決策（リポジトリ切り替えやファイル内容提供）を具体的な選択肢として提示している点が興味深いです。また、チャンネルのデフォルトリポジトリ設定の変化にも言及しており、Copilotが環境設定を把握していることが伺えます。",
+    "file": "スクリーンショット 2026-09-28 152443.png"
+  },
+  {
+    "summary": "GitHub Copilotが指定されたリポジトリのコード（app/main.pyのcalculate_total_price関数）で発生したZeroDivisionErrorを特定し、修正内容を提案するとともに、プルリクエストを作成した一連の会話が記録されています。",
+    "ui_elements": [
+      "チャットウィンドウ",
+      "GitHub Copilotのメッセージ",
+      "ユーザーのメッセージ",
+      "タイムスタンプ",
+      "プロフィールアイコン（GitHubのロゴ、ユーザー）",
+      "「Open in GitHub」リンク",
+      "チェックマークアイコン",
+      "サムズアップ/ダウンボタン",
+      "入力欄",
+      "スレッドの要約ボタン"
+    ],
+    "visible_text": "Copilotの応答:\n- スレッドをYJK-Inc/Test-Repoに切り替え、app/main.pyのエラーを調査・修正する。\n- リポジトリ切り替え完了。\n- app/main.pyのcalculate_total_price関数のエラー調査・修正を承知した。\n- 修正が完了し、PRを作成した。\n- 原因: calculate_total_price関数でquantityが0の時にZeroDivisionErrorが発生していた。\n- 修正内容: quantity > 0 の条件追加、int型ヒントに合わせたround()追加、古いコメント削除。\n- 動作確認: python app/main.pyを実行し、税込み合計0円となることを確認。\n- PR: #1 fix: calculate_total_priceのゼロ除算バグを修正。\nユーザーのメッセージ:\n- @Github 続けて\nモデル名:\n- gpt-5.6-sol",
+    "features_shown": [
+      "メンション開始",
+      "スレッド履歴",
+      "リポジトリ設定",
+      "コードのバグ修正提案",
+      "プルリクエスト作成",
+      "動作確認結果の報告",
+      "モデル切り替え"
+    ],
+    "repo_visible": "YJK-Inc/Test-Repo",
+    "model_visible": "gpt-5.6-sol",
+    "demo_step_candidate": "その他（コード修正提案とPR作成完了）",
+    "notable": "CopilotがZeroDivisionErrorのような具体的なバグを特定し、修正内容、その根拠、そして動作確認結果まで詳細に報告し、さらにプルリクエストまで自動で作成している点。修正内容に型ヒントやコメントの整理まで含まれているのが特筆される。",
+    "file": "スクリーンショット 2026-09-28 152504.png"
+  },
+  {
+    "summary": "GitHubのプルリクエスト画面で、Copilotによって作成された「calculate_total_price関数におけるゼロ除算バグ修正」のプルリクエスト詳細が表示されています。",
+    "ui_elements": [
+      "GitHubナビゲーションバー",
+      "プルリクエストタイトル",
+      "プルリクエストのステータス（Open）",
+      "プルリクエスト作成者情報（Copilot）",
+      "プルリクエストタブ（Conversation, Commits, Checks, Files changed）",
+      "コメントセクション",
+      "概要",
+      "原因",
+      "修正内容",
+      "動作確認",
+      "サイドバー（Reviewers, Suggestions, Assignees, Labels, Projects, Milestone, Development, Notifications, Subscribe）",
+      "マージボタン（Able to merge）"
+    ],
+    "visible_text": "fix: calculate_total_price のゼロ除算バグを修正 #1\n概要: app/main.py の calculate_total_price 関数で発生していた ZeroDivisionError を修正しました。\n原因: 割引率の計算ロジックが逆になっており、quantity == 0 (在庫0) の場合に 100 / quantity を実行してゼロ除算エラーが発生していました。\n修正内容: 条件を反転し quantity > 0 のときのみ割引率を計算、型ヒント通り int を返すよう round() で丸め処理を追加、デモ用バグを示すコメント・docstringを削除し、実装に合わせたコメントに更新。\n動作確認: python app/main.py バナナの税込み合計: 0 円。エラーなく実行できることを確認済みです。CI (.github/workflows/ci.yml) も通る想定です。\nCreated from a Microsoft Teams conversation.",
+    "features_shown": [
+      "Copilotによるプルリクエストの自動生成",
+      "プルリクエスト内容（概要、原因、修正内容、動作確認）の自動記述",
+      "Microsoft Teams連携によるプルリクエスト作成"
+    ],
+    "repo_visible": "YJK-Inc/Test-Repo",
+    "model_visible": null,
+    "demo_step_candidate": "その他: Copilotが生成したプルリクエストの内容確認",
+    "notable": "Copilotがゼロ除算という具体的なプログラミング上のバグを認識し、その修正提案としてプルリクエストを生成している点が注目されます。また、「Created from a Microsoft Teams conversation.」という表記から、Teams/Slackのようなチャットツールでの対話を通じてこのプルリクエストが生成されたことが明確に示されており、生成AIとコミュニケーションツールの連携を示す良い例です。修正内容には「デモ用バグを示すコメント・docstringを削除」とあり、デモのために意図的にバグが仕込まれていた可能性も示唆されます。",
+    "file": "スクリーンショット 2026-09-28 152520.png"
+  },
+  {
+    "summary": "AIアシスタントがユーザーの指示に基づき、GitHub上で新しいIssueを作成し、その詳細をチャットに返信している様子が写っています。Issueには、商品の在庫が0でもエラーにならないようにすることと、税込み金額を整数で表示することの2点が盛り込まれています。",
+    "ui_elements": [
+      "メッセージ送信者のアバター",
+      "AI生成ラベル",
+      "タイムスタンプ",
+      "ユーザー名",
+      "メッセージボックス",
+      "Issueリンク",
+      "プルリクエストリンク",
+      "GitHubリンク",
+      "リアクションアイコン",
+      "メッセージ入力フィールド",
+      "スレッドの要約ボタン"
+    ],
+    "visible_text": "メンション: 「「在庫 0 の商品でもエラーにならないようにしてほしい」「税込み金額は整数で表示したい」GitHub この内容を踏まえて Issue を立てて」。AI応答: 「Issue を作成しました ✅ （重複する既存 Issue はありませんでした）Issue: #2 在庫0の商品でエラーになる / 税込み金額が整数で表示されない。内容: 在庫 (quantity) が 0 の商品でもエラーにならないようにしてほしい、税込み金額は整数で表示したい。なお、これらは既に PR #1 で修正済みであることも Issue 本文に記載しています。」その他: 「GitHub AI により生成」「rohomam shahin」「2026/09/28 15:25」「Open in GitHub」「gpt-5.6-sol」「送信先: スレッドのみ」「スレッドで返信」「スレッドの要約」",
+    "features_shown": [
+      "AIによるテキスト応答",
+      "Issue作成機能",
+      "GitHubとの連携",
+      "既存PRの参照"
+    ],
+    "repo_visible": "gpt-5.6-sol",
+    "model_visible": null,
+    "demo_step_candidate": "img-06 Issue作成リンク",
+    "notable": "AIがIssueを作成する際に、ユーザーの要望を的確に反映しているだけでなく、関連する既存のプルリクエスト（PR #1）について言及し、既に修正済みである可能性も示唆している点が非常に高度です。デモの日付が2026年9月28日と将来の日付になっています。",
+    "file": "スクリーンショット 2026-09-28 152709.png"
+  },
+  {
+    "summary": "GitHubのIssueページで、Copilotによって自動生成されたと思われるIssueの詳細が表示されています。在庫0の商品でのエラーと税込み金額の表示に関するバグ報告とその修正内容が記載されています。",
+    "ui_elements": [
+      "GitHubヘッダーナビゲーション",
+      "Issueタイトル",
+      "Issueステータス (Open)",
+      "Issue本文 (内容、背景、対応)",
+      "Issue詳細サイドバー (Assignees, Labels, Type, Fields, Projects, Milestone, Relationships, Development, Notifications)",
+      "「New issue」ボタン",
+      "「Add a comment」セクション",
+      "ユーザーアバター (copilot-swe-agent)"
+    ],
+    "visible_text": "Issueタイトル: 在庫0の商品でエラーになる / 税込み金額が整数で表示されな い #2。内容: 在庫(quantity)が0の商品でも calculate_total_price の呼び出しがエラーにならないようにしてほしい、税込み金額は整数で表示したい。背景: app/main.py の calculate_total_price で quantity == 0 の場合に ZeroDivisionError になる、合計金額が float のまま返され税込み金額が小数で表示される。対応: PR #1 にて修正済み (割引率の条件を quantity > 0 に修正、round() を用いて int を返すように修正、動作確認済み)。Created from a Microsoft Teams conversation。",
+    "features_shown": [
+      "Issue作成",
+      "転送メッセージ (Microsoft TeamsからIssue作成)",
+      "リポジトリ設定"
+    ],
+    "repo_visible": "YJK-Inc/Test-Repo",
+    "model_visible": null,
+    "demo_step_candidate": "img-06 Issue作成リンク",
+    "notable": "Microsoft Teamsでの会話からGitHub Issueが自動的に作成され、バグの詳細な内容（ZeroDivisionError、float形式の金額表示）と具体的な修正案、そして既存のプルリクエストとの連携までがCopilotによって記述されている点が特筆されます。",
+    "file": "スクリーンショット 2026-09-28 152722.png"
+  },
+  {
+    "summary": "チャットインターフェースでGitHub Copilotに現在のモデルと変更可能なモデルのリストを尋ねるユーザーのメッセージと、それに応答してCopilotが表示したモデル選択のプロンプトが表示されています。",
+    "ui_elements": [
+      "チャットメッセージ (ユーザー)",
+      "チャットメッセージ (GitHub Copilot)",
+      "GitHub Copilotのアバター",
+      "モデル選択ドロップダウン",
+      "送信ボタン",
+      "「スレッドの要約」ボタン",
+      "メッセージ入力欄",
+      "このメッセージはあなただけに表示されます (プライベートメッセージ通知)"
+    ],
+    "visible_text": "GitHub 今使っているモデルは？ Change可能なモデル一覧も出して\nSelect a model for this session\nChoose a model\nSubmit\nこのメッセージはあなただけに表示されます\nスレッドの要約\n送信先: スレッドのみ\nスレッドで返信",
+    "features_shown": [
+      "モデル切り替え",
+      "メンション開始",
+      "チャットインタラクション"
+    ],
+    "repo_visible": null,
+    "model_visible": null,
+    "demo_step_candidate": "img-05 モデル切り替え",
+    "notable": "ユーザーが明示的にモデルに関する質問をすることで、Copilotがモデル選択プロンプトを表示している点。Copilotからのプロンプトが「このメッセージはあなただけに表示されます」というプライベートメッセージとして表示されている点。",
+    "file": "スクリーンショット 2026-09-28 152929.png"
+  },
+  {
+    "summary": "ユーザーがGitHub Copilotに対して現在使用中のモデルと変更可能なモデルのリストを問い合わせており、それに応答してCopilotが利用可能なLLMモデルの選択肢をドロップダウンメニューで提示しているチャット画面です。",
+    "ui_elements": [
+      "チャットメッセージ入力欄",
+      "チャット送信ボタン",
+      "モデル選択ドロップダウンメニュー",
+      "モデル選択のSubmitボタン",
+      "ユーザーからのチャットメッセージ",
+      "GitHub Copilotのアイコン",
+      "スレッドの要約ボタン"
+    ],
+    "visible_text": "Auto, Claude Sonnet 5, Claude Opus 4.8, Claude Haiku 4.5, GPT-5.5, GPT-5.4 mini, GPT-5.3-Codex, GPT-5 mini, MAI-Code-1.1-Flash, Kimi K3, Choose a model, Submit, GitHub 今使っているモデルは？ Change可能なモデル一覧も出して, スレッドの要約, 送信先: スレッドのみ, スレッドで返信",
+    "features_shown": ["メンション開始", "モデル切り替え", "スレッド履歴"],
+    "repo_visible": null,
+    "model_visible": "Claude (Sonnet 5, Opus 4.8, Haiku 4.5), GPT (5.5, 5.4 mini, 5.3-Codex, 5 mini), MAI-Code-1.1-Flash, Kimi K3",
+    "demo_step_candidate": "img-05 モデル切り替え",
+    "notable": "GitHub Copilotが、Claude、GPT、MAI-Code、Kimi K3といった複数のベンダーの多様なLLMモデルをバックエンドで切り替えて利用できる柔軟性を持っている点が注目されます。特に、一般にはあまり公開されていないと思われるGPTの複数のバージョンがリストに含まれているのは興味深い点です。",
+    "file": "スクリーンショット 2026-09-28 152940.png"
+  },
+  {
+    "summary": "GitHub Copilotが、ユーザーの「在庫0でエラーになる不具合」のIssue作成指示に対し、既存の類似Issueが既に存在するため、新規作成ではなく既存のIssue (#2) を参照するよう提案しているチャット画面です。",
+    "ui_elements": [
+      "チャットインターフェース",
+      "AI生成メッセージ（Copilotの応答）",
+      "ユーザーの指示メッセージ",
+      "既存Issueへのリンク",
+      "GitHubで開くボタン",
+      "モデル名表示",
+      "絵文字リアクションボタン",
+      "メッセージ入力フィールド",
+      "メッセージ送信オプション（スレッドのみ、スレッドで返信）",
+      "スレッドの要約ボタン"
+    ],
+    "visible_text": "GitHub「在庫0でエラーになる不具合」の Issue を作成して / GitHub AI により生成 15:30 / rohoman shahin 2026/09/28 15:30 / 同内容の Issue はすでに作成済みです。重複を避けるため、新規作成はせず、既存の Issue を使ってください。 / Issue: #2 在庫0でエラーになる不具合 / 内容には、quantity == 0 のときに ZeroDivisionError にならないことと、税込み金額を整数表示にすることが含まれています。 / Open in GitHub / MAI-Code-1.1-Flash / 送信先: スレッドのみ / スレッドで返信 / スレッドの要約",
+    "features_shown": [
+      "メンション開始",
+      "Issue作成（指示への応答、重複検出）",
+      "GitHub連携（既存Issue参照、リンク提供）",
+      "既存Issueの検出 / 重複回避",
+      "モデル名表示",
+      "スレッド要約"
+    ],
+    "repo_visible": null,
+    "model_visible": "MAI-Code-1.1-Flash",
+    "demo_step_candidate": "img-06 Issue作成リンク",
+    "notable": "CopilotがIssueの重複を自動的に検出し、新規作成ではなく既存のIssueへの参照を促している点、および既存のIssue内容（ZeroDivisionErrorの回避、税込み金額の整数表示）を具体的に提示している点が注目されます。",
+    "file": "スクリーンショット 2026-09-28 153108.png"
+  },
+  {
+    "summary": "GitHubのIssueページが表示されており、在庫ゼロの商品でのエラーと税込み金額の表示形式の問題について記載されている。このIssueはMicrosoft Teamsの会話から作成されたもので、既に修正済みである。",
+    "ui_elements": [
+      "GitHubヘッダー（Code, Issues, Pull requests, Actions, Projects, Wiki, Security and quality, Insights, Settings）",
+      "検索バー",
+      "ユーザーアイコン",
+      "New issueボタン",
+      "Issueタイトル",
+      "Issueステータス（Open）",
+      "Issueコメント欄",
+      "Copilot botの投稿（内容、背景、対応）",
+      "Assigneesセクション",
+      "Labelsセクション",
+      "Typeセクション",
+      "Fieldsセクション",
+      "Projectsセクション",
+      "Milestoneセクション",
+      "Relationshipsセクション",
+      "Developmentセクション",
+      "Notificationsセクション",
+      "Assign to Agentボタン",
+      "Create sub-issueボタン",
+      "Add a comment欄"
+    ],
+    "visible_text": "Issueタイトル: \"在庫0の商品でエラーになる / 税込み金額が整数で表示されない #2\"\nCopilot bot投稿要約:\n- 内容: 在庫0でcalculate_total_priceがエラーにならないこと、税込み金額を整数(int)で表示することを求める。\n- 背景: quantityが0の場合に100/quantityでZeroDivisionErrorが発生し、合計金額がfloatのまま返されていた。\n- 対応: PR #1で修正済み。割引率の条件をquantity > 0に修正し、round()でintを返すようにした。python app/main.py実行時にエラーが出ず、バナナの税込み合計: 0円と整数表示されることを確認済み。\n- フッター: \"Created from a Microsoft Teams conversation.\"\n- 右サイドバーのボタン: \"Assign to Agent\"",
+    "features_shown": [
+      "Issue作成",
+      "GitHub Copilot in Microsoft Teams / Slack との連携 (Issueの自動生成)",
+      "エージェントへのアサイン機能"
+    ],
+    "repo_visible": "YJK-Inc/Test-Repo",
+    "model_visible": null,
+    "demo_step_candidate": "img-06 Issue作成リンク (Teams/SlackからGitHub Issueが作成された後、その内容を表示しているため)",
+    "notable": "Microsoft Teamsの会話からGitHub Issueが自動的に作成されている点がCopilotの強力な連携機能を示している。Issueの内容も具体的な技術的課題と、それに対する修正（PRへの言及、round()関数の使用、動作確認結果）が詳細に記述されており、Copilotが開発プロセス全体をサポートしている様子がわかる。「Assign to Agent」ボタンも特徴的。",
+    "file": "スクリーンショット 2026-09-28 153122.png"
+  }
+]
