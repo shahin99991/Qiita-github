@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-TL;DR セクション用の解説イメージを Gemini API（Nano Banana / gemini-2.5-flash-image）で生成する。
+TL;DR セクション用の解説イメージを Gemini API（Nano Banana Pro / gemini-3-pro-image）で生成する。
+最新モデル一覧: https://ai.google.dev/gemini-api/docs/models （2026-09-24 時点で gemini-3-pro-image がテキスト描画最强）
 Usage: python copilot-teams-slack-updates/generate_tldr_image.py
 """
 import os
@@ -30,29 +31,38 @@ from google.genai import types
 
 OUTPUT_PATH = Path(__file__).parent / "Images" / "img-00-tldr-overview.png"
 
-PROMPT = """Create a clean, modern tech blog illustration (wide 16:9 banner) explaining this workflow concept:
+PROMPT = """日本語の技術ブログ（Qiita）用の TL;DR 解説バナー画像を作成してください。16:9 の横長、テキストが主役のインフォグラフィックです。
 
-"A Microsoft Teams chat conversation where a user pastes an error message and mentions @GitHub. A friendly robot AI assistant (GitHub Copilot agent) reads the chat context (error screenshot, forwarded messages, thread history), then automatically produces GitHub artifacts: a fixed Pull Request and an Issue."
+【テーマ】
+「Microsoft Teams の会話コンテキストを GitHub Copilot が読んで、PR/Issue を自動で作る」
 
-Visual elements to include (left to right flow):
-1. LEFT: A chat window mockup (Microsoft Teams style, purple accent) showing a conversation thread with an error traceback pasted in it, and a mention "@GitHub"
-2. CENTER: A cute friendly robot character (AI agent) with "reading" / analyzing the chat — show small icons floating around it: an image icon, a forward/share arrow icon, a thread/history icon, a brain/model-switch icon
-3. RIGHT: GitHub-style cards (dark theme, GitHub dark navy background) showing a "Pull Request" card with a green checkmark and an "Issue" card, connected by arrows from the robot
+【画像内に描画する日本語テキスト（このとおり正確に）】
+- 一番上の大きな見出し: 「Teams の会話を読んで、PR/Issue まで作る」
+- 左ボックス見出し: 「Teams の会話」
+- 左ボックス内の小さな箇条書き: 「画像」「転送メッセージ」「スレッド履歴」
+- 中央ボックス見出し: 「GitHub Copilot」
+- 中央ボックス内の小さな箇条書き: 「コンテキスト読解」「モデル切り替え」
+- 右ボックス見出し: 「GitHub に自動作成」
+- 右ボックス内の小さな箇条書き: 「Pull Request」「Issue」
 
-Style requirements:
-- Flat modern illustration, clean and minimal
-- Color palette: dark navy/black background with purple (Teams), emerald green (GitHub), and white accents
-- Japanese tech blog aesthetic, professional but friendly
-- NO text-heavy elements; minimal short labels only (e.g. "Teams", "@GitHub", "PR", "Issue")
-- Arrows showing the flow: chat → AI agent reads context → GitHub artifacts
+【レイアウト】
+左 → 中央 → 右の3ボックス構成。ボックス同士は太い矢印（→）で繋ぐ。
+- 左ボックス: Microsoft Teams をイメージした紫（#6264A7 系）ベース、チャットの吹き出しアイコン付き
+- 中央ボックス: GitHub Copilot をイメージしたダークネイビー（#0D1117 系）ベース、かわいいロボットのアイコン付き
+- 右ボックス: GitHub をイメージしたダークグレー＋エメラルドグリーン（#2EA44F 系）のアクセント、PR/Issue のカードアイコン付き
+
+【スタイル】
+- フラットでモダンなインフォグラフィック、背景は白またはごく薄いグレー
+- 文字は読みやすい太めの日本語フォントで、誤字・文字化けのないように正確に描画する
+- 全体の雰囲気は親しみやすく、でもプロフェッショナルな技術ブログ向け
 """
 
 def main():
     client = genai.Client(api_key=API_KEY)
-    print("🎨 TL;DR 解説イメージを生成中...")
+    print("🎨 TL;DR 解説イメージを生成中（gemini-3-pro-image / Nano Banana Pro）...")
 
     resp = client.models.generate_content(
-        model="gemini-2.5-flash-image",
+        model="gemini-3-pro-image",
         contents=[PROMPT],
         config=types.GenerateContentConfig(
             response_modalities=["IMAGE"],
