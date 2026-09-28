@@ -1,5 +1,5 @@
 ---
-title: "Teams の GitHub Copilot が「コンテキストを読む」ようになったので、全部試してみた【2026年9月アプデ】"
+title: Teams の GitHub Copilot が「コンテキストを読む」ようになったので、全部試してみた【2026年9月アプデ】
 tags:
   - GitHubCopilot
   - MicrosoftTeams
@@ -7,11 +7,13 @@ tags:
   - GitHub
   - AI
 private: false
-updated_at: ""
-id: null
+updated_at: "2026-09-28T16:17:17+09:00"
+id: 9b7e5a507739d728618b
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 <!--
@@ -297,6 +299,45 @@ Slack の場合もほぼ同じで、管理者によるポリシー有効化 → 
 「**メンションしたら動くエージェント**」に「**目と記憶**」が実装されつつあるのを、実機で体感できた検証でした。チャットから Issue・PR へのトレーサビリティ（`Created from a Microsoft Teams conversation`）が自動で残るのも、チーム開発だとかなり効くはずです。
 
 チャットに貼ったトレースバックから修正 PR が生える世界線、ぜひみなさんも体感してみてください！
+
+---
+
+## 📣 GitHub Copilot User Group Japan（Gh-CUG）のお知らせ
+
+ここまで読んでくれた方へ、ちょっとだけ宣伝させてください！
+
+私が運営に参加している **GitHub Copilot User Group Japan（Gh-CUG / ジーカグ）** は、「もっと世の中に GitHub Copilot を広げたい！」という思いから生まれたユーザーコミュニティです。
+
+モットーは **「なんでもは知らない、しってることだけ」**。完璧な知見もすごい実績もいりません。「こんなんできた！」「ここでつまずいた！」を持ち寄って、みんなでゆるく楽しく学ぶ場です。学生・初心者・ノンデベロッパーの方も大歓迎です！
+
+| シリーズ           | スタイル         | 雰囲気                   |
+| ------------------ | ---------------- | ------------------------ |
+| 🌙 ゆるよな Gh-CUG | オンライン（夜） | ゆるふわ。ふらっと参加OK |
+| 🔥 Gh-CUG Night    | オンライン       | 実践的な知見をがっつり   |
+| 🤝 Gh-CUG Meetup   | オフライン       | リアルでワイワイ交流     |
+
+今回のような「公式アップデートを実際に検証してみた」系の話や、Teams/Slack 連携の運用Tipsもコミュニティでよく話題にしているので、気になった方はぜひ覗いてみてください！
+
+🔗 **Connpass グループページ：** [GitHub Copilot User Group Japan](https://gh-cug.connpass.com/)
+
+### 🗓️ 直近イベント：ゆるよな Gh-CUG #06（明日開催！）
+
+**2026年9月29日（火）21:00〜22:30、オンライン（Teams）開催**です。
+
+👉 [申し込みはこちら（connpass）](https://gh-cug.connpass.com/event/406034/)
+
+なんとこの記事の内容を、**私自身が登壇してデモを交えて解説します**！「GitHub Copilot In Teamsを使ってみた！活用方法などを語りたい」という枠で、会話の流れで Issue や Pull Request 作成・コード修正を依頼する様子を実演予定です。
+
+他にも豪華なセッションが並んでいます：
+
+| 時間        | セッション                                                                                 | 登壇者         |
+| ----------- | ------------------------------------------------------------------------------------------ | -------------- |
+| 21:10-21:20 | 散らばった業務知識を GitHub Copilot Skill で Ontology で整理する                           | 竹川 智貴さん  |
+| 21:20-21:40 | 開発未経験者が GH-300 を受けた話 ＆ GitHub から始めるセキュリティガバナンス                | 山田さん       |
+| 21:45-22:05 | Spec Kit で切った Issue を GitHub Copilot cloud agent へ - VS Code から離れない開発環境 - | Shotaro Suzuki |
+| 22:05-22:25 | **GitHub Copilot In Teamsを使ってみた！活用方法などを語りたい（この記事の内容をデモ）**    | shahin（私）   |
+
+聞くだけ参加・カメラオフ・途中参加、全部OKです。気になった方はぜひふらっと遊びに来てください！
 
 ---
 
