@@ -9,7 +9,7 @@ tags:
   - canvas
   - GitHub
 private: false
-updated_at: '2026-10-23T15:50:22+09:00'
+updated_at: '2026-10-23T16:54:48+09:00'
 id: 81e6a6737b2254bdc6ed
 organization_url_name: mspjp
 slide: false
@@ -161,12 +161,6 @@ Canvases は **Copilot ハーネス** のセッション専用です。新しい
 生成されたファイルは、エクスプローラーではこんな見た目です。`extension.mjs` が Canvas の定義、`server.mjs` と `ui/` が画面、`store.mjs` が保存処理で、`board.test.mjs` はテストです。
 
 ![.github/extensions/qiita-article-board/ 配下に生成されたファイル構成](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/VSCode-canvas-article/images/demo-06-extension-files.png)
-
-:::note warn
-⚠️ **私の環境では、Canvas のタブとして開けませんでした。**
-私は VS Code を WSL（Remote）につないで使っていて、Canvas のメニューからは開けませんでした。公式ドキュメントでもリモートセッションは非対応なので、おそらくこれが原因です。
-今回は、拡張機能が `127.0.0.1` で立てたローカルサーバーの URL を、VS Code 内蔵のブラウザで開いて操作しています。エージェント側からのアクション呼び出しは普通に動いたので、「人とエージェントが同じボードを触る」流れは確認できました。デスクトップのローカルセッションなら、チャットの横にタブで開くはずです。
-:::
 
 ### Step 4: 人とエージェントで同じボードを触る
 

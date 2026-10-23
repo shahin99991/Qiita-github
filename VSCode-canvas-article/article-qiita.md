@@ -164,12 +164,6 @@ Canvases は **Copilot ハーネス** のセッション専用です。新しい
 
 ![.github/extensions/qiita-article-board/ 配下に生成されたファイル構成](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/VSCode-canvas-article/images/demo-06-extension-files.png)
 
-:::note warn
-⚠️ **私の環境では、Canvas のタブとして開けませんでした。**
-私は VS Code を WSL（Remote）につないで使っていて、Canvas のメニューからは開けませんでした。公式ドキュメントでもリモートセッションは非対応なので、おそらくこれが原因です。
-今回は、拡張機能が `127.0.0.1` で立てたローカルサーバーの URL を、VS Code 内蔵のブラウザで開いて操作しています。エージェント側からのアクション呼び出しは普通に動いたので、「人とエージェントが同じボードを触る」流れは確認できました。デスクトップのローカルセッションなら、チャットの横にタブで開くはずです。
-:::
-
 ### Step 4: 人とエージェントで同じボードを触る
 
 まず、自分の手でカードを追加・移動してみました。「ネタ」「執筆中」「公開済み」にそれぞれカードを置いて、プルダウンやドラッグで動かせます。
