@@ -160,6 +160,10 @@ Canvases は **Copilot ハーネス** のセッション専用です。新しい
 
 すると、エージェントが `.github/extensions/qiita-article-board/` に Canvas 拡張機能を作ってくれます。4列のカンバン画面と `get_board` / `add_card` / `move_card` の3アクションが入っていて、カードは同じフォルダの `artifacts/board.json` に保存される作りでした。拡張機能のリロードと、アクションが動くかの確認までやってくれたのは、地味に助かりました！
 
+生成されたファイルは、エクスプローラーではこんな見た目です。`extension.mjs` が Canvas の定義、`server.mjs` と `ui/` が画面、`store.mjs` が保存処理で、`board.test.mjs` はテストです。
+
+![.github/extensions/qiita-article-board/ 配下に生成されたファイル構成](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/VSCode-canvas-article/images/demo-06-extension-files.png)
+
 :::note warn
 ⚠️ **私の環境では、Canvas のタブとして開けませんでした。**
 私は VS Code を WSL（Remote）につないで使っていて、Canvas のメニューからは開けませんでした。公式ドキュメントでもリモートセッションは非対応なので、おそらくこれが原因です。
