@@ -1,17 +1,19 @@
 ---
-title: "GitHub Copilot Harness の追悼式場を Azure で作ってみた（300 人が同時に押しても数が欠けない構成）"
+title: GitHub Copilot Harness の追悼式場を Azure で作ってみた（300 人が同時に押しても数が欠けない構成）
 tags:
   - Azure
   - AzureFunctions
-  - GitHubPages
+  - GithubPages
   - Gemini
   - TableStorage
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-10-29T17:17:40+09:00'
+id: d56287063640f6140769
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
