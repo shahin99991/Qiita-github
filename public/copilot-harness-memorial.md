@@ -7,7 +7,7 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T20:45:07+09:00'
+updated_at: '2026-10-29T20:47:13+09:00'
 id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
@@ -15,6 +15,11 @@ ignorePublish: false
 posting_campaign_uuid: null
 agreed_posting_campaign_term: false
 ---
+
+:::note info
+追悼式場はこちら: https://wonderful-stone-0f390da0f.4.azurestaticapps.net/
+リポジトリ: https://github.com/srohoman-bot/GitHub-Copilot-Harness-
+:::
 
 ## はじめに
 
@@ -53,10 +58,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 
 ## 何を作ったか
 
-公開 URL はこちらです。リポジトリも置いてあります。
-
-- サイト: https://wonderful-stone-0f390da0f.4.azurestaticapps.net/
-- リポジトリ: https://github.com/srohoman-bot/GitHub-Copilot-Harness-
+サイトとリポジトリの URL は、記事の冒頭に載せています。
 
 リポジトリ名には、最初に作ったときの `Harness` が残っています。サイトの中身は SDK の追悼に直しています。最初は GitHub Pages で公開していたのですが、あとで Azure Static Web Apps に移しました（理由は後述）。旧 URL にアクセスすると新しい URL に飛びます。
 
