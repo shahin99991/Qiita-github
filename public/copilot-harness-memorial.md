@@ -7,7 +7,7 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T17:17:40+09:00'
+updated_at: '2026-10-29T17:54:03+09:00'
 id: d56287063640f6140769
 organization_url_name: mspjp
 slide: false
@@ -29,7 +29,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 
 でも「GitHub Copilot Harness」という名前はもう呼ばれなくなるので、ネタとして追悼式場を作ることにしました。ろうそくを灯せて、F を押せて、弔辞を書ける。しかも全員の数が合算されるサイトです。
 
-自分は「こういうものがほしい」と指示を出す係で、実装は VS Code の GitHub Copilot エージェントに任せました。この記事では、何をどう頼んで、どこでつまずいたかを書いていきます。
+この記事では、何を作って、どこでつまずいたかを書いていきます。
 
 :::note warn
 このサイトは非公式のファンメイドによるパロディです。GitHub および Microsoft とは関係ありません。
@@ -119,7 +119,7 @@ function applyLang(lang) {
 
 ### セキュリティは最初から入れた
 
-「セキュリティもしっかり」と頼んだので、次の 5 点を入れてもらいました。GitHub Pages では HTTP ヘッダーを自由に付けられないので、CSP は `<meta>` で指定しています。
+セキュリティは最初から入れる方針にして、次の 5 点を入れました。GitHub Pages では HTTP ヘッダーを自由に付けられないので、CSP は `<meta>` で指定しています。
 
 ```html
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://func-api-btxbrjzss7soa.azurewebsites.net; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
@@ -134,7 +134,7 @@ function applyLang(lang) {
 
 ## アイコンを Gemini で作る
 
-絵文字だと味気なかったので、「絵文字とかアイコンは Gemini API の最新モデルで作って」と頼みました。ドキュメントを見ると、2026 年 10 月時点で新規プロジェクトに勧められているのは Nano Banana 2.1 (`gemini-nano-banana-2.1`) でした。API は Interactions API です。
+絵文字だと味気なかったので、Gemini API の最新モデルでアイコンを作ることにしました。ドキュメントを見ると、2026 年 10 月時点で新規プロジェクトに勧められているのは Nano Banana 2.1 (`gemini-nano-banana-2.1`) でした。API は Interactions API です。
 
 生成スクリプトはこうなりました。キーは環境変数から読むだけで、コードにもリポジトリにも入れていません。
 
@@ -217,7 +217,7 @@ function queue(field, idx) {
 
 ### 荒らし対策は最小限にした
 
-弔辞は全員に公開されます。対策のレベルを聞かれたので、「URL と NG ワードを弾くだけ」にしました。
+弔辞は全員に公開されます。対策のレベルは「URL と NG ワードを弾くだけ」にしました。
 
 - URL、メールアドレス、電話番号の形、NG ワードを含む投稿は 422 で拒否
 - 同じ人の連投は IP ごとの回数制限で止める（IP は保存せず、メモリ上のハッシュだけ使う）
