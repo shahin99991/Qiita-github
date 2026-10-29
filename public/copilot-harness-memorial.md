@@ -7,7 +7,7 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: "2026-10-29T19:48:21+09:00"
+updated_at: '2026-10-29T20:44:22+09:00'
 id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
@@ -62,7 +62,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 
 ![サイトのトップ画面。雪の降る夜の墓地を背景に、墓石に GitHub Copilot SDK と刻まれ、下に「みんなの追悼（累計）」として参列者・ろうそく・お供え・F・香典・弔辞の数が並んでいる](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-01-site-top-swa.png)
 
-上の画像は、Static Web Apps に移したあとのトップ画面です。背景は Gemini で作った画像で、墨石の下に全員分の累計が出ています（数字は撕影時点のものです）。雪は Canvas で描いています。
+上の画像は、Static Web Apps に移したあとのトップ画面です。背景は Gemini で作った画像で、墓石の下に全員分の累計が出ています（数字は撮影時点のものです）。雪は Canvas で描いています。
 
 できることは次のとおりです。
 
