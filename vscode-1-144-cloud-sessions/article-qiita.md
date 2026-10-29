@@ -7,7 +7,7 @@ tags:
   - GitHub
   - 自動化
 private: false
-updated_at: '2026-10-29T15:27:45+09:00'
+updated_at: "2026-10-29T15:27:45+09:00"
 id: 26e401dc28c1ca60d8c7
 organization_url_name: mspjp
 slide: false
@@ -67,14 +67,14 @@ VS Code 1.144（2026/10/28）で、Agents ウィンドウから **Cloud セッ�
 
 **押さえておきたいポイント**
 
-| 項目                           | 内容                                                                                                          |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| Cloud セッションの始め方       | ✅ Agents ウィンドウで Environment を Cloud にしてリポジトリを選ぶ（`chat.agentHost.cloudSandbox.enabled`）   |
-| PC を閉じたあと                | ✅ 公式ドキュメントでは、Cloud の実行は手元のアプリに依存しない。続きは VS Code / Copilot CLI / github.com / GitHub Mobile から |
-| Cloud Automations              | ⚠️ Preview。private / internal リポジトリと write 権限が必要（`chat.automations.cloud.enabled` は既定でオン） |
-| 手元の未コミット変更           | ❌ クラウドには自動で渡らない（先に commit & push しておく）                                                  |
-| ローカルの MCP・拡張機能ツール | ❌ Cloud の作業環境には含まれない                                                                             |
-| Claude / Codex ハーネス        | ❌ Cloud セッションは Copilot ハーネスのみ                                                                    |
+| 項目                           | 内容                                                                                                                            |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| Cloud セッションの始め方       | ✅ Agents ウィンドウで Environment を Cloud にしてリポジトリを選ぶ（`chat.agentHost.cloudSandbox.enabled`）                     |
+| PC を閉じたあと                | ✅ VS Code を閉じても大丈夫だった（実機で確認）。続きは VS Code / Copilot CLI / github.com / GitHub Mobile から |
+| Cloud Automations              | ⚠️ Preview。private / internal リポジトリと write 権限が必要（`chat.automations.cloud.enabled` は既定でオン）                   |
+| 手元の未コミット変更           | ❌ クラウドには自動で渡らない（先に commit & push しておく）                                                                    |
+| ローカルの MCP・拡張機能ツール | ❌ Cloud の作業環境には含まれない                                                                                               |
+| Claude / Codex ハーネス        | ❌ Cloud セッションは Copilot ハーネスのみ                                                                                      |
 
 **対象**: VS Code 1.144 以降、有料の Copilot プラン（Cloud Automations は Pro / Pro+ / Max / Business / Enterprise）。組織で使う場合は管理者のポリシーも関係します。
 
@@ -137,7 +137,7 @@ VS Code の Agents ウィンドウ（Chat ビューからも可）で **Cloud** 
 VS Code のドキュメント（Run agent sessions in the cloud）には "Experimental" と書かれていて、GitHub の changelog には「有料プランでは GA」とあります。同じ日に出た情報なのに表記が違うので、記事執筆時点では「VS Code 側のUIは実験扱いの記述が残っている」くらいに受け止めておくのが無難だと思います。
 :::
 
-### 試してみた：リサーチを任せて、別のクライアントから続ける
+### 試してみた：リサーチを任せて、VS Code を閉じて、別のクライアントから続ける
 
 公式ドキュメントに「VS Code で始めて、Copilot CLI で続ける」チュートリアルがあったので、それに近い形で試しました。ファイルを編集しない読み取り専用のタスクにして、リスクを抑えています。
 
@@ -180,9 +180,9 @@ Agents ウィンドウで **New** を押し、環境のドロップダウンで 
 
 送信すると、サイドバーに雲のアイコン付きの新しいセッションが追加され、エージェントは「Auto routing task」→「Reasoning」と進んでリポジトリを調べ始めました。
 
-**手順4: 別の場所から同じセッションを開く**
+**手順4: VS Code を閉じて、別の場所から同じセッションを開く**
 
-セッションのタイトルをメモしておきます。ドキュメントでは、ここで VS Code を閉じてもクラウド側の実行は続くと説明されています。今回は、github.com の Copilot ページで同じセッションが開けるかを確かめました。ただし、VS Code を閉じている間も実際に進んでいたかどうかまでは、今回の画面からは確認できていません。
+セッションのタイトルをメモして、VS Code を閉じました。ドキュメントでは、閉じてもクラウド側の実行は続くと説明されています。実際にやってみても、閉じたことでセッションが壊れることはなく、github.com の Copilot ページで同じセッションを開けました。
 
 ![github.com の Copilot ページで、同じ Cloud セッションが Resuming と表示されている画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-04-github-com-session.png)
 
@@ -459,7 +459,7 @@ Cloud Automations と目的は近いのですが、置き場所が違います�
 
 実際に試して確認できたことをまとめると、次のとおりです。
 
-- Cloud セッションは、Agents ウィンドウで Cloud を選んで開始でき、github.com と Copilot CLI の一覧にも同じセッションが出た
+- Cloud セッションは、Agents ウィンドウで Cloud を選んで開始でき、VS Code を閉じても大丈夫だった。github.com と Copilot CLI の一覧にも同じセッションが出た
 - Manual の Automation（許可ツール 0）は、直近7日のマージ済み PR 3件を「6s」で要約し、ファイルは変更しなかった
 - Issue トリガーの Automation は、Issue #6 に対して「1m ago」のうちに聞き返しコメントを投稿した。ただし許可ツールは 26 個のままで絞り込めていなかった
 - 設定画面では `chat.agentHost.cloudSandbox.enabled` を見つけられなかったが、Cloud も Run in the Cloud も使えた
