@@ -3,11 +3,11 @@ title: GitHub Copilot SDK の追悼式場を Azure で作ってみた（300 人�
 tags:
   - Azure
   - AzureFunctions
-  - GithubPages
+  - AzureStaticWebApps
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T19:48:21+09:00'
+updated_at: "2026-10-29T19:48:21+09:00"
 id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
@@ -35,7 +35,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 ![記事全体の流れを示す解説イメージ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-00-tldr-overview.jpg)
 
 **何をした？**
-画面は GitHub Pages、数の共有は Azure Functions と Table Storage、アイコンは Gemini の画像モデルで作りました。デプロイは `azd` と Bicep です。
+画面は Azure Static Web Apps、数の共有は Azure Functions と Table Storage、アイコンは Gemini の画像モデルで作りました。デプロイは `azd` と Bicep で、画面も API も同じコマンドで配備しています。
 
 **試して分かったこと**
 
@@ -47,6 +47,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 | 同じテストを Azure 上で 1 回目に実行 | ⚠️ 300 件中 35 件が 404 |
 | 常時待機 1 台を足して 2 回目を実行 | ✅ 欠落なし（300/300） |
 | `azd up` を 1 発で通す | ⚠️ 公開の手前で失敗して `azd deploy` をやり直した |
+| GitHub Pages から Static Web Apps へ移す | ✅ HTTP ヘッダーで CSP を返せるようになった。`azd` には空の `package.json` が必要だった |
 
 **対象**: Azure Functions (Flex Consumption)、Node.js 24、Azure Table Storage、2026 年 10 月時点
 
@@ -54,14 +55,14 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 
 公開 URL はこちらです。リポジトリも置いてあります。
 
-- サイト: https://srohoman-bot.github.io/GitHub-Copilot-Harness-/
+- サイト: https://wonderful-stone-0f390da0f.4.azurestaticapps.net/
 - リポジトリ: https://github.com/srohoman-bot/GitHub-Copilot-Harness-
 
-リポジトリ名と URL には、最初に作ったときの `Harness` が残っています。サイトの中身は SDK の追悼に直しています。
+リポジトリ名には、最初に作ったときの `Harness` が残っています。サイトの中身は SDK の追悼に直しています。最初は GitHub Pages で公開していたのですが、あとで Azure Static Web Apps に移しました（理由は後述）。旧 URL にアクセスすると新しい URL に飛びます。
 
-![サイトのトップ画面。墓石に GitHub Copilot SDK と刻まれ、下に「みんなの追悼（累計）」として参列者・ろうそく・お供え・F・香典・弔辞の数が並んでいる](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-01-site-top-sdk.png)
+![サイトのトップ画面。雪の降る夜の墓地を背景に、墓石に GitHub Copilot SDK と刻まれ、下に「みんなの追悼（累計）」として参列者・ろうそく・お供え・F・香典・弔辞の数が並んでいる](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-01-site-top-swa.png)
 
-上の画像は、公開後のトップ画面です。背景は Gemini で作った画像で、墓石の下に全員分の累計が出ています（数字は撮影時点のものです）。
+上の画像は、Static Web Apps に移したあとのトップ画面です。背景は Gemini で作った画像で、墨石の下に全員分の累計が出ています（数字は撕影時点のものです）。雪は Canvas で描いています。
 
 できることは次のとおりです。
 
@@ -77,7 +78,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 
 ```mermaid
 flowchart LR
-  B[ブラウザ<br/>GitHub Pages] -->|5 秒ごとにまとめて POST| F[Azure Functions<br/>Flex Consumption / Node.js 24]
+  B[ブラウザ<br/>Azure Static Web Apps] -->|5 秒ごとにまとめて POST| F[Azure Functions<br/>Flex Consumption / Node.js 24]
   B -->|15 秒ごとに GET| F
   F -->|マネージド ID| T[(Table Storage<br/>counters / tributes)]
   F --> A[Application Insights]
@@ -85,7 +86,7 @@ flowchart LR
 
 | 部品 | 使ったもの | 選んだ理由 |
 | --- | --- | --- |
-| 画面 | GitHub Pages | 無料で置けて、リポジトリに push するだけ |
+| 画面 | Azure Static Web Apps (Free) | 無料で、HTTP ヘッダーを自分で決められる |
 | API | Azure Functions (Flex Consumption) | アクセスが増えたら自動で台数が増え、少ないときはほぼ課金されない |
 | データ | Table Storage | 安くて、数と短い文章を置くだけならこれで足りる |
 | 認証 | マネージド ID | 接続文字列やキーをどこにも置かずに済む |
@@ -116,7 +117,7 @@ function applyLang(lang) {
 
 ### セキュリティは最初から入れた
 
-セキュリティは最初から入れる方針にして、次の 5 点を入れました。GitHub Pages では HTTP ヘッダーを自由に付けられないので、CSP は `<meta>` で指定しています。
+セキュリティは最初から入れる方針にして、次の 4 点を入れました。CSP は、最初の GitHub Pages では HTTP ヘッダーを付けられないので `<meta>` で指定し、あとで Static Web Apps に移してからヘッダーでも返すようにしました（後述）。
 
 ```html
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://func-api-btxbrjzss7soa.azurewebsites.net; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
@@ -126,8 +127,64 @@ function applyLang(lang) {
 - ユーザーが入力した文字は、画面に出すときに `innerHTML` を一切使わず `textContent` だけで入れる
 - 入力から制御文字と、文字の並びを逆転させる文字（bidi 文字）を取り除き、長さの上限も付ける
 - 外部のスクリプトやフォントは読まない。通信先は自分の API だけ
-- iframe に埋め込まれたら表示を止める（`frame-ancestors` は meta では効かないので JS で判定）
 - 外部リンクには `rel="noopener noreferrer"` を付ける
+
+`<meta>` の CSP では `frame-ancestors` が効きません。最初は、iframe に埋め込まれたら JS で表示を止める形にしていました。この弱点をなくすために、あとで配信先を移しました。
+
+## GitHub Pages から Static Web Apps に移す
+
+公開したあとで、画面の配信先を Azure Static Web Apps (Free) に変えました。理由は 2 つです。
+
+- GitHub Pages はレスポンスヘッダーを設定できません。Static Web Apps なら `staticwebapp.config.json` で CSP（`frame-ancestors` を含む）や HSTS を返せます
+- 画面と API を、同じ Bicep と `azd` で管理できます
+
+```json:web/staticwebapp.config.json
+{
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://func-api-btxbrjzss7soa.azurewebsites.net; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "no-referrer",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+    "Cross-Origin-Opener-Policy": "same-origin"
+  }
+}
+```
+
+移したあとに `Invoke-WebRequest` でレスポンスを見て、`Content-Security-Policy`、`Strict-Transport-Security`、`Referrer-Policy`、`Permissions-Policy`、`Cross-Origin-Opener-Policy` が付いていることを確認しました。
+
+リポジトリの構成も変えました。画面のファイルを `web/` に集めて、`azure.yaml` にサービスを 1 つ足しています。
+
+```yaml:azure.yaml
+services:
+  web:
+    project: ./web
+    language: js
+    host: staticwebapp
+    dist: .
+  api:
+    project: ./api
+    language: js
+    host: function
+```
+
+Bicep には Static Web App を足しました。Function App の許可 Origin は、その既定のホスト名から作ります。
+
+```bicep:infra/resources.bicep
+resource web 'Microsoft.Web/staticSites@2023-12-01' = {
+  name: 'stapp-${token}'
+  location: location
+  tags: union(tags, { 'azd-service-name': 'web' })
+  sku: { name: 'Free', tier: 'Free' }
+  properties: {}
+}
+
+var allowedOrigins = join(filter(concat(['https://${web.properties.defaultHostname}'], split(extraOrigins, ',')), o => !empty(o)), ',')
+```
+
+これで CORS と、API 側の `ALLOWED_ORIGINS`（書き込みを受ける Origin）が、新しい URL に自動で揃います。
+
+旧 GitHub Pages は、ルートの `index.html` を「移転しました」というリダイレクトページに差し替えて、新しい URL に飛ばしています。
 
 ## アイコンを Gemini で作る
 
@@ -218,7 +275,7 @@ function queue(field, idx) {
 
 - URL、メールアドレス、電話番号の形、NG ワードを含む投稿は 422 で拒否
 - 同じ人の連投は IP ごとの回数制限で止める（IP は保存せず、メモリ上のハッシュだけ使う）
-- 書き込み系は、Origin が `https://srohoman-bot.github.io` のときだけ受け付ける
+- 書き込み系は、Origin が Static Web Apps の URL（Bicep が自動で設定）のときだけ受け付ける
 - 本文は 2 KB まで、`Content-Type` は JSON のみ
 - 自分の弔辞だけ、投稿時に返ってくる合言葉で削除できる（保存するのは SHA-256 だけ）
 
@@ -286,7 +343,9 @@ unable to find a resource tagged with 'azd-service-name: api'
 ## ハマりどころ
 
 - **公開前の確認用に localhost を許可した**: ブラウザで動作確認するために、API 側の許可 Origin に `http://localhost:8080` を足しました。確認後に外したので、そのあと localhost のページを開くと「○ オフライン」と出ます。想定どおりの動きです
-- **GitHub Pages が 404 のまま**: push しただけでは公開されず、Settings → Pages で Branch を `main` / `/ (root)` にして Save する必要がありました。GitHub CLI にログインしていなかったので、画面から行いました
+- **`azd deploy` が Static Web Apps で失敗した**: `web/` に `package.json` がないと `npm install` で止まりました。ビルドは要らないので、名前と `private` だけ書いた空の `package.json` を置くと通りました
+- **Static Web Apps のデプロイは時間がかかる**: 最後の「Verifying deployment」だけで 4 分程度かかりました。止まっているわけではありません
+- **URL を選べない**: Free プランの既定 URL はランダムな名前です。見やすい URL にしたい場合は独自ドメインを設定する必要があります
 - **テーブルを消して作り直す**: テスト中に増えた数字をゼロに戻したくて、テーブルを削除して Bicep で作り直しました。削除直後は同じ名前が使えないことがあるため、リトライ付きで実行しました
 - **`azd provision` は変更がないと何もしない**: テーブルを消したあとに `azd provision` を実行しても「No changes」でスキップされました。`az deployment sub create` を直接実行して解決しています
 

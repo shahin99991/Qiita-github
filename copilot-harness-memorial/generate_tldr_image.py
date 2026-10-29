@@ -24,10 +24,10 @@ MODEL = "gemini-nano-banana-2.1"
 ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
 OUTPUT = Path(__file__).parent / "Images" / "img-00-tldr-overview.jpg"
 PROMPT = """日本語の技術ブログ用 TL;DR 解説バナー画像を作成。16:9 横長、テキスト主役のインフォグラフィック。
-【テーマ】追悼サイト（GitHub Copilot Harness の追悼式場）を GitHub Pages と Azure Functions で作った
+【テーマ】追悼サイト（GitHub Copilot SDK の追悼式場）を Azure Static Web Apps と Azure Functions で作った
 【画像内に描画する日本語テキスト（正確に）】
 - 大見出し: 「追悼式場を Azure で作ってみた」
-- 左ボックス 見出し「画面（GitHub Pages）」 箇条書き「HTML / CSS / JS だけ」「日本語・英語の切り替え」「アイコンは Gemini で生成」
+- 左ボックス 見出し「画面（Static Web Apps）」 箇条書き「HTML / CSS / JS だけ」「日本語・英語の切り替え」「CSP をヘッダーで返す」
 - 中央ボックス 見出し「API（Azure Functions）」 箇条書き「5秒ごとにまとめて送信」「Node.js 24」「通信先はここだけ」
 - 右ボックス 見出し「データ（Table Storage）」 箇条書き「カウンターを32分割」「300人同時でも欠落なし」「弔辞は全員に公開」
 - ボックス同士を右向きの矢印でつなぐ
