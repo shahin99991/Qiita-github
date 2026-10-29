@@ -7,7 +7,7 @@ tags:
   - GitHub
   - 自動化
 private: false
-updated_at: "2026-10-29T15:27:45+09:00"
+updated_at: '2026-10-29T15:49:34+09:00'
 id: 26e401dc28c1ca60d8c7
 organization_url_name: mspjp
 slide: false
