@@ -48,13 +48,7 @@ Fusion の GA や画像生成、Computer Use など話題は多いんですが�
 - **Cloud セッション**: GitHub のクラウド上でエージェントを動かして、続きを別のクライアントから操作できる
 - **Cloud Automations（Preview）**: スケジュールや Issue / PR のイベントをきっかけに、クラウド上のエージェントが自動で起動する
 
-ただ、「閉じても動く」と言っても、何を閉じてよくて何を閉じてはいけないのかは、実行場所によって違います。この記事では、公式ドキュメントと GitHub の changelog、海外のニュース記事を読み込んで条件を整理したうえで、実際に両方の機能を試した流れをまとめます。
-
-- ✅ 「閉じても動く」の3パターンと、それぞれの条件
-- ✅ Cloud セッションの始め方と、別クライアントでの続け方
-- ✅ Cloud Automations の作り方（スケジュール / Issue トリガー）
-- ✅ 放置する前に確認したい権限・コスト・セキュリティ
-- ✅ Agentic Workflows との使い分け
+ただ、「閉じても動く」と言っても、何を閉じてよくて何を閉じてはいけないのかは、実行場所によって違います。この記事では、公式ドキュメントと GitHub の changelog、海外のニュース記事を読み込んで条件を整理したうえで、実際に両方の機能を試した流れをまとめます。後半では、放置する前に決めておきたい権限・コスト・セキュリティと、Agentic Workflows との使い分けも書いています。
 
 対象読者は、VS Code と GitHub Copilot のエージェント機能をすでに触っている方です。Cloud Automations は Preview なので、今後仕様が変わる可能性があります。
 
@@ -67,14 +61,14 @@ VS Code 1.144（2026/10/28）で、Agents ウィンドウから **Cloud セッ�
 
 **押さえておきたいポイント**
 
-| 項目                           | 内容                                                                                                                            |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| Cloud セッションの始め方       | ✅ Agents ウィンドウで Environment を Cloud にしてリポジトリを選ぶ（`chat.agentHost.cloudSandbox.enabled`）                     |
+| 項目                           | 内容                                                                                                            |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Cloud セッションの始め方       | ✅ Agents ウィンドウで Environment を Cloud にしてリポジトリを選ぶ（`chat.agentHost.cloudSandbox.enabled`）     |
 | PC を閉じたあと                | ✅ VS Code を閉じても大丈夫だった（実機で確認）。続きは VS Code / Copilot CLI / github.com / GitHub Mobile から |
-| Cloud Automations              | ⚠️ Preview。private / internal リポジトリと write 権限が必要（`chat.automations.cloud.enabled` は既定でオン）                   |
-| 手元の未コミット変更           | ❌ クラウドには自動で渡らない（先に commit & push しておく）                                                                    |
-| ローカルの MCP・拡張機能ツール | ❌ Cloud の作業環境には含まれない                                                                                               |
-| Claude / Codex ハーネス        | ❌ Cloud セッションは Copilot ハーネスのみ                                                                                      |
+| Cloud Automations              | ⚠️ Preview。private / internal リポジトリと write 権限が必要（`chat.automations.cloud.enabled` は既定でオン）   |
+| 手元の未コミット変更           | ❌ クラウドには自動で渡らない（先に commit & push しておく）                                                    |
+| ローカルの MCP・拡張機能ツール | ❌ Cloud の作業環境には含まれない                                                                               |
+| Claude / Codex ハーネス        | ❌ Cloud セッションは Copilot ハーネスのみ                                                                      |
 
 **対象**: VS Code 1.144 以降、有料の Copilot プラン（Cloud Automations は Pro / Pro+ / Max / Business / Enterprise）。組織で使う場合は管理者のポリシーも関係します。
 
@@ -163,7 +157,7 @@ Agents ウィンドウで **New** を押し、環境のドロップダウンで 
 
 ![環境のドロップダウンに This Computer / Cloud / GitHub Environments / Dev Tunnels / WSL / SSH が並んでいる画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-02-env-picker-cloud.png)
 
-ドロップダウンには、This Computer・Cloud・GitHub Environments...・Dev Tunnels...・WSL...・SSH...・Manage Remote Environments... が並びます。冒頭で整理した「実行場所」が、ここでそのまま選べるわけです。
+ドロップダウンには、This Computer・Cloud・GitHub Environments...・Dev Tunnels...・WSL...・SSH...・Manage Remote Environments... が並びます。冒頭で整理した実行場所を、ここで選べます。
 
 **手順3: 読み取り専用のタスクを投げる**
 
@@ -197,18 +191,17 @@ github.com の Copilot ページの Sessions 一覧に、VS Code で始めたの
 まだ実装はしないで。
 ```
 
-公式ドキュメントのチュートリアルでは、このあとのような追加の指示で、前の会話の内容をコピペせずに続きを頼めると説明されています。このセッション引き継ぎが、今回の一番の見どころだと思います。
+公式ドキュメントのチュートリアルでは、このような追加の指示なら、前の会話の内容をコピペせずに続きを頼めると説明されています。
 
 ![Copilot CLI の /sessions 画面。Location が Cloud の行が Cloud セッション](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-05-cli-sessions-remote.png)
 
 私の画面では Source が `All` のままで、手元の Local セッション（`~\Desktop\Test-Repo`）と、Location が **Cloud** のセッションが同じ一覧に並んでいました。Cloud の行を見つけて選ぶ、という流れです。
 
 :::note info
-💡 私の Copilot CLI の設定ファイル（settings.json）には `"remoteSessions": true` が入っていました。この記事で確認できたのは、Cloud のセッションが CLI の一覧に出るところまでです。続きの会話で「2つ目」を正しく特定できたかは、試していません。
-
-:::note info
 💡 私の Copilot CLI の設定ファイル（settings.json）には `"remoteSessions": true` が入っていました。これが必須の設定かどうかは確認できていません。
 :::
+
+この記事で確認できたのは、Cloud のセッションが CLI の一覧に出るところまでです。続きの会話で「2つ目」を正しく特定できたかは、試していません。
 
 ## Cloud Automations（Preview）：保存したプロンプトをクラウドが勝手に回す
 
@@ -282,7 +275,7 @@ Name と Prompt を入れて、**Run in the Cloud** をオンにします。対�
 
 **手順3: 1回実行して、履歴から結果を見る**
 
-Manual の Automation には **Run now** が出ます。実行すると、履歴（History）に queued → running → completed / failed と状態が出て、実行を選ぶと Agents ウィンドウでそのセッションが開きます。
+Manual の Automation には **Run now** が出ます。実行すると履歴（History）に状態が出て、実行を選ぶと Agents ウィンドウでそのセッションが開きます（ドキュメントでは queued → running → completed / failed）。
 
 ![Run now で実行した Cloud Automation の履歴とステータス表示](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-08-run-history.png)
 
@@ -290,7 +283,7 @@ Manual の Automation には **Run now** が出ます。実行すると、履歴
 
 ![完了した実行の結果。直近7日間にマージされた PR 3件がメンテナンスに分類されている](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-08b-run-result.png)
 
-「Completed 3 steps in 6s」と出て、結果は次のとおりでした。デモ用リポジトリに事前にマージしておいた PR 3件を、ちゃんと拾っています。
+「Completed 3 steps in 6s」と出て、結果は次のとおりでした。デモ用リポジトリに事前にマージしておいた PR 3件を拾えていました。
 
 - 直近7日間（2026-10-22 以降）にマージされた PR は 3 件で、すべて「メンテナンス」に分類（#3〜#5）
 - 「機能追加」「修正」は「なし」
@@ -308,9 +301,9 @@ Manual の Automation には **Run now** が出ます。実行すると、履歴
 
 これは、後で話す「イベントの送り主を絞る」と同じ、プロンプトインジェクション対策の一つに見えます。
 
-**手順4: Weekly にして VS Code を閉じる**
+**手順4: Weekly にする**
 
-出力に問題がなければ、Automation の名前を選んで Trigger を **Weekly** に変更して保存します。クラウドのスケジュールは GitHub 側で動くので、Agents ウィンドウを閉じても PC の電源を切っても止まりません。時刻は UTC 保存なので、夏時間などで UTC オフセットが変わる環境では保存された時刻を見直してください。
+出力に問題がなければ、Automation の名前を選んで Trigger を **Weekly** に変更して保存します。ドキュメントによると、クラウドのスケジュールは GitHub 側で動くので、Agents ウィンドウを閉じても PC の電源を切っても止まりません。今回は日曜の実行まで待てていないので、実際に動いたところは確認できていません。時刻は UTC 保存なので、夏時間などで UTC オフセットが変わる環境では保存された時刻を見直してください。
 
 ![Trigger を Weekly にした編集画面。Time (Local) と Day of week を選べる](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-08c-weekly-trigger.png)
 
@@ -338,7 +331,7 @@ Trigger を **Issue** にして、Event に **Issue created** を選びます。
 
 コメントを返す必要があるので、理想はそのためのツールだけを許可することです。Issue のクローズやラベル変更まで通る状態にしない、という最小権限の考え方です。
 
-ただし私のフォームでは、Tools が `26 tools allowed` のままでした（Manual のときは `0 tools allowed`）。絞り込みはしていません。今回はプロンプトで「ラベルや担当者は変更しないで」と書いて、実際に変更されなかったことを結果で確認しましたが、本番で使うなら、ここを絞ってから保存するのが安全です。
+ただし私のフォームでは、Tools が `26 tools allowed` のままでした（Manual のときは `0 tools allowed`）。絞り込みはしていません。今回はプロンプトで「ラベルや担当者は変更しないで」と書き、実際に変更されなかったことを結果で確認しました。でも本番で使うなら、ここを絞ってから保存します。
 
 ![Issue トリガーを設定した Cloud Automation の編集画面。Event は Issue created、Issue query は label:automation-test](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-09-event-trigger-issue.png)
 
@@ -348,7 +341,7 @@ Trigger を **Issue** にして、Event に **Issue created** を選びます。
 
 別のアカウントは用意せず、自分のアカウントでテスト用の Issue を立てました。イベントトリガーの Automation には Run now が出ないので、実際に Issue を立てて発火させるしかありません。起動した実行は、Agents ウィンドウの履歴と GitHub 側の両方で見られます。
 
-立てたのは、タイトル「在庫を登録すると動かない」、本文が「動きません。」だけ、ラベル `automation-test` 付きの Issue です（#6）。ツールは絞っていない状態で試しています。
+立てたのは、タイトル「在庫を登録すると動かない」、本文が「動きません。」だけ、ラベル `automation-test` 付きの Issue です（#6）。
 
 ![テスト用 Issue #6 に、再現手順・期待する動作・実際の動作を聞くコメントが付いた GitHub の画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-10-result-github.png)
 
@@ -409,7 +402,7 @@ Cloud Automations と目的は近いのですが、置き場所が違います�
 | 変更履歴・レビュー | Shared は変更履歴あり。PR レビューは通らない | 通常のコードと同じく PR でレビュー                   |
 | 実行基盤           | Copilot cloud agent                          | GitHub Actions（既存のランナー・ポリシーを再利用）   |
 
-私の整理としては、**個人の定型作業や、まず試してみたい業務は Cloud Automations、チームの標準フローとして残したいものは Agentic Workflows** あたりから入るのが良さそうです。このあたりは、運用してみてまた書きたいと思います。
+私の整理としては、**個人の定型作業や、まず試してみたい業務は Cloud Automations、チームの標準フローとして残したいものは Agentic Workflows** から入るのが良さそうです。Agentic Workflows はこの記事では試せていないので、運用してみてまた書きます。
 
 ## 海外ではどう見られている？
 
@@ -464,7 +457,7 @@ Cloud Automations と目的は近いのですが、置き場所が違います�
 - Issue トリガーの Automation は、Issue #6 に対して「1m ago」のうちに聞き返しコメントを投稿した。ただし許可ツールは 26 個のままで絞り込めていなかった
 - 設定画面では `chat.agentHost.cloudSandbox.enabled` を見つけられなかったが、Cloud も Run in the Cloud も使えた
 
-個人的には、「ノート PC を閉じたあとも同じ会話が生きていて、帰りの電車でスマホから続きを指示できる」のが、1.144 でいちばん未来感のある変化でした。Cloud サンドボックスの課金は11月から始まるので、気になる方は早めに自分のプランの含まれる枠を確認しておくと良さそうです。Preview の Automations は今後も動きがありそうなので、また検証して記事にします！
+VS Code を閉じたあとも同じセッションが残っていて、別のクライアントから開けた。これが 1.144 でいちばん印象に残った変化でした。Cloud サンドボックスの課金は11月から始まるので、気になる方は自分のプランに含まれる枠を先に確認しておくと良さそうです。Preview の Automations は今後も動きがありそうなので、また検証して記事にします！
 
 ---
 
