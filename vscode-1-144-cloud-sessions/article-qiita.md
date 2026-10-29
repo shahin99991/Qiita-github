@@ -269,7 +269,7 @@ Name と Prompt を入れて、**Run in the Cloud** をオンにします。対�
 ファイルは変更しないで。
 ```
 
-許可ツールは、この用途ならいらないので **何も許可しません**。実際のフォームでも Tools は `0 tools allowed` でした。1.144 の謝辞欄を見ると、「新しい Cloud Automation は許可ツールなしを既定にする」という PR（#342481）が入っていて、最小権限から始まる方向のようです。
+許可ツールは、この用途ならいらないので **何も許可しません**。実際のフォームでも Tools は `0 tools allowed` でした。
 
 ![Cloud Automation の作成フォームに、Run in the Cloud・プロンプト・Trigger・許可ツールを入れた画面](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-cloud-sessions/images/demo-07-create-cloud-automation.png)
 
@@ -378,7 +378,7 @@ GitHub ツールは、その Automation のリポジトリ内でしか動きま�
 既定では、write 権限を持たない人が起こしたイベントは無視されます。外部のコントリビューターが Issue を立てて、そこに書かれた文言でエージェントを動かす（プロンプトインジェクション）のを避けるためです。Trigger activity の「Include activity from users without write access」をオンにするときは、よく考えてからにします。私のリポジトリでは、このチェックボックスがリポジトリ設定で無効化されていて、オンにできませんでした。
 
 **3. コストに上限をつける**
-実行のたびに、Copilot cloud agent のセッションが起動して AI クレジットと GitHub Actions の分数を使います。頻繁なトリガーは地味に効くので、1回あたり（最小 30 クレジット）と日 / 週 / 月の上限を最初から入れておくのが安全です。
+実行のたびに、Copilot cloud agent のセッションが起動して AI クレジットと GitHub Actions の分数を使います。トリガーが頻繁だと実行が重なって消費が増えるので、1回あたり（最小 30 クレジット）と日 / 週 / 月の上限を最初から入れておくのが安全です。
 
 **4. 実行ログは見える前提にする**
 Personal の Automation でも、実行セッションとログはリポジトリを読める人に見えます。プロンプトに秘密情報を書かないでください。使いたい値は、リポジトリで設定できる secrets / variables を使います。
