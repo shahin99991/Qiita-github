@@ -7,7 +7,7 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T20:57:52+09:00'
+updated_at: '2026-10-29T20:59:24+09:00'
 id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
@@ -215,6 +215,8 @@ const res = await fetch('https://generativelanguage.googleapis.com/v1beta/intera
 - **PNG が指定できない**: `mime_type` に `image/png` を入れたら 400 が返り、`image/jpeg` しか対応していないというメッセージでした。この記事の TL;DR 画像も JPEG です
 
 背景が透過にならないので、アイコンは角丸のタイルとして並べました。
+
+なお、GitHub Copilot でも画像が作れるようになったようです。今回は Gemini で作りましたが、Copilot での画像生成は別で検証して、記事にしたいと思います。
 
 ## 数を全員で共有する
 
