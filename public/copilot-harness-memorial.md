@@ -1,5 +1,5 @@
 ---
-title: GitHub Copilot Harness の追悼式場を Azure で作ってみた（300 人が同時に押しても数が欠けない構成）
+title: GitHub Copilot SDK の追悼式場を Azure で作ってみた（300 人が同時に押しても数が欠けない構成）
 tags:
   - Azure
   - AzureFunctions
@@ -7,8 +7,8 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T17:54:03+09:00'
-id: d56287063640f6140769
+updated_at: '2026-10-29T19:20:46+09:00'
+id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
@@ -25,9 +25,9 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 間違っている箇所や「ここが分かりにくかった」という指摘は、やさしくコメントいただけると助かります！
 :::
 
-先日、Microsoft Copilot Blog で「The GitHub Copilot harness is now the Microsoft Copilot harness」という記事が出ました。名前が GitHub から Microsoft に変わったという話です。製品が消えたわけではなく、変わったのは名前だけ。
+先日、GitHub の Changelog で「GitHub Copilot SDK is becoming Microsoft Copilot SDK」という発表が出ました。GitHub Copilot SDK が Microsoft Copilot SDK に変わっていくという話です。Changelog によると、既存ユーザーに今すぐの変更は必要なく、パッケージ名や名前空間は段階的に移行していきます。製品が消えたわけではなく、変わるのは名前です。
 
-でも「GitHub Copilot Harness」という名前はもう呼ばれなくなるので、ネタとして追悼式場を作ることにしました。ろうそくを灯せて、F を押せて、弔辞を書ける。しかも全員の数が合算されるサイトです。
+でも「GitHub Copilot SDK」という名前は、これからだんだん呼ばれなくなっていきます。そこで、ネタとして追悼式場を作ることにしました。ろうそくを灯せて、F を押せて、弔辞を書ける。しかも全員の数が合算されるサイトです。
 
 この記事では、何を作って、どこでつまずいたかを書いていきます。
 
@@ -35,7 +35,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 このサイトは非公式のファンメイドによるパロディです。GitHub および Microsoft とは関係ありません。
 :::
 
-## TL;DR（ここだけ読めばOK）
+## TL;DR
 
 ![記事全体の流れを示す解説イメージ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-00-tldr-overview.jpg)
 
@@ -62,7 +62,9 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 - サイト: https://srohoman-bot.github.io/GitHub-Copilot-Harness-/
 - リポジトリ: https://github.com/srohoman-bot/GitHub-Copilot-Harness-
 
-![サイトのトップ画面。墓石の下に「みんなの追悼（累計）」として参列者・ろうそく・お供え・F・香典・弔辞の数が並び、「ライブ更新中」と表示されている](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-01-site-top.png)
+リポジトリ名と URL には、最初に作ったときの `Harness` が残っています。サイトの中身は SDK の追悼に直しています。
+
+![サイトのトップ画面。墓石に GitHub Copilot SDK と刻まれ、下に「みんなの追悼（累計）」として参列者・ろうそく・お供え・F・香典・弔辞の数が並んでいる](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-01-site-top-sdk.png)
 
 上の画像は、公開後のトップ画面です。背景は Gemini で作った画像で、墓石の下に全員分の累計が出ています（数字は撮影時点のものです）。
 
@@ -303,7 +305,7 @@ unable to find a resource tagged with 'azd-service-name: api'
 
 ## 参考
 
-- [Microsoft Copilot Blog](https://www.microsoft.com/en-us/copilot/blog/)
+- [GitHub Copilot SDK is becoming Microsoft Copilot SDK - GitHub Changelog](https://github.blog/changelog/2026-10-28-github-copilot-sdk-is-becoming-microsoft-copilot-sdk)
 - [Nano Banana image generation - Gemini API](https://ai.google.dev/gemini-api/docs/image-generation)
 - [Interactions API - Gemini API](https://ai.google.dev/gemini-api/docs/interactions-overview)
 - [Azure Functions の Flex Consumption プラン](https://learn.microsoft.com/azure/azure-functions/flex-consumption-plan)
