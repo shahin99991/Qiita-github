@@ -22,7 +22,7 @@ _load_env()
 
 MODEL = "gemini-nano-banana-2.1"
 ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
-OUTPUT = Path(__file__).parent / "Images" / "img-00-tldr-overview.jpg"
+OUTPUT = Path(__file__).parent / "Images" / "img-00-tldr-overview-swa.jpg"
 PROMPT = """日本語の技術ブログ用 TL;DR 解説バナー画像を作成。16:9 横長、テキスト主役のインフォグラフィック。
 【テーマ】追悼サイト（GitHub Copilot SDK の追悼式場）を Azure Static Web Apps と Azure Functions で作った
 【画像内に描画する日本語テキスト（正確に）】

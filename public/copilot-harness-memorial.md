@@ -7,7 +7,7 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T20:44:22+09:00'
+updated_at: '2026-10-29T20:45:07+09:00'
 id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
@@ -32,7 +32,7 @@ GitHub Copilot を毎日なにかしら触っているShahinです！
 
 ## TL;DR
 
-![記事全体の流れを示す解説イメージ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-00-tldr-overview.jpg)
+![記事全体の流れを示す解説イメージ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/copilot-harness-memorial/Images/img-00-tldr-overview-swa.jpg)
 
 **何をした？**
 画面は Azure Static Web Apps、数の共有は Azure Functions と Table Storage、アイコンは Gemini の画像モデルで作りました。デプロイは `azd` と Bicep で、画面も API も同じコマンドで配備しています。
