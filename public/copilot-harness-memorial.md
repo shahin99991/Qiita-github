@@ -7,7 +7,7 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T19:20:46+09:00'
+updated_at: '2026-10-29T19:48:21+09:00'
 id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
@@ -19,11 +19,6 @@ agreed_posting_campaign_term: false
 ## はじめに
 
 GitHub Copilot を毎日なにかしら触っているShahinです！
-
-:::note
-この記事が少しでも参考になったら、**ぜひいいね・共有**をお願いします。
-間違っている箇所や「ここが分かりにくかった」という指摘は、やさしくコメントいただけると助かります！
-:::
 
 先日、GitHub の Changelog で「GitHub Copilot SDK is becoming Microsoft Copilot SDK」という発表が出ました。GitHub Copilot SDK が Microsoft Copilot SDK に変わっていくという話です。Changelog によると、既存ユーザーに今すぐの変更は必要なく、パッケージ名や名前空間は段階的に移行していきます。製品が消えたわけではなく、変わるのは名前です。
 
