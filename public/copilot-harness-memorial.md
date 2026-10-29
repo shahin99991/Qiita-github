@@ -7,7 +7,7 @@ tags:
   - Gemini
   - TableStorage
 private: false
-updated_at: '2026-10-29T20:47:13+09:00'
+updated_at: '2026-10-29T20:57:52+09:00'
 id: d337af6f1b64a9c6ae53
 organization_url_name: mspjp
 slide: false
@@ -222,7 +222,7 @@ const res = await fetch('https://generativelanguage.googleapis.com/v1beta/intera
 
 ### 要件
 
-「何百人が押しても大丈夫」にしてほしい、というのが条件でした。そこで、同時に 300 人が押しても 1 件も欠けないことを目標にしました。
+何百人が押しても大丈夫なようにしたいと思ったので、同時に 300 人が押しても 1 件も欠けないことを目標にしました。
 
 ### カウンターを 32 個に分ける
 
