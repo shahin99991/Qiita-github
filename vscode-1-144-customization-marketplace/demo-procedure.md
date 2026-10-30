@@ -70,7 +70,7 @@
 | `demo-08-connector-in-chat.png`     | つなぐ：手順4                    | チャットで Work IQ をテストした画面（マスク済み）     |
 | `demo-09-slash-plugin.png`          | 整える：スラッシュコマンド       | `/plugin` のサブコマンド補完                          |
 | `demo-09b-plugin-list.png`          | 整える：スラッシュコマンド       | `/plugin list` の結果                                 |
-| `demo-09c-slash-fuzzy.png`          | 整える：スラッシュコマンド       | あいまい一致の補完                                    |
+| `demo-09c-slash-fuzzy.png`          | 整える：スラッシュコマンド       | Local セッションで `/plugin` を入力（サブコマンドが出ない） |
 | `demo-10a-agent-empty.png`          | 整える：カスタムエージェント編集 | 値が空の `model` / `tools` / `skills`                 |
 | `demo-10-agent-completion.png`      | 整える：カスタムエージェント編集 | `model` のインライン提案                              |
 | `demo-10b-skills-suggestion.png`    | 整える：カスタムエージェント編集 | `skills` のインライン提案                             |

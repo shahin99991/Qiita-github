@@ -9,7 +9,7 @@ tags:
   - AIエージェント
   - GitHub
 private: false
-updated_at: '2026-10-30T16:12:34+09:00'
+updated_at: '2026-10-30T16:24:28+09:00'
 id: 12a7dd1fd077fd6169fa
 organization_url_name: mspjp
 slide: false
@@ -322,9 +322,9 @@ Copilot ハーネスのセッションでは、画面を開かなくても、チ
 
 ![/plugin list の実行結果。Installed plugins として azure@awesome-copilot が表示されている](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-customization-marketplace/images/demo-09b-plugin-list.png)
 
-サブコマンドを付けずに入力の途中だと、`/plugins`（**Manage plugins**）のほか、自分のプロンプトファイル（`/LambdaMigration-...` のようなもの）もあいまい一致で候補に混ざります。補完は、ファイル名の一部でも拾ってくれる動きです。
+一方、**Local セッション**で同じように `/plugin` と入力すると、サブコマンドの候補は出ませんでした。出たのは `/plugins`（**Manage plugins**）と、自分のプロンプトファイル（`/LambdaMigration-...` のようなもの）のあいまい一致だけです。`/plugin install` などのサブコマンドは、ドキュメントの記述どおり Copilot ハーネスのセッションで使うもののようです。`/plugin` の補完が出ないときは、まずどのセッションを開いているかを確認してください。
 
-![/plugin と入力した途中の補完。/plugins（Manage plugins）と、あいまい一致したプロンプトファイルの候補が並んでいる](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-customization-marketplace/images/demo-09c-slash-fuzzy.png)
+![Local セッションで /plugin と入力した画面。サブコマンドは出ず、/plugins（Manage plugins）とあいまい一致したプロンプトファイルの候補だけが並んでいる](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/vscode-1-144-customization-marketplace/images/demo-09c-slash-fuzzy.png)
 
 ### カスタムエージェントの編集が賢くなった
 
