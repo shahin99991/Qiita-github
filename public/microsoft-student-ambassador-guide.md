@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-03T01:45:12+09:00'
+updated_at: '2026-11-03T01:48:34+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false
@@ -192,6 +192,8 @@ Learn のプランは、Influencer の優先訪問者数には**カウントさ�
 
 ## 最後に、MSAになった後は
 
+<details><summary>クリックで展開：Associate・Seniorの条件と、続けるための要件</summary>
+
 MSAになったあとは、イベントを開催すれば Associate、貢献を続ければ Senior を目指せます。必要な条件と、続けるための要件をまとめておきます。
 
 ### Associate と Senior の条件
@@ -224,6 +226,8 @@ Student Ambassador になったあとは、**3か月ごと**に次の2つを満�
 両方を満たすと、5,000 Microsoft Rewards ポイントももらえます。満たせなかった四半期は、メンバーシップが延長されません。
 
 なお、優先訪問者は非公開の指標で、細かい算出条件は公開されていません。ハンドブックには、リンクを送りつけるのではなく、興味に合った内容を共有して、読者が自然に増えるのが理想と書かれていました。
+
+</details>
 
 これらのステップアップの手順などは、メールやDiscordにあるハンドブックで確認できるので、ぜひご確認ください。
 
