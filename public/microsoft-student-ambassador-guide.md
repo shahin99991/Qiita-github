@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-03T01:42:21+09:00'
+updated_at: '2026-11-03T01:45:12+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false
@@ -28,14 +28,6 @@ Swagsは、マイルストーンごとにもらえるものが変わります。
 ## Microsoft Student Ambassadors とは
 
 Microsoft Student Ambassadors（以下、MSA）は、Microsoft の技術を学びながら、イベントやSNSで他の学生にも広げていく**学生向けのグローバルコミュニティ**です。
-
-## この記事を書いた経緯
-
-私は最近、Associate に昇格しました。次は Senior を目指して、イベントの開催や、これから登録する人のサポートにもっと力を入れていきたいと思っています。
-
-ただ、正直なところ、**いま日本で学生アンバサダーとして動いているのは自分だけ**です。運営に加わるにはMicrosoft Student Ambassadorである必要があるので、もっと日本の学生にMSAを知ってもらいたいし、なる人を増やしたい。そのためには、まず「どうやってなるのか」が分かりやすく伝わっている必要があると考えました。
-
-そこで、自分が登録したときの画面を残しておいたので、順番に並べてまとめることにしました。
 
 ## MSAになる利点
 
