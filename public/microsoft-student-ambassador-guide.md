@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-02T17:22:11+09:00'
+updated_at: '2026-11-02T17:54:35+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false
@@ -101,7 +101,7 @@ MSAと聞くと、審査が厳しそう、実績がないと無理そう、と�
 | 段階               | 主な特典                                                                                                                                                 |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 登録メンバー       | DiscordのMicrosoft学生コミュニティ（任意）、学習リソースやガイダンス                                                                                     |
-| Student Ambassador | Microsoft 365、Visual Studio Enterprise、**毎月150ドル分のAzureクレジット**、年1回のCredlyバッジ、Teams（Microsoft 社員やMVPとつながれる）、認定証 |
+| Student Ambassador | Microsoft 365、Visual Studio Enterprise、**毎月150ドル分のAzureクレジット**、年1回のCredlyバッジ、認定証、**Teamsでの交流**（Microsoft社員やMVPともつながれる）、**月に数回のミーティング（コミュニティコールなど）や情報共有**、招待制の「Insider calls」（Microsoft社員や業界の方から学べる）に参加できる場合もある |
 | Associate          | 上に加えて、Associate用スワッグ、Microsoft認定試験のバウチャーを得られる機会、イベントの資料や宣伝素材の支援、プレリリース版のテスト参加                 |
 | Senior             | 上に加えて、Seniorスワッグ、特別イベントに呼ばれる機会、卒業時のMVP推薦の検討                                                                            |
 
