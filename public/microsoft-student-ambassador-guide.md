@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-02T17:10:11+09:00'
+updated_at: '2026-11-02T17:17:38+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false
@@ -260,6 +260,8 @@ Learn のプランは、Influencer の優先訪問者数には**カウントさ�
 なり方について質問等があれば、**Xの [@_mspjp](https://x.com/_mspjp) まで**お気軽にどうぞ。
 
 そして、すでにMicrosoft Student Ambassadorになった方は、日本のコミュニティで一緒に活動していきたいので、**Xのアカウント（[@_mspjp](https://x.com/_mspjp)）まで連絡をください！**
+
+もしくは、個人DMでも質問や相談を受け付けています。気軽にDMしてください！（[@code_shahin](https://x.com/code_shahin)）
 
 ## 参考
 

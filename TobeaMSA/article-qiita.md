@@ -257,6 +257,8 @@ Learn のプランは、Influencer の優先訪問者数には**カウントさ�
 
 そして、すでにMicrosoft Student Ambassadorになった方は、日本のコミュニティで一緒に活動していきたいので、**Xのアカウント（[@_mspjp](https://x.com/_mspjp)）まで連絡をください！**
 
+もしくは、個人DMでも質問や相談を受け付けています。気軽にDMしてください！（[@code_shahin](https://x.com/code_shahin)）
+
 ## 参考
 
 - [Microsoft Student Ambassadors（公式）](https://mvp.microsoft.com/studentambassadors)
