@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-02T17:54:35+09:00'
+updated_at: '2026-11-02T20:43:39+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false
@@ -195,7 +195,7 @@ Student Ambassador になる方法は、**共通の条件を満たしたうえ�
 上の目標は、登録メンバーが Student Ambassador になるためのものです。なったあとの四半期ごとの要件（優先訪問者50人＋イベント1回）とは別なので、混ざらないように注意してください。
 :::
 
-どちらの場合も、次に届くメールに**コントリビューターID**が書かれています。このIDを使って活動していきます。
+どちらの場合も、登録の**翌日**に届くメールに**コントリビューターID**が書かれています。このIDを使って活動していきます。
 
 ![登録手続きの開始を促すメール。コントリビューターIDは赤で隠している](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/TobeaMSA/Images/img-11-contributor-id.png)
 
