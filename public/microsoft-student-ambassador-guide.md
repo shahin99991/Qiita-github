@@ -1,5 +1,5 @@
 ---
-title: Microsoft Student Ambassadors のなり方を画面つきで解説！
+title: Microsoft Student Ambassadorsとは？ なり方を画面つきで解説！
 tags:
   - MicrosoftStudentAmbassadors
   - Microsoft
@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-03T01:10:13+09:00'
+updated_at: '2026-11-03T01:17:07+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false

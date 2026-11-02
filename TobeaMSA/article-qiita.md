@@ -1,5 +1,5 @@
 ---
-title: Microsoft Student Ambassadors のなり方を画面つきで解説！
+title: Microsoft Student Ambassadorsとは？ なり方を画面つきで解説！
 tags:
   - MicrosoftStudentAmbassadors
   - Microsoft
