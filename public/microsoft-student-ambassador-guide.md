@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-03T01:00:53+09:00'
+updated_at: '2026-11-03T01:10:13+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false
@@ -28,8 +28,6 @@ Swagsは、マイルストーンごとにもらえるものが変わります。
 ## Microsoft Student Ambassadors とは
 
 Microsoft Student Ambassadors（以下、MSA）は、Microsoft の技術を学びながら、イベントやSNSで他の学生にも広げていく**学生向けのグローバルコミュニティ**です。
-
-![MSAになるまでの4ステップを示した解説イメージ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/TobeaMSA/Images/img-00-tldr-overview.png)
 
 ### ランク（マイルストーン）は3段階＋登録メンバー
 
@@ -83,6 +81,8 @@ MSAと聞くと、審査が厳しそう、実績がないと無理そう、と�
 :::
 
 全体の流れは次の4ステップです。
+
+![MSAになるまでの4ステップを示した解説イメージ](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/TobeaMSA/Images/img-00-tldr-overview.png)
 
 1. 公式サイトから登録する
 2. 2つのパスから選んで活動する（Discordは任意）
