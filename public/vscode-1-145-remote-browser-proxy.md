@@ -1,5 +1,7 @@
 ---
-title: リモートのエージェントが起動した dev server を手元でプレビュー：VS Code 1.145 の Remote browser proxy を試した
+title: >-
+  リモートのエージェントが起動した dev server を手元でプレビュー：VS Code 1.145 の Remote browser proxy
+  を試した
 tags:
   - VSCode
   - GitHubCopilot
@@ -7,8 +9,8 @@ tags:
   - SSH
   - リモート開発
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-11-06T16:28:29+09:00'
+id: a1bd931855f392806ee6
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
