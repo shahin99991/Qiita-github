@@ -7,7 +7,7 @@ tags:
   - コミュニティ
   - Azure
 private: false
-updated_at: '2026-11-03T01:48:34+09:00'
+updated_at: '2026-11-07T14:13:46+09:00'
 id: 2365fbcb09411bb3e51c
 organization_url_name: mspjp
 slide: false
@@ -65,7 +65,7 @@ Microsoft Student Ambassadors（以下、MSA）は、Microsoft の技術を学�
 
 - 登録時に**18歳以上**
 - 認定された教育機関に**フルタイムで在籍**
-- **Azure for Students** のアカウントを持っている
+- **[Azure for Students](https://azure.microsoft.com/free/students?wt.mc_id=studentamb_486039)** のアカウントを持っている
 - 過去にプログラムから除外された登録者・アンバサダーではない
 - Microsoft の従業員や契約社員ではない
 
@@ -73,7 +73,7 @@ Microsoft Student Ambassadors（以下、MSA）は、Microsoft の技術を学�
 条件は更新されることがあります。登録するときに、画面と[公式FAQ](https://mvp.microsoft.com/faq?section=student)で最新の内容を確認してください。
 :::
 
-Azure for Students はクレジットカードなしで使える学生向けのAzureです。先に作っておくとスムーズです。
+Azure for Students はクレジットカードなしで使える学生向けのAzureです。先に作っておくとスムーズです。まだ持っていない人は、**[こちらから Azure for Students を作成できます](https://azure.microsoft.com/free/students?wt.mc_id=studentamb_486039)**。
 
 ### Step 1: 公式サイトで Get Started を押す
 
