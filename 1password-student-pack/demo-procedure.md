@@ -42,7 +42,7 @@
 | `demo-10e-openssh-disable-dialog` | SSH Agent | OpenSSH を無効にしているかの確認ダイアログ |
 | `demo-10f-ssh-agent-running` | SSH Agent | 「実行中」と、利用できる SSH キーに GitHub が出た画面 |
 
-解説図（GPT Image 2.5 で生成）は `img-00-tldr-overview` / `img-01-why-secrets` / `img-02-ssh-agent-before-after` / `img-03-agent-credentials` です。右下に「Made with AI」表記が入っています。
+解説図（GPT Image 2.5 で生成。ウォーターマークなしで再生成済み）は `img-00-tldr-overview` / `img-01-why-secrets` / `img-02-ssh-agent-before-after` / `img-03-agent-credentials` です。
 
 ### 公開前に目視で確認すること
 
@@ -50,7 +50,7 @@
 - [ ] `demo-09d` に写っている公開鍵（赤塗り以外の部分）に問題がない（公開鍵は秘密ではないが、念のため）
 - [ ] `demo-06a` のアドレスバーが黒塗りされている
 - [ ] `demo-10f` のキーのフィンガープリントが赤塗りされ、拡大しても読めない
-- [ ] 解説図 `img-03` の右上ボックス見出し（「1Password が直接入力」）の文字が重なって見えないか
+- [ ] 解説図 `img-02` の Before パネルで、`~/.ssh/id_ed25519` が2か所に出ている（気になる場合は再生成）
 
 ---
 
