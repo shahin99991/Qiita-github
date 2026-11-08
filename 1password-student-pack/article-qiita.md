@@ -4,9 +4,11 @@ tags:
   - 1Password
   - GitHub
   - GitHubEducation
-  - セキュリティ
+  - Security
   - 学生
 private: false
+updated_at: '2026-11-08T20:53:24+09:00'
+id: 89691f57988f63261a42
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
