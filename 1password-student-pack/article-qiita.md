@@ -117,7 +117,7 @@ GitHub Student Developer Pack の特典の中で、地味に見落とされが�
 
 GitGuardian の「State of Secrets Sprawl 2026」では、**2025年だけで約2,865万件（28.65 million）の秘密情報が公開 GitHub のコミットに新たに混入した** と報告されています。前年から 34% の増加で、同社が記録した中で最大の年間増加幅だそうです。
 
-![2025年に公開 GitHub のコミットへ混入した秘密情報が約2,865万件、前年比+34%であることを示すインフォグラフィック](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/1password-student-pack/images/img-01-why-secrets.png)
+![2025年に公開 GitHub のコミットへ混入した秘密情報が約2,865万件、前年比+34%であることを示すインフォグラフィック](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/1password-student-pack/images/img-01-why-secrets-v2.png)
 
 同じレポートでは、次の点も指摘されています。
 
@@ -139,7 +139,7 @@ GitGuardian の「State of Secrets Sprawl 2026」では、**2025年だけで約2
 
 開発者向けの目玉は **SSH Agent** です。公式ドキュメントには、平文の SSH キーをディスクに置いたままにすることや、署名されていない Git コミットが、認証情報の漏えいとサプライチェーンリスクの典型的な原因だと書かれています。
 
-![平文の SSH 秘密鍵がディスクに残る状態から、1Password SSH Agent で鍵をディスクに出さない状態への Before/After 図](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/1password-student-pack/images/img-02-ssh-agent-before-after.png)
+![平文の SSH 秘密鍵がディスクに残る状態から、1Password SSH Agent で鍵をディスクに出さない状態への Before/After 図](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/1password-student-pack/images/img-02-ssh-agent-before-after-v2.png)
 
 1Password を使うと、次のように変わります。
 
@@ -167,7 +167,7 @@ AI エージェントにコードを書かせる機会が増えると、「エ�
 
 1Password は 2026年10月22日に **1Password for Agents** を発表しました。プレスリリースによると、エージェントはログイン画面に到達したとき、1Password に対して自分の身元を示し、**人が承認すると、1Password がパスワードを直接フォームに入力する**仕組みです。エージェント自身はパスワードを見ません。
 
-![AI エージェントがログインを要求し、人が承認し、1Password がログイン画面に直接入力する流れ。エージェントにはパスワードが渡らない](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/1password-student-pack/images/img-03-agent-credentials.png)
+![AI エージェントがログインを要求し、人が承認し、1Password がログイン画面に直接入力する流れ。エージェントにはパスワードが渡らない](https://raw.githubusercontent.com/shahin99991/Qiita-github/main/1password-student-pack/images/img-03-agent-credentials-v2.png)
 
 :::note info
 💡 **この機能は、学生向け特典に含まれるとは確認できていません。** 1Password for Agents は個人向けエージェントとの連携として発表されたものです。学生向け無料特典で使えるかどうかは、公式ページには書かれていないので、「考え方として知っておく」くらいの位置づけで読んでください。

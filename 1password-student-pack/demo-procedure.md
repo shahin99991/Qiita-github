@@ -42,7 +42,7 @@
 | `demo-10e-openssh-disable-dialog` | SSH Agent | OpenSSH を無効にしているかの確認ダイアログ |
 | `demo-10f-ssh-agent-running` | SSH Agent | 「実行中」と、利用できる SSH キーに GitHub が出た画面 |
 
-解説図（GPT Image 2.5 で生成。ウォーターマークなしで再生成済み）は `img-00-tldr-overview` / `img-01-why-secrets` / `img-02-ssh-agent-before-after` / `img-03-agent-credentials` です。
+解説図（GPT Image 2.5 で生成。ウォーターマークなしで再生成済み）は `img-00-tldr-overview-v2` / `img-01-why-secrets-v2` / `img-02-ssh-agent-before-after-v2` / `img-03-agent-credentials-v2` です。
 
 ### 公開前に目視で確認すること
 
