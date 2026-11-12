@@ -7,8 +7,8 @@ tags:
   - MCP
   - 移行
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-11-12T16:50:38+09:00'
+id: ccb8a8ddf11d6cb4113d
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
