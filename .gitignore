@@ -2,3 +2,11 @@
 node_modules
 .env
 .DS_Store
+
+# Raw screenshots (contain tenant/subscription IDs) and their analysis
+azure-tools-guided-copilot/Images/スクリーンショット*.png
+azure-tools-guided-copilot/image-analysis.json
+
+# 1Password article raw screenshots (unmasked originals)
+1password-student-pack/images/_original/
+vscode-local-harness-deprecation/images/_original/
