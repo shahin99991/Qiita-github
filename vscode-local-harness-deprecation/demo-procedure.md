@@ -32,6 +32,7 @@
 | `demo-02b-session-target-local` | 2. 確認 | 153343 | Session Target で Local にホバー |
 | `demo-03-open-customizations-button` | 3. 移行画面の開き方 | 153447 | チャット右上の Customizations ボタンとセッション一覧 |
 | `demo-03b-mcp-migration-available` | 3. 移行画面の開き方 | 153457 | MCP Servers の「Migration available」と Migrations（9） |
+| `demo-13-chat-participant-review` | 3. 自動移行されないもの | Chat Participants の Review（Replace Chat Participant） |
 | `demo-04-migrations-tree` | 3. 移行画面の開き方 | 153526 | Migrations 画面（グループ一覧） |
 | `demo-05-mcp-migrate` | 3. MCP | 153618 | 「Migrate 2 MCP servers to .mcp.json?」ダイアログ |
 | `demo-05b-mcp-migrated` | 3. MCP | 153631 | 「Migrated 2 MCP servers.」と Needs manual review |

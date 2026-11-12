@@ -412,7 +412,12 @@ Write-Host "Exit code: $LASTEXITCODE"
 ### 自動移行されないもの
 
 - **ツールセット**: 非推奨で、Copilot harness では使えない。ワークフローごとに必要なツールを設定し直す
-- **チャット参加者（chat participants）**: 非推奨で、Copilot harness では使えない。スキル + MCP ツール（必要なら MCP Apps）をまとめたプラグインなどで置き換える。Migrations 画面にも **Chat Participants (Extensions)** として表示されるが、**Migrate ではなく Review** のボタンだった
+- **チャット参加者（chat participants）**: 非推奨で、Copilot harness では使えない。Migrations 画面にも **Chat Participants (Extensions)** として表示されるが、**Migrate ではなく Review** のボタンだった（デモでは `@testing`（Azure Load Testing）と `@skill`（Agent Skills Ninja）が出ていた）。**Review** を押すと **Replace Chat Participant** の画面が開いて、こう案内される
+  - 「Chat participants は非推奨で、Copilot harness ではサポートされない」
+  - 「拡張機能の提供元に、エージェントプラグイン・MCP サーバー・拡張機能ツールのいずれかを提供しているか確認する。継続的な専門ロールが必要なら、カスタムエージェントを使う」
+  - 公式ドキュメントでは、スキル + MCP ツール（必要なら MCP Apps）をまとめたプラグインでの置き換えが紹介されている。自分で作れるものではなく、**提供元の対応待ち**になるケースもある
+
+![Chat Participants の Review。「Replace Chat Participant」の案内が出る](./images/demo-13-chat-participant-review.png)
 - **拡張機能が提供するツール**: 拡張機能を入れたままにする。ただし、エディタのチャットで拡張機能が動いている間だけ使える
 
 ## 4. 既存の Local 会話を続ける
