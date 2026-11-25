@@ -8,7 +8,7 @@ tags:
   - GitHubCopilot
 private: false
 updated_at: "2026-11-25T19:30:00+09:00"
-id: null
+id: 46b64d3f76c9a4440298
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
