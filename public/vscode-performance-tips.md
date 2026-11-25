@@ -7,7 +7,7 @@ tags:
   - TypeScript
   - GitHubCopilot
 private: false
-updated_at: '2026-11-25T20:24:47+09:00'
+updated_at: '2026-11-25T20:41:16+09:00'
 id: 46b64d3f76c9a4440298
 organization_url_name: mspjp
 slide: false
@@ -283,6 +283,15 @@ VS Code チームの記事によると、TypeScript 7 は Go で書き直され�
 - Copilot / エージェント周りの重さも、報告が出始めている。**セッションの溜めすぎ**には注意
 
 「重い＝VS Code が悪い」と決める前にまず測ってみると、意外と1つの拡張機能が効いていたりします（今回の私は、操作に重さを感じていなかったのに、です）。周りで「VS Code 重い」と言っている人がいたら、この記事を渡してもらえると嬉しいです！
+
+## 最後に、少しだけ宣伝させてください
+
+12月に、GitHub と GitHub Copilot の勉強会が2つあります。どちらもオンラインで、カメラOFF・聞くだけで参加できます！
+
+- **MS Tech Camp #26 GitHubを学ぼう**（12/9 水 21:00〜22:15・無料）: 学生・初学者向けの GitHub 勉強会です。社会人も参加できます。私は学生目線の GH-900 / GH-300 合格体験談を話します。 https://mspjp.connpass.com/event/412037/
+- **ゆるよな Gh-CUG #09**（12/15 火 21:00〜22:30）: GitHub Copilot のモデル選びやコスパ、Metrics Viewer などを、登壇4名でお届けします。初参加も歓迎です。 https://gh-cug.connpass.com/event/412534/
+
+登壇内容は変わることがあるので、最新の情報は各 connpass のページで確認してください。気になったら、ぜひ遊びに来てください！
 
 ## 参考
 
