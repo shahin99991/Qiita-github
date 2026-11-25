@@ -7,8 +7,8 @@ tags:
   - GitHub
   - 自動化
 private: false
-updated_at: "2026-11-25T19:00:00+09:00"
-id: null
+updated_at: "2026-11-25T20:13:58+09:00"
+id: e6cbd71914171b8b6b49
 organization_url_name: mspjp
 slide: false
 ignorePublish: false
