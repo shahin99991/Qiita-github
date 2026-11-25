@@ -7,7 +7,7 @@ tags:
   - GitHub
   - 自動化
 private: false
-updated_at: "2026-11-25T20:13:58+09:00"
+updated_at: "2026-11-25T20:41:29+09:00"
 id: e6cbd71914171b8b6b49
 organization_url_name: mspjp
 slide: false
@@ -475,9 +475,30 @@ microsoft/vscode の Issue を眺めていると、使い始めた人が踏み�
 
 ---
 
-## 📣 GitHub Copilot User Group Japan（Gh-CUG）のお知らせ
+## 📣 最後に、少し宣伝させてください！
 
-ここまで読んでくれた方へ、ちょっとだけ宣伝させてください！
+ここまで読んでくれてありがとうございます！最後に、12月のオンラインイベントを2つ紹介させてください。どちらも参加無料です。
+
+### 12/9(水) MS Tech Camp #26：GitHubを学ぼう
+
+**学生・初学者向けの GitHub 勉強会**です（社会人の方も参加できます）。GitHub の基本と全体像、GH-900 とキャリアの話、学生目線の GH-900 ＆ GH-300 合格体験談、現場で活きる GitHub 活用術まで、約75分で一気に学べます。私も、オープニングと合格体験談で登壇します。
+
+- 日時: 2026年12月9日(水) 21:00〜22:15
+- 形式: オンライン（Microsoft Teams）、参加費無料
+- 参加方法: カメラ OFF・ミュートでOK。質問は Teams のチャットで受け付けます
+- 🔗 [MS Tech Camp #26 GitHubを学ぼう（connpass）](https://mspjp.connpass.com/event/412037/)
+
+### 12/15(火) ゆるよな Gh-CUG #09
+
+GitHub Copilot のモデル選びやコスパ、Metrics Viewer の進化、サポート業務での使い方など、10分 LT 2本と、25分のセッション2本をお届けします。初参加の方も、聞くだけの方も大歓迎です。
+
+- 日時: 2026年12月15日(火) 21:00〜22:30
+- 形式: オンライン（Teams）
+- 🔗 [ゆるよな Gh-CUG #09（connpass）](https://gh-cug.connpass.com/event/412534/)
+
+※ 内容やタイムテーブルは、変更になる場合があります。最新の情報は、各 connpass のページを確認してください。
+
+### GitHub Copilot User Group Japan（Gh-CUG）とは
 
 私が運営に参加している **GitHub Copilot User Group Japan（Gh-CUG / ジーカグ）** は、「もっと世の中に GitHub Copilot を広げたい！」という思いから生まれたユーザーコミュニティです。
 
